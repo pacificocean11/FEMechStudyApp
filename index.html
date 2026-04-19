@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MechQuest | FE Mechanical Exam Study Suite</title>
+    <meta name="description" content="A premium study application for the Fundamentals of Engineering (FE) Mechanical Exam. Practice questions, mock exams, and progress tracking.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div id="app">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span class="logo-text">MechQuest</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-page="dashboard" id="nav-dashboard">
+                    <span class="icon">📊</span> Dashboard
+                </li>
+                <li data-page="study" id="nav-study">
+                    <span class="icon">📚</span> Study Topics
+                </li>
+                <li data-page="exam" id="nav-exam">
+                    <span class="icon">⏱️</span> Mock Exam
+                </li>
+                <li data-page="formulas" id="nav-formulas">
+                    <span class="icon">📐</span> Formulas
+                </li>
+                <li data-page="settings" id="nav-settings">
+                    <span class="icon">⚙️</span> Settings
+                </li>
+            </ul>
+            <div class="user-profile">
+                <div class="avatar">JS</div>
+                <div class="user-info">
+                    <p class="user-name">John Smith</p>
+                    <p class="user-rank">Novice Engineer</p>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <header>
+                <h1 id="page-title">Dashboard</h1>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search topics...">
+                    </div>
+                    <div class="notifications">
+                        <span class="icon">🔔</span>
+                    </div>
+                </div>
+            </header>
+
+            <div id="page-container">
+                <!-- Dashboard Page -->
+                <section id="dashboard" class="page active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Overall Progress</h3>
+                            <div class="progress-ring-container">
+                                <div class="progress-ring" style="--progress: 35%;">
+                                    <span>35%</span>
+                                </div>
+                            </div>
+                            <p>You've completed 142/400 questions</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Ready for Exam?</h3>
+                            <div class="readiness-score">
+                                <span class="score-value">62</span>
+                                <span class="score-label">Confidence Score</span>
+                            </div>
+                            <p>Improve Statics & Dynamics to reach 80+</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Daily Streak</h3>
+                            <div class="streak-value">5 Days 🔥</div>
+                            <p>Keep going to unlock the "Steady State" badge!</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-secondary-grid">
+                        <div class="recent-activity card">
+                            <h2>Recent Activity</h2>
+                            <ul class="activity-list">
+                                <li>
+                                    <span class="activity-icon blue">🔥</span>
+                                    <div class="activity-details">
+                                        <p>Completed Thermodynamics Quiz</p>
+                                        <span>2 hours ago • Score: 85%</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="activity-icon green">📐</span>
+                                    <div class="activity-details">
+                                        <p>Reviewed Mechanics of Materials</p>
+                                        <span>Yesterday • 15 formulas saved</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="activity-icon purple">⚠️</span>
+                                    <div class="activity-details">
+                                        <p>Struggled with Heat Transfer</p>
+                                        <span>2 days ago • Review suggested</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="recommended-topics card">
+                            <h2>Recommended for You</h2>
+                            <div class="topic-grid">
+                                <div class="topic-item">
+                                    <div class="topic-info">
+                                        <h4>Fluid Mechanics</h4>
+                                        <p>24 Questions</p>
+                                    </div>
+                                    <button class="btn-small">Start</button>
+                                </div>
+                                <div class="topic-item">
+                                    <div class="topic-info">
+                                        <h4>Engineering Economics</h4>
+                                        <p>12 Questions</p>
+                                    </div>
+                                    <button class="btn-small">Start</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Study Page -->
+                <section id="study" class="page">
+                    <div class="subject-filter">
+                        <button class="filter-btn active">All Topics</button>
+                        <button class="filter-btn">Core Sciences</button>
+                        <button class="filter-btn">Mechanical Core</button>
+                        <button class="filter-btn">Engineering Ops</button>
+                    </div>
+                    <div class="subject-grid" id="subject-list">
+                        <!-- Loaded by JS -->
+                    </div>
+                </section>
+
+                <!-- Quiz View (Dynamic) -->
+                <section id="quiz-view" class="page">
+                    <div class="quiz-header">
+                        <button id="exit-quiz" class="btn-text">← Back to Topics</button>
+                        <div class="quiz-progress-bar">
+                            <div id="quiz-progress-inner"></div>
+                        </div>
+                        <div id="quiz-timer">00:00</div>
+                    </div>
+                    <div class="quiz-container card">
+                        <div id="question-meta">Question 1 of 10 • Thermodynamics</div>
+                        <div id="question-text"></div>
+                        <div id="options-container"></div>
+                        <div class="quiz-footer">
+                            <button id="prev-btn" class="btn-secondary" disabled>Previous</button>
+                            <button id="submit-btn" class="btn-primary">Submit Answer</button>
+                            <button id="next-btn" class="btn-primary hidden">Next Question</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
