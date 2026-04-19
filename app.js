@@ -24,16 +24,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const questionMeta = document.getElementById('question-meta');
     const quizProgressInner = document.getElementById('quiz-progress-inner');
     const quizTimer = document.getElementById('quiz-timer');
+    const explanationContainer = document.getElementById('explanation-container');
+    const explanationText = document.getElementById('explanation-text');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     const submitBtn = document.getElementById('submit-btn');
     const exitQuizBtn = document.getElementById('exit-quiz');
+
+    // Mobile Elements
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
     // Initialization
     function init() {
         renderSubjects();
         setupNavigation();
         setupQuizListeners();
+        setupMobileMenu();
+    }
+
+    // Mobile Menu Toggle
+    function setupMobileMenu() {
+        if (!menuToggle) return;
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        });
     }
 
     // Navigation Logic
@@ -45,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 navItems.forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
+
+                // Close sidebar on mobile after navigation
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
             });
         });
     }
@@ -135,6 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const progress = ((state.currentQuestionIndex + 1) / state.quizQuestions.length) * 100;
         quizProgressInner.style.width = `${progress}%`;
 
+        // Reset explanation
+        explanationContainer.classList.add('hidden');
+        explanationText.textContent = '';
+
         // Render Options
         optionsContainer.innerHTML = '';
         question.options.forEach((option, index) => {
@@ -186,6 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 opt.classList.add('wrong');
             }
         });
+
+        // Show Explanation
+        explanationText.textContent = question.explanation;
+        explanationContainer.classList.remove('hidden');
 
         submitBtn.classList.add('hidden');
         nextBtn.classList.remove('hidden');
