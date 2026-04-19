@@ -41,7 +41,7 @@ const QUESTIONS = {
             "subject": "Mathematics",
             "topic": "Analytic Geometry",
             "question": "What is the equation of the line passing through the point $(2, -3)$ and perpendicular to the line defined by $3x - 4y + 7 = 0$?",
-            "tikz": "\\begin{tikzpicture}\n    \\draw[very thin, gray!30] (-4,-5) grid (5,4);\n    \\draw[->, thick] (-4.2,0) -- (5.2,0) node[right] {$x$};\n    \\draw[->, thick] (0,-5.2) -- (0,4.2) node[above] {$y$};\n    \\coordinate (P) at (2,-3);\n    \\coordinate (I) at (-1,1);\n    \\draw[blue, thick] (-3.66,-1) -- (3,4) node[above right] {$3x - 4y + 7 = 0$};\n    \\draw[red, thick] (-3, 3.66) -- (3.25, -4.66) node[below left] {$L_{\\perp}$};\n    \\filldraw[black] (P) circle (2pt) node[right, xshift=2pt, fill=white, inner sep=1pt] {$(2, -3)$};\n    \\filldraw[black] (I) circle (1.5pt);\n    \\begin{scope}[shift={(-1,1)}, rotate={36.87}]\n        \\draw (0.3,0) -- (0.3,0.3) -- (0,0.3);\n    \\end{scope}\n\\end{tikzpicture}",
+            "image": "capture.png",
             "options": [
                 { "label": "A", "text": "$3x - 4y - 18 = 0$", "is_correct": false },
                 { "label": "B", "text": "$4x + 3y + 1 = 0$", "is_correct": true },
@@ -50,7 +50,7 @@ const QUESTIONS = {
             ],
             "solution": {
                 "steps": [
-                    { "title": "Find the Slope of the Given Line", "content": "The given line is $3x - 4y + 7 = 0$. Rewriting in $y = mx + c$ form: $-4y = -3x - 7 \\implies y = \\frac{3}{4}x + \\frac{7}{4}$. So, $m_1 = \\frac{3}{4}$.", "tikz": "\\begin{tikzpicture}[scale=0.8]\n    \\draw[very thin, gray!30] (-4,-5) grid (5,4);\n    \\draw[->, thick] (-4.2,0) -- (5.2,0) node[right] {$x$};\n    \\draw[->, thick] (0,-5.2) -- (0,4.2) node[above] {$y$};\n    \\coordinate (P) at (2,-3);\n    \\coordinate (I) at (-1,1);\n    \\draw[blue, thick] (-3.66,-1) -- (3,4) node[above right] {$3x - 4y + 7 = 0$};\n    \\draw[red, thick] (-3, 3.66) -- (3.25, -4.66) node[below left] {$L_{\\perp}$};\n    \\filldraw[black] (P) circle (2pt) node[right, xshift=2pt, fill=white, inner sep=1pt] {$(2, -3)$};\n    \\filldraw[black] (I) circle (1.5pt);\n    \\begin{scope}[shift={(-1,1)}, rotate={atan(3/4)}]\n        \\draw (0.3,0) -- (0.3,0.3) -- (0,0.3);\n    \\end{scope}\n\\end{tikzpicture}" },
+                    { "title": "Find the Slope of the Given Line", "content": "The given line is $3x - 4y + 7 = 0$. Rewriting in $y = mx + c$ form: $-4y = -3x - 7 \\implies y = \\frac{3}{4}x + \\frac{7}{4}$. So, $m_1 = \\frac{3}{4}$.", "image": "capture.png" },
                     { "title": "Determine the Perpendicular Slope", "content": "The slope of a perpendicular line ($m_2$) is the negative reciprocal: $m_2 = -1 / m_1 = -1 / (3/4) = -4/3$." },
                     { "title": "Use Point-Slope Form", "content": "Using point $(2, -3)$ and $m_2 = -4/3$: $y - (-3) = -4/3(x - 2) \\implies y + 3 = -4/3(x - 2)$." },
                     { "title": "Convert to General Form", "content": "Multiply by 3: $3(y + 3) = -4(x - 2) \\implies 3y + 9 = -4x + 8$. Rearranging: $4x + 3y + 1 = 0$." }
@@ -132,8 +132,8 @@ const QUESTIONS = {
             ],
             "solution": {
                 "steps": [
-                    { 
-                        "title": "Resolution", 
+                    {
+                        "title": "Resolution",
                         "content": "$F_x = F \\cos(30^\circ) = 100 \\times 0.866 = 86.6$ N.",
                         "tikz": "\\begin{tikzpicture}[scale=1.2]\n\\draw[->, thick] (0,0) -- (1.5,0) node[right] {$x$};\n\\draw[->, thick] (0,0) -- (0,1.5) node[above] {$y$};\n\\draw[->, ultra thick, red] (0,0) -- (1.732,1) node[midway, above left] {100 N};\n\\draw[dashed, blue] (1.732,1) -- (1.732,0) node[below] {$F_x$};\n\\end{tikzpicture}"
                     }
