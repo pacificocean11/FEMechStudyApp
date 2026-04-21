@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         score: 0,
         timer: null,
         secondsElapsed: 0,
-        userProgress: JSON.parse(localStorage.getItem('mechquest_progress')) || {}
+        userProgress: JSON.parse(localStorage.getItem('mechquest_progress')) || {},
+        isFinished: false
     };
 
     // DOM Elements
@@ -36,8 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const flagBtn = document.getElementById('flag-btn');
     const finishBtn = document.getElementById('finish-btn');
     const closeResultsBtn = document.getElementById('close-results');
+    const reviewResultsBtn = document.getElementById('review-results');
+    const resultsQuestionMap = document.getElementById('results-question-map');
+    const resultsDetailedList = document.getElementById('results-detailed-list');
     const resetDataBtn = document.getElementById('reset-data-btn');
     const exitQuizBtn = document.getElementById('exit-quiz');
+    const quizLegendActive = document.getElementById('quiz-legend-active');
+    const quizLegendReview = document.getElementById('quiz-legend-review');
 
     // Result Elements
     const resTotal = document.getElementById('res-total');
@@ -122,53 +128,72 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render Subjects in Study Tab
     function renderSubjects() {
         if (!subjectList) return;
+        subjectList.innerHTML = '';
         
-        subjectList.innerHTML = SUBJECTS.map(subject => {
-            const progressData = state.userProgress[subject.id] || { completed: 0 };
-            const progressPercent = Math.round((progressData.completed / subject.count) * 100);
-            
-            return `
-                <div class="subject-card" data-id="${subject.id}">
-                    <div class="subject-header">
-                        <span class="subject-icon">${subject.icon}</span>
-                        <span class="subject-progress">${progressPercent}% Complete</span>
-                    </div>
-                    <h3>${subject.name}</h3>
-                    <p>${subject.count} Questions</p>
-                    <div class="mini-progress-bar">
-                        <div class="mini-progress-fill" style="width: ${progressPercent}%"></div>
-                    </div>
+        SUBJECTS.forEach(subject => {
+            const subjectHeader = document.createElement('div');
+            subjectHeader.className = 'subject-section-header';
+            subjectHeader.innerHTML = `
+                <div class="subject-title">
+                    <span class="subject-icon">${subject.icon}</span>
+                    <h2>${subject.name}</h2>
                 </div>
             `;
-        }).join('');
+            subjectList.appendChild(subjectHeader);
 
-        // Add Click Listeners to Subject Cards
-        document.querySelectorAll('.subject-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const subjectId = card.getAttribute('data-id');
-                startQuiz(subjectId);
+            const topicGrid = document.createElement('div');
+            topicGrid.className = 'topic-grid-study';
+            
+            subject.topics.forEach(topic => {
+                const questionsCount = (QUESTIONS[subject.id] || []).filter(q => q.topic === topic).length;
+                const topicCard = document.createElement('div');
+                topicCard.className = 'topic-card-study';
+                topicCard.innerHTML = `
+                    <div class="topic-info">
+                        <h3>${topic}</h3>
+                        <p>${questionsCount} Questions</p>
+                    </div>
+                    <button class="btn-start-topic" data-subject="${subject.id}" data-topic="${topic}">Start Quiz</button>
+                `;
+                topicGrid.appendChild(topicCard);
+            });
+            
+            subjectList.appendChild(topicGrid);
+        });
+
+        document.querySelectorAll('.btn-start-topic').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const subjectId = btn.getAttribute('data-subject');
+                const topicName = btn.getAttribute('data-topic');
+                startQuiz(subjectId, topicName);
             });
         });
     }
 
     // Quiz Engine
-    function startQuiz(subjectId) {
+    function startQuiz(subjectId, topicName) {
         const subject = SUBJECTS.find(s => s.id === subjectId);
-        const questions = QUESTIONS[subjectId];
+        let questions = QUESTIONS[subjectId] || [];
+        
+        if (topicName) {
+            questions = questions.filter(q => q.topic === topicName);
+        }
 
-        if (!questions || questions.length === 0) {
-            alert("No questions available for this topic yet. We're adding more soon!");
+        if (questions.length === 0) {
+            alert("No questions available for this topic yet.");
             return;
         }
 
         state.currentSubject = subject;
-        state.quizQuestions = [...questions];
+        state.currentTopic = topicName;
+        state.quizQuestions = [...questions].sort(() => 0.5 - Math.random()).slice(0, 10);
         state.currentQuestionIndex = 0;
-        state.answers = new Array(questions.length).fill(null);
-        state.submitted = new Array(questions.length).fill(false);
-        state.flagged = new Array(questions.length).fill(false);
+        state.answers = new Array(state.quizQuestions.length).fill(null);
+        state.submitted = new Array(state.quizQuestions.length).fill(false);
+        state.flagged = new Array(state.quizQuestions.length).fill(false);
         state.score = 0;
         state.secondsElapsed = 0;
+        state.isFinished = false;
 
         navigateTo('quiz-view');
         renderQuestionMap();
@@ -178,11 +203,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadQuestion() {
         const question = state.quizQuestions[state.currentQuestionIndex];
-        questionMeta.textContent = `Question ${state.currentQuestionIndex + 1} of ${state.quizQuestions.length} • ${question.topic}`;
+        questionMeta.textContent = `Question ${state.currentQuestionIndex + 1} of ${state.quizQuestions.length} • ${state.currentTopic || state.currentSubject.name}`;
         
         questionText.innerHTML = `<p>${question.question}</p>`;
         
-        if (question.image) {
+        if (question.question_image) {
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'question-image-container';
+            imgDiv.innerHTML = `<img src="${question.question_image}" alt="Question Diagram" class="quiz-image">`;
+            questionText.appendChild(imgDiv);
+        } else if (question.image) {
             const imgDiv = document.createElement('div');
             imgDiv.className = 'question-image-container';
             imgDiv.innerHTML = `<img src="${question.image}" alt="Question Diagram" class="quiz-image">`;
@@ -196,22 +226,18 @@ document.addEventListener('DOMContentLoaded', () => {
             tikzDiv.appendChild(script);
             questionText.appendChild(tikzDiv);
             
-            // Re-trigger TikZJax with multiple attempts
             const trigger = () => window.dispatchEvent(new Event('load'));
             setTimeout(trigger, 50);
             setTimeout(trigger, 200);
             setTimeout(trigger, 500);
         }
         
-        // Update Progress Bar
         const progress = ((state.currentQuestionIndex + 1) / state.quizQuestions.length) * 100;
         quizProgressInner.style.width = `${progress}%`;
 
-        // Reset explanation
         explanationContainer.classList.add('hidden');
         explanationText.innerHTML = '';
 
-        // Render Options
         optionsContainer.innerHTML = '';
         question.options.forEach((option, index) => {
             const div = document.createElement('div');
@@ -229,33 +255,46 @@ document.addEventListener('DOMContentLoaded', () => {
             optionsContainer.appendChild(div);
         });
 
-        // Trigger MathJax Typeset
         if (window.MathJax && window.MathJax.typesetPromise) {
             window.MathJax.typesetPromise();
         }
 
         updateMapVisuals();
 
-        // Button States
+        if (state.isFinished) {
+            quizLegendActive.classList.add('hidden');
+            quizLegendReview.classList.remove('hidden');
+        } else {
+            quizLegendActive.classList.remove('hidden');
+            quizLegendReview.classList.add('hidden');
+        }
+
         prevBtn.disabled = state.currentQuestionIndex === 0;
         
-        // Update Flag Button
         if (state.flagged[state.currentQuestionIndex]) {
             flagBtn.classList.add('active');
         } else {
             flagBtn.classList.remove('active');
         }
 
-        if (state.submitted[state.currentQuestionIndex]) {
+        nextBtn.disabled = state.currentQuestionIndex === state.quizQuestions.length - 1;
+        nextBtn.classList.remove('hidden');
+        prevBtn.classList.remove('hidden');
+
+        if (state.isFinished) {
             showFeedback();
+            submitBtn.classList.add('hidden');
         } else {
-            submitBtn.classList.remove('hidden');
-            nextBtn.classList.add('hidden');
+            if (state.submitted[state.currentQuestionIndex]) {
+                submitBtn.classList.add('hidden');
+            } else {
+                submitBtn.classList.remove('hidden');
+            }
         }
     }
 
     function selectOption(index) {
-        if (state.submitted[state.currentQuestionIndex]) return; // Prevent changing after submit
+        if (state.submitted[state.currentQuestionIndex]) return; 
         
         const options = document.querySelectorAll('.option');
         options.forEach(opt => opt.classList.remove('selected'));
@@ -286,14 +325,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const btns = document.querySelectorAll('.map-btn');
         btns.forEach((btn, index) => {
             btn.className = 'map-btn';
-            if (index === state.currentQuestionIndex) btn.classList.add('current');
-            else if (state.flagged[index]) btn.classList.add('flagged');
-            else if (state.submitted[index]) btn.classList.add('answered');
+            
+            if (state.isFinished) {
+                if (state.submitted[index]) {
+                    const q = state.quizQuestions[index];
+                    const selectedIndex = state.answers[index];
+                    if (selectedIndex !== null && q.options[selectedIndex].is_correct) {
+                        btn.classList.add('correct-res');
+                    } else {
+                        btn.classList.add('wrong-res');
+                    }
+                }
+                if (index === state.currentQuestionIndex) btn.classList.add('current');
+            } else {
+                if (index === state.currentQuestionIndex) btn.classList.add('current');
+                else if (state.flagged[index]) btn.classList.add('flagged');
+                else if (state.submitted[index]) btn.classList.add('answered');
+            }
         });
     }
 
     function showFeedback() {
-        state.submitted[state.currentQuestionIndex] = true;
         const question = state.quizQuestions[state.currentQuestionIndex];
         const selectedIndex = state.answers[state.currentQuestionIndex];
         const options = document.querySelectorAll('.option');
@@ -306,8 +358,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Show Structured Explanation
         explanationText.innerHTML = '';
+
+        if (question.solution_image) {
+            const globalImgDiv = document.createElement('div');
+            globalImgDiv.className = 'solution-image-container';
+            globalImgDiv.innerHTML = `<img src="${question.solution_image}" alt="Solution Overview" class="quiz-image">`;
+            explanationText.appendChild(globalImgDiv);
+        }
+
         question.solution.steps.forEach((step, idx) => {
             const stepDiv = document.createElement('div');
             stepDiv.className = 'solution-step';
@@ -316,7 +375,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h5>Step ${idx + 1}: ${step.title}</h5>
                 <p>${step.content}</p>
             `;
-            if (step.image) {
+            if (step.solution_image) {
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'step-image-container';
+                imgDiv.innerHTML = `<img src="${step.solution_image}" alt="Step ${idx + 1} Diagram" class="quiz-image">`;
+                stepDiv.appendChild(imgDiv);
+            } else if (step.image) {
                 const imgDiv = document.createElement('div');
                 imgDiv.className = 'step-image-container';
                 imgDiv.innerHTML = `<img src="${step.image}" alt="Step ${idx + 1} Diagram" class="quiz-image">`;
@@ -330,7 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 tikzDiv.appendChild(script);
                 stepDiv.appendChild(tikzDiv);
                 
-                // Re-trigger TikZJax with multiple attempts
                 const trigger = () => window.dispatchEvent(new Event('load'));
                 setTimeout(trigger, 50);
                 setTimeout(trigger, 200);
@@ -346,7 +409,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         explanationContainer.classList.remove('hidden');
 
-        // Trigger MathJax Typeset for solution
         if (window.MathJax && window.MathJax.typesetPromise) {
             window.MathJax.typesetPromise();
         }
@@ -373,7 +435,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Please select an option first.");
                 return;
             }
-            showFeedback();
+            state.submitted[state.currentQuestionIndex] = true;
+            state.flagged[state.currentQuestionIndex] = false;
+            updateMapVisuals();
+            
+            if (state.currentQuestionIndex < state.quizQuestions.length - 1) {
+                state.currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                loadQuestion();
+                alert("Last question answered! Click 'Finish Session' to see results.");
+            }
         });
 
         nextBtn.addEventListener('click', () => {
@@ -387,6 +459,12 @@ document.addEventListener('DOMContentLoaded', () => {
             navigateTo('study');
         });
 
+        reviewResultsBtn.addEventListener('click', () => {
+            navigateTo('quiz-view');
+            state.currentQuestionIndex = 0;
+            loadQuestion();
+        });
+
         if (resetDataBtn) {
             resetDataBtn.addEventListener('click', () => {
                 if (confirm("Are you sure you want to erase all your progress? This cannot be undone.")) {
@@ -395,13 +473,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderSubjects();
                     alert("All progress has been reset.");
                 }
-            });
-        }
-
-        const refreshTikzBtn = document.getElementById('refresh-tikz');
-        if (refreshTikzBtn) {
-            refreshTikzBtn.addEventListener('click', () => {
-                window.dispatchEvent(new Event('load'));
             });
         }
 
@@ -423,7 +494,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function finishQuiz() {
         stopTimer();
         
-        const total = state.quizQuestions.length;
         let attempted = 0;
         let correct = 0;
 
@@ -436,18 +506,76 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+        state.score = correct;
 
         const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
         
-        // Populate Results
-        resTotal.textContent = total;
+        resTotal.textContent = state.quizQuestions.length;
         resAttempted.textContent = attempted;
-        resCorrect.textContent = correct;
+        resCorrect.textContent = state.score;
         resAccuracy.textContent = `${accuracy}%`;
-        resultsSubjectName.textContent = state.currentSubject.name;
+        resultsSubjectName.textContent = state.currentTopic || state.currentSubject.name;
+
+        resultsQuestionMap.innerHTML = state.quizQuestions.map((q, idx) => {
+            let statusClass = '';
+            if (state.submitted[idx]) {
+                const selectedIndex = state.answers[idx];
+                if (selectedIndex !== null && q.options[selectedIndex].is_correct) {
+                    statusClass = 'correct-res';
+                } else {
+                    statusClass = 'wrong-res';
+                }
+            }
+            return `<button class="map-btn ${statusClass}" data-index="${idx}">${idx + 1}</button>`;
+        }).join('');
+
+        document.querySelectorAll('.results-map .map-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                state.currentQuestionIndex = parseInt(btn.getAttribute('data-index'));
+                state.isFinished = true;
+                navigateTo('quiz-view');
+                loadQuestion();
+            });
+        });
+
+        // Populate Detailed List
+        resultsDetailedList.innerHTML = state.quizQuestions.map((q, idx) => {
+            let status = 'unanswered';
+            let icon = '○';
+            if (state.submitted[idx]) {
+                const selectedIndex = state.answers[idx];
+                if (selectedIndex !== null && q.options[selectedIndex].is_correct) {
+                    status = 'correct';
+                    icon = '✓';
+                } else {
+                    status = 'wrong';
+                    icon = '✗';
+                }
+            }
+            
+            // Clean up LaTeX for summary if needed, or just show as is
+            const shortText = q.question.replace(/\$/g, '').substring(0, 80) + '...';
+            
+            return `
+                <div class="result-item" data-index="${idx}">
+                    <div class="result-status-icon ${status}">${icon}</div>
+                    <div class="result-text">${idx + 1}. ${shortText}</div>
+                </div>
+            `;
+        }).join('');
+
+        document.querySelectorAll('.result-item').forEach(item => {
+            item.addEventListener('click', () => {
+                state.currentQuestionIndex = parseInt(item.getAttribute('data-index'));
+                state.isFinished = true;
+                navigateTo('quiz-view');
+                loadQuestion();
+            });
+        });
 
         // Save Progress
         updateProgress(state.currentSubject.id, attempted);
+        state.isFinished = true;
 
         navigateTo('results-view');
     }
