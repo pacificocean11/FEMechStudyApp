@@ -219,11 +219,53 @@ const QUESTIONS = {
             ],
             "solution": {
                 "steps": [
-                    { "title": "Convert to Standard Form", "content": "Divide by 225: $(9x^2)/225 + (25y^2)/225 = 1 \\implies x^2/25 + y^2/9 = 1$." },
-                    { "title": "Identify a and b", "content": "$a^2 = 25$ ($a = 5$) and $b^2 = 9$ ($b = 3$)." },
-                    { "title": "Calculate Eccentricity", "content": "$c^2 = a^2 - b^2 = 25 - 9 = 16$ ($c = 4$). Eccentricity $e = c / a = 4 / 5 = 0.8$." }
+                    { "title": "Convert to Standard Form", "content": "Divide the entire equation by 225: $x^2/25 + y^2/9 = 1$." },
+                    { "title": "Identify a and b", "content": "From the standard form: $a^2 = 25 \\implies a = 5$ and $b^2 = 9 \\implies b = 3$." },
+                    { "title": "Calculate Eccentricity", "content": "Find $c$: $c^2 = a^2 - b^2 = 25 - 9 = 16 \\implies c = 4$. Eccentricity $e = c/a = 4/5 = 0.8$." }
                 ],
                 "final_answer": "0.8",
+                "solution_image": ""
+            }
+        },
+        {
+            "subject": "Math",
+            "topic": "Differential Equations",
+            "question": "What is the general solution to the first-order linear differential equation $\\frac{dy}{dx} + 2y = e^{-x}$?",
+            "question_image": "",
+            "options": [
+                { "label": "A", "text": "y = e^{-x} + Ce^{-2x}", "is_correct": true },
+                { "label": "B", "text": "y = e^{-2x} + Ce^{-x}", "is_correct": false },
+                { "label": "C", "text": "y = -e^{-x} + Ce^{2x}", "is_correct": false },
+                { "label": "D", "text": "y = e^x + Ce^{-2x}", "is_correct": false }
+            ],
+            "solution": {
+                "steps": [
+                    { "title": "Find the Integrating Factor", "content": "The equation is in the form $\\frac{dy}{dx} + P(x)y = Q(x)$, where $P(x) = 2$. The integrating factor is $I(x) = e^{\\int 2 dx} = e^{2x}$." },
+                    { "title": "Multiply and Integrate", "content": "Multiply the entire equation by $e^{2x}$: $e^{2x}\\frac{dy}{dx} + 2e^{2x}y = e^{2x}e^{-x}$, which simplifies to $\\frac{d}{dx}(ye^{2x}) = e^x$." },
+                    { "title": "Solve for y", "content": "Integrate both sides: $ye^{2x} = \\int e^x dx = e^x + C$. Dividing by $e^{2x}$ gives $y = e^{-x} + Ce^{-2x}$." }
+                ],
+                "final_answer": "y = e^{-x} + Ce^{-2x}",
+                "solution_image": ""
+            }
+        },
+        {
+            "subject": "Math",
+            "topic": "Differential Equations",
+            "question": "Which of the following is the particular solution to the differential equation $\\frac{d^2y}{dx^2} - 5\\frac{dy}{dx} + 6y = 0$ given the initial conditions $y(0) = 1$ and $y'(0) = 0$?",
+            "question_image": "",
+            "options": [
+                { "label": "A", "text": "y = 3e^{2x} - 2e^{3x}", "is_correct": true },
+                { "label": "B", "text": "y = 2e^{2x} - 3e^{3x}", "is_correct": false },
+                { "label": "C", "text": "y = e^{2x} + e^{3x}", "is_correct": false },
+                { "label": "D", "text": "y = 3e^{3x} - 2e^{2x}", "is_correct": false }
+            ],
+            "solution": {
+                "steps": [
+                    { "title": "Characteristic Equation", "content": "The characteristic equation is $r^2 - 5r + 6 = 0$. Factoring gives $(r - 2)(r - 3) = 0$, so $r_1 = 2$ and $r_2 = 3$." },
+                    { "title": "General Solution", "content": "The general solution is $y(x) = C_1e^{2x} + C_2e^{3x}$." },
+                    { "title": "Apply Initial Conditions", "content": "Using $y(0) = 1$: $C_1 + C_2 = 1$. Using $y'(x) = 2C_1e^{2x} + 3C_2e^{3x}$ and $y'(0) = 0$: $2C_1 + 3C_2 = 0$. Solving this system yields $C_1 = 3$ and $C_2 = -2$." }
+                ],
+                "final_answer": "y = 3e^{2x} - 2e^{3x}",
                 "solution_image": ""
             }
         }
