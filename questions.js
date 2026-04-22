@@ -229,14 +229,14 @@ const QUESTIONS = {
         },
         {
             "subject": "Math",
-            "topic": "Differential Equations",
+            "topic": "Differential equations",
             "question": "What is the general solution to the first-order linear differential equation $\\frac{dy}{dx} + 2y = e^{-x}$?",
             "question_image": "",
             "options": [
-                { "label": "A", "text": "y = e^{-x} + Ce^{-2x}", "is_correct": true },
-                { "label": "B", "text": "y = e^{-2x} + Ce^{-x}", "is_correct": false },
-                { "label": "C", "text": "y = -e^{-x} + Ce^{2x}", "is_correct": false },
-                { "label": "D", "text": "y = e^x + Ce^{-2x}", "is_correct": false }
+                { "label": "A", "text": "$y = e^{-x} + Ce^{-2x}$", "is_correct": true },
+                { "label": "B", "text": "$y = e^{-2x} + Ce^{-x}$", "is_correct": false },
+                { "label": "C", "text": "$y = -e^{-x} + Ce^{2x}$", "is_correct": false },
+                { "label": "D", "text": "$y = e^x + Ce^{-2x}$", "is_correct": false }
             ],
             "solution": {
                 "steps": [
@@ -244,20 +244,20 @@ const QUESTIONS = {
                     { "title": "Multiply and Integrate", "content": "Multiply the entire equation by $e^{2x}$: $e^{2x}\\frac{dy}{dx} + 2e^{2x}y = e^{2x}e^{-x}$, which simplifies to $\\frac{d}{dx}(ye^{2x}) = e^x$." },
                     { "title": "Solve for y", "content": "Integrate both sides: $ye^{2x} = \\int e^x dx = e^x + C$. Dividing by $e^{2x}$ gives $y = e^{-x} + Ce^{-2x}$." }
                 ],
-                "final_answer": "y = e^{-x} + Ce^{-2x}",
+                "final_answer": "$y = e^{-x} + Ce^{-2x}$",
                 "solution_image": ""
             }
         },
         {
             "subject": "Math",
-            "topic": "Differential Equations",
+            "topic": "Differential equations",
             "question": "Which of the following is the particular solution to the differential equation $\\frac{d^2y}{dx^2} - 5\\frac{dy}{dx} + 6y = 0$ given the initial conditions $y(0) = 1$ and $y'(0) = 0$?",
             "question_image": "",
             "options": [
-                { "label": "A", "text": "y = 3e^{2x} - 2e^{3x}", "is_correct": true },
-                { "label": "B", "text": "y = 2e^{2x} - 3e^{3x}", "is_correct": false },
-                { "label": "C", "text": "y = e^{2x} + e^{3x}", "is_correct": false },
-                { "label": "D", "text": "y = 3e^{3x} - 2e^{2x}", "is_correct": false }
+                { "label": "A", "text": "$y = 3e^{2x} - 2e^{3x}$", "is_correct": true },
+                { "label": "B", "text": "$y = 2e^{2x} - 3e^{3x}$", "is_correct": false },
+                { "label": "C", "text": "$y = e^{2x} + e^{3x}$", "is_correct": false },
+                { "label": "D", "text": "$y = 3e^{3x} - 2e^{2x}$", "is_correct": false }
             ],
             "solution": {
                 "steps": [
@@ -265,7 +265,72 @@ const QUESTIONS = {
                     { "title": "General Solution", "content": "The general solution is $y(x) = C_1e^{2x} + C_2e^{3x}$." },
                     { "title": "Apply Initial Conditions", "content": "Using $y(0) = 1$: $C_1 + C_2 = 1$. Using $y'(x) = 2C_1e^{2x} + 3C_2e^{3x}$ and $y'(0) = 0$: $2C_1 + 3C_2 = 0$. Solving this system yields $C_1 = 3$ and $C_2 = -2$." }
                 ],
-                "final_answer": "y = 3e^{2x} - 2e^{3x}",
+                "final_answer": "$y = 3e^{2x} - 2e^{3x}$",
+                "solution_image": ""
+            }
+        },
+        {
+            "subject": "Math",
+            "topic": "Differential equations",
+            "question": "Solve the first-order differential equation: $\\dfrac{dy}{dx} + \\dfrac{y}{x} = x^2$ for $x > 0$.",
+            "question_image": "",
+            "options": [
+                { "label": "A", "text": "$y = \\frac{x^3}{4} + C$", "is_correct": false },
+                { "label": "B", "text": "$y = \\frac{x^3}{4} + \\frac{C}{x}$", "is_correct": true },
+                { "label": "C", "text": "$y = x^3 + Cx$", "is_correct": false },
+                { "label": "D", "text": "$y = \\frac{x^4}{4} + C$", "is_correct": false }
+            ],
+            "solution": {
+                "steps": [
+                    { "title": "Identify Equation Type", "content": "The equation is a first-order linear differential equation of the form $\\frac{dy}{dx} + P(x)y = Q(x)$, where $P(x) = \\frac{1}{x}$ and $Q(x) = x^2$." },
+                    { "title": "Calculate Integrating Factor", "content": "The integrating factor is $I(x) = e^{\\int P(x) dx} = e^{\\int \\frac{1}{x} dx} = e^{\\ln|x|} = x$." },
+                    { "title": "Apply General Solution Formula", "content": "The solution is given by $y \\cdot I(x) = \\int Q(x)I(x) dx$. Substituting the values: $y(x) = \\int (x^2)(x) dx = \\int x^3 dx = \\frac{x^4}{4} + C$." },
+                    { "title": "Solve for y", "content": "Divide by $x$: $y = \\frac{x^4/4 + C}{x} = \\frac{x^3}{4} + \\frac{C}{x}$." }
+                ],
+                "final_answer": "$y = \\frac{x^3}{4} + \\frac{C}{x}$",
+                "solution_image": ""
+            }
+        },
+        {
+            "subject": "Math",
+            "topic": "Differential equations",
+            "question": "What is the general solution to the second-order homogeneous differential equation $\\dfrac{d^2y}{dx^2} - 5\\dfrac{dy}{dx} + 6y = 0$?",
+            "question_image": "",
+            "options": [
+                { "label": "A", "text": "$y = C_1 e^{5x} + C_2 e^{6x}$", "is_correct": false },
+                { "label": "B", "text": "$y = C_1 e^{-2x} + C_2 e^{-3x}$", "is_correct": false },
+                { "label": "C", "text": "$y = C_1 e^{2x} + C_2 e^{3x}$", "is_correct": true },
+                { "label": "D", "text": "$y = (C_1 + C_2 x)e^{2.5x}$", "is_correct": false }
+            ],
+            "solution": {
+                "steps": [
+                    { "title": "Form the Characteristic Equation", "content": "Replace derivatives with powers of $r$: $r^2 - 5r + 6 = 0$." },
+                    { "title": "Find the Roots", "content": "Factor the quadratic: $(r - 2)(r - 3) = 0$. The roots are $r_1 = 2$ and $r_2 = 3$." },
+                    { "title": "Write the General Solution", "content": "Since the roots are real and distinct, the solution takes the form $y = C_1 e^{r_1 x} + C_2 e^{r_2 x}$." }
+                ],
+                "final_answer": "$y = C_1 e^{2x} + C_2 e^{3x}$",
+                "solution_image": ""
+            }
+        },
+        {
+            "subject": "Math",
+            "topic": "Differential equations",
+            "question": "Using the method of separation of variables, solve $\\dfrac{dy}{dx} = \\dfrac{x}{y}$ with the initial condition $y(0) = 3$.",
+            "question_image": "",
+            "options": [
+                { "label": "A", "text": "$y^2 - x^2 = 9$", "is_correct": true },
+                { "label": "B", "text": "$y = x + 3$", "is_correct": false },
+                { "label": "C", "text": "$y^2 + x^2 = 9$", "is_correct": false },
+                { "label": "D", "text": "$y = \\sqrt{x^2 + 3}$", "is_correct": false }
+            ],
+            "solution": {
+                "steps": [
+                    { "title": "Separate Variables", "content": "Rearrange the equation to group terms of $y$ and $x$: $y \\, dy = x \\, dx$." },
+                    { "title": "Integrate Both Sides", "content": "$\\int y \\, dy = \\int x \\, dx \\implies \\frac{1}{2}y^2 = \\frac{1}{2}x^2 + C_1$. Multiplying by 2 gives $y^2 = x^2 + C$." },
+                    { "title": "Apply Initial Condition", "content": "Substitute $x = 0$ and $y = 3$: $3^2 = 0^2 + C \\implies C = 9$." },
+                    { "title": "Final Form", "content": "Substitute $C$ back: $y^2 = x^2 + 9$, or $y^2 - x^2 = 9$." }
+                ],
+                "final_answer": "$y^2 - x^2 = 9$",
                 "solution_image": ""
             }
         }
