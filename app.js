@@ -11,8 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
         score: 0,
         timer: null,
         secondsElapsed: 0,
-        userProgress: JSON.parse(localStorage.getItem('mechquest_progress')) || {},
-        isFinished: false
+        secondsRemaining: 0,
+        userProgress: (() => {
+            try {
+                return JSON.parse(localStorage.getItem('enggtv_progress')) || {};
+            } catch (e) {
+                console.error("Failed to parse user progress", e);
+                return {};
+            }
+        })(),
+        isFinished: false,
+        isMockExam: false
     };
 
     // DOM Elements
@@ -44,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const exitQuizBtn = document.getElementById('exit-quiz');
     const quizLegendActive = document.getElementById('quiz-legend-active');
     const quizLegendReview = document.getElementById('quiz-legend-review');
+    // const startMockExamBtn = document.getElementById('start-mock-exam');
 
     // Result Elements
     const resTotal = document.getElementById('res-total');
@@ -59,9 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialization
     function init() {
+        setupQuizListeners();
         renderSubjects();
         setupNavigation();
-        setupQuizListeners();
         setupMobileMenu();
     }
 
@@ -109,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'settings': 'Settings',
             'quiz-view': 'Practice Session'
         };
-        pageTitle.textContent = titles[pageId] || 'MechQuest';
+        pageTitle.textContent = titles[pageId] || 'ENGG.tv';
 
         // Toggle Pages
         pages.forEach(page => {
@@ -153,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h3>${topic}</h3>
                         <p>${questionsCount} Questions</p>
                     </div>
-                    <button class="btn-start-topic" data-subject="${subject.id}" data-topic="${topic}">Start Quiz</button>
+                    <button class="btn-start-topic" onclick="startQuiz('${subject.id}', '${topic}')">Start Quiz</button>
                 `;
                 topicGrid.appendChild(topicCard);
             });
@@ -161,13 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subjectList.appendChild(topicGrid);
         });
 
-        document.querySelectorAll('.btn-start-topic').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const subjectId = btn.getAttribute('data-subject');
-                const topicName = btn.getAttribute('data-topic');
-                startQuiz(subjectId, topicName);
-            });
-        });
+        // Inline handlers in generated HTML now handle startQuiz
     }
 
     // Quiz Engine
@@ -194,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.score = 0;
         state.secondsElapsed = 0;
         state.isFinished = false;
+        state.isMockExam = false;
 
         navigateTo('quiz-view');
         renderQuestionMap();
@@ -294,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function selectOption(index) {
-        if (state.submitted[state.currentQuestionIndex]) return; 
+        if (state.isFinished || state.submitted[state.currentQuestionIndex]) return; 
         
         const options = document.querySelectorAll('.option');
         options.forEach(opt => opt.classList.remove('selected'));
@@ -418,57 +423,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupQuizListeners() {
-        finishBtn.addEventListener('click', () => {
-            if (confirm("Are you sure you want to finish the quiz and see your results?")) {
-                finishQuiz();
-            }
-        });
+        if (finishBtn) {
+            finishBtn.addEventListener('click', () => {
+                if (confirm("Are you sure you want to finish the quiz and see your results?")) {
+                    finishQuiz();
+                }
+            });
+        }
 
-        flagBtn.addEventListener('click', () => {
-            state.flagged[state.currentQuestionIndex] = !state.flagged[state.currentQuestionIndex];
-            flagBtn.classList.toggle('active');
-            updateMapVisuals();
-        });
+        if (flagBtn) {
+            flagBtn.addEventListener('click', () => {
+                state.flagged[state.currentQuestionIndex] = !state.flagged[state.currentQuestionIndex];
+                flagBtn.classList.toggle('active');
+                updateMapVisuals();
+            });
+        }
 
-        submitBtn.addEventListener('click', () => {
-            if (state.answers[state.currentQuestionIndex] === null) {
-                alert("Please select an option first.");
-                return;
-            }
-            state.submitted[state.currentQuestionIndex] = true;
-            state.flagged[state.currentQuestionIndex] = false;
-            updateMapVisuals();
-            
-            if (state.currentQuestionIndex < state.quizQuestions.length - 1) {
-                state.currentQuestionIndex++;
+        if (submitBtn) {
+            submitBtn.addEventListener('click', () => {
+                if (state.answers[state.currentQuestionIndex] === null) {
+                    alert("Please select an option first.");
+                    return;
+                }
+                state.submitted[state.currentQuestionIndex] = true;
+                state.flagged[state.currentQuestionIndex] = false;
+                updateMapVisuals();
+                
+                if (state.currentQuestionIndex < state.quizQuestions.length - 1) {
+                    state.currentQuestionIndex++;
+                    loadQuestion();
+                } else {
+                    loadQuestion();
+                    alert("Last question answered! Click 'Finish Session' to see results.");
+                }
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (state.currentQuestionIndex < state.quizQuestions.length - 1) {
+                    state.currentQuestionIndex++;
+                    loadQuestion();
+                }
+            });
+        }
+
+        if (closeResultsBtn) {
+            closeResultsBtn.addEventListener('click', () => {
+                navigateTo('study');
+            });
+        }
+
+        if (reviewResultsBtn) {
+            reviewResultsBtn.addEventListener('click', () => {
+                navigateTo('quiz-view');
+                state.currentQuestionIndex = 0;
                 loadQuestion();
-            } else {
-                loadQuestion();
-                alert("Last question answered! Click 'Finish Session' to see results.");
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (state.currentQuestionIndex < state.quizQuestions.length - 1) {
-                state.currentQuestionIndex++;
-                loadQuestion();
-            }
-        });
-
-        closeResultsBtn.addEventListener('click', () => {
-            navigateTo('study');
-        });
-
-        reviewResultsBtn.addEventListener('click', () => {
-            navigateTo('quiz-view');
-            state.currentQuestionIndex = 0;
-            loadQuestion();
-        });
+            });
+        }
 
         if (resetDataBtn) {
             resetDataBtn.addEventListener('click', () => {
                 if (confirm("Are you sure you want to erase all your progress? This cannot be undone.")) {
-                    localStorage.removeItem('mechquest_progress');
+                    localStorage.removeItem('enggtv_progress');
                     state.userProgress = {};
                     renderSubjects();
                     alert("All progress has been reset.");
@@ -476,19 +493,54 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        prevBtn.addEventListener('click', () => {
-            if (state.currentQuestionIndex > 0) {
-                state.currentQuestionIndex--;
-                loadQuestion();
-            }
-        });
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (state.currentQuestionIndex > 0) {
+                    state.currentQuestionIndex--;
+                    loadQuestion();
+                }
+            });
+        }
 
-        exitQuizBtn.addEventListener('click', () => {
-            if (confirm("Are you sure you want to exit the quiz? Your progress won't be saved.")) {
-                stopTimer();
-                navigateTo('study');
-            }
-        });
+        if (exitQuizBtn) {
+            exitQuizBtn.addEventListener('click', () => {
+                if (confirm("Are you sure you want to exit the quiz? Your progress won't be saved.")) {
+                    stopTimer();
+                    navigateTo('study');
+                }
+            });
+        }
+
+        // Inline handler in HTML now handles start-mock-exam
+    }
+
+    function startMockExam() {
+        let allQuestions = [];
+        for (const subjectId in QUESTIONS) {
+            allQuestions = allQuestions.concat(QUESTIONS[subjectId]);
+        }
+
+        if (allQuestions.length === 0) {
+            alert("No questions available.");
+            return;
+        }
+
+        state.currentSubject = { name: "Full Mock Exam", id: "mock" };
+        state.currentTopic = "Mock Exam";
+        state.quizQuestions = [...allQuestions].sort(() => 0.5 - Math.random()).slice(0, 20);
+        state.currentQuestionIndex = 0;
+        state.answers = new Array(state.quizQuestions.length).fill(null);
+        state.submitted = new Array(state.quizQuestions.length).fill(false);
+        state.flagged = new Array(state.quizQuestions.length).fill(false);
+        state.score = 0;
+        state.secondsElapsed = 0;
+        state.isFinished = false;
+        state.isMockExam = true;
+
+        navigateTo('quiz-view');
+        renderQuestionMap();
+        loadQuestion();
+        startTimer();
     }
 
     function finishQuiz() {
@@ -574,7 +626,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Save Progress
-        updateProgress(state.currentSubject.id, attempted);
+        if (!state.isMockExam) {
+            updateProgress(state.currentSubject.id, attempted);
+        }
         state.isFinished = true;
 
         navigateTo('results-view');
@@ -588,32 +642,64 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add newly completed questions to cumulative total
         state.userProgress[subjectId].completed += newlyCompleted;
         
-        // Cap at total questions
-        const totalForSubject = SUBJECTS.find(s => s.id === subjectId).count;
-        if (state.userProgress[subjectId].completed > totalForSubject) {
-            state.userProgress[subjectId].completed = totalForSubject;
+        // Cap at total questions (calculated from QUESTIONS object)
+        const questionsInSubject = (QUESTIONS[subjectId] || []).length;
+        if (state.userProgress[subjectId].completed > questionsInSubject) {
+            state.userProgress[subjectId].completed = questionsInSubject;
         }
 
-        localStorage.setItem('mechquest_progress', JSON.stringify(state.userProgress));
+        localStorage.setItem('enggtv_progress', JSON.stringify(state.userProgress));
         renderSubjects();
     }
 
     // Timer Utilities
     function startTimer() {
         state.secondsElapsed = 0;
-        updateTimerDisplay();
-        state.timer = setInterval(() => {
-            state.secondsElapsed++;
+        if (state.isMockExam) {
+            state.secondsRemaining = 60 * 60; // 60 minutes
+            quizTimer.classList.remove('blinking-timer');
             updateTimerDisplay();
+        } else {
+            updateTimerDisplay();
+        }
+        
+        state.timer = setInterval(() => {
+            if (state.isMockExam) {
+                state.secondsRemaining--;
+                updateTimerDisplay();
+                
+                if (state.secondsRemaining <= 300 && state.secondsRemaining > 0) {
+                    quizTimer.classList.add('blinking-timer');
+                } else {
+                    quizTimer.classList.remove('blinking-timer');
+                }
+                
+                if (state.secondsRemaining <= 0) {
+                    stopTimer();
+                    alert("Time is up! The mock exam has ended.");
+                    
+                    // Force finish
+                    state.isFinished = true;
+                    finishQuiz();
+                }
+            } else {
+                state.secondsElapsed++;
+                updateTimerDisplay();
+            }
         }, 1000);
     }
 
     function stopTimer() {
         clearInterval(state.timer);
+        quizTimer.classList.remove('blinking-timer');
     }
 
     function updateTimerDisplay() {
-        quizTimer.textContent = formatTime(state.secondsElapsed);
+        if (state.isMockExam) {
+            quizTimer.textContent = formatTime(state.secondsRemaining);
+        } else {
+            quizTimer.textContent = formatTime(state.secondsElapsed);
+        }
     }
 
     function formatTime(seconds) {
@@ -621,6 +707,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const secs = seconds % 60;
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     }
+
+    // Expose functions to global scope for inline handlers
+    window.startMockExam = startMockExam;
+    window.startQuiz = startQuiz;
 
     // Run Init
     init();

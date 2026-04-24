@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MechQuest | FE Mechanical Exam Study Suite</title>
+    <title>ENGG.tv | FE Mechanical Exam Study Suite</title>
     <meta name="description"
         content="A premium study application for the Fundamentals of Engineering (FE) Mechanical Exam. Practice questions, mock exams, and progress tracking.">
     <link rel="stylesheet" href="style.css">
@@ -46,7 +46,7 @@
         <nav class="sidebar">
             <div class="logo">
                 <span class="logo-icon">⚙️</span>
-                <span class="logo-text">MechQuest</span>
+                <span class="logo-text">ENGG.tv</span>
             </div>
             <ul class="nav-links">
                 <li class="active" data-page="dashboard" id="nav-dashboard">
@@ -170,21 +170,73 @@
                 <section id="study" class="page">
                     <div class="subject-filter">
                         <button class="filter-btn active">All Topics</button>
-                        <button class="filter-btn">Core Sciences</button>
-                        <button class="filter-btn">Mechanical Core</button>
-                        <button class="filter-btn">Engineering Ops</button>
                     </div>
-                    <div class="subject-grid" id="subject-list">
+                    <div id="subject-list">
                         <!-- Loaded by JS -->
                     </div>
                 </section>
 
                 <!-- Mock Exam Page -->
                 <section id="exam" class="page">
-                    <div class="card">
-                        <h2>Mock Exam</h2>
-                        <p>Simulate a full FE Mechanical Exam under timed conditions.</p>
-                        <button class="btn-primary" style="margin-top: 1rem;">Start Full Mock Exam</button>
+                    <div class="mock-exam-landing">
+                        <div class="exam-hero-card">
+                            <div class="hero-content">
+                                <div class="hero-badge">Official Simulation</div>
+                                <h2>FE Mechanical Mock Exam</h2>
+                                <p>Test your readiness with a full-length simulated exam. This session follows the official NCEES format guidelines to help you manage time and pressure.</p>
+                                
+                                <div class="exam-specs">
+                                    <div class="spec-item">
+                                        <span class="spec-icon">📋</span>
+                                        <div class="spec-info">
+                                            <strong>20 Questions</strong>
+                                            <span>Randomly selected</span>
+                                        </div>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="spec-icon">⏱️</span>
+                                        <div class="spec-info">
+                                            <strong>60 Minutes</strong>
+                                            <span>Countdown timer</span>
+                                        </div>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="spec-icon">🎯</span>
+                                        <div class="spec-info">
+                                            <strong>Full Review</strong>
+                                            <span>Detailed solutions</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="exam-instructions">
+                                    <h3>Before You Start:</h3>
+                                    <ul>
+                                        <li>Ensure you have a quiet environment.</li>
+                                        <li>Have your calculator and FE Reference Handbook ready.</li>
+                                        <li>The timer will start immediately after clicking the button below.</li>
+                                        <li>You can flag questions to review them later.</li>
+                                    </ul>
+                                </div>
+
+                                <button id="start-mock-exam" class="btn-primary btn-large" onclick="startMockExam()">
+                                    <span class="icon">🚀</span> Start Simulated Exam
+                                </button>
+                            </div>
+                            <div class="hero-visual">
+                                <div class="exam-illustration">
+                                    <span class="clock-icon">⏱️</span>
+                                    <div class="pulse-ring"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-history-section">
+                            <h3>Recent Performance</h3>
+                            <div class="empty-history">
+                                <p>No mock exams completed yet. Your results will appear here after your first session.</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
