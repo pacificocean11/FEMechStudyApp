@@ -15288,6 +15288,1754 @@ const QUESTIONS = {
       "final_answer": "C",
       "solution_image": ""
     }
+  },
+  {
+    "topic": "Nonreacting Mixtures of Gases",
+    "title": "Mixture of Non-Reacting Gases",
+    "question": "A rigid container with a volume of $V = 0.45 \\text{ m}^3$ contains a mixture of $m_{N_2} = 1.5 \\text{ kg}$ of nitrogen ($N_2$) and $m_{O_2} = 0.8 \\text{ kg}$ of oxygen ($O_2$) at a temperature of $T = 320 \\text{ K}$. Assuming the gases behave as ideal gases, what is the total pressure $P_{\\text{total}}$ in the container? The molar masses are $M_{N_2} = 28.01 \\text{ kg/kmol}$ and $M_{O_2} = 32.00 \\text{ kg/kmol}$, and the universal gas constant is $R_u = 8.314 \\text{ kJ/(kmol} \\cdot \\text{K)}$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "385.2 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "464.4 kPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "512.8 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "621.5 kPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Moles for Each Gas",
+          "content": "$n_{N_2} = \\dfrac{1.5 \\text{ kg}}{28.01 \\text{ kg/kmol}} = 0.05355 \\text{ kmol}$. $n_{O_2} = \\dfrac{0.8 \\text{ kg}}{32.00 \\text{ kg/kmol}} = 0.02500 \\text{ kmol}$."
+        },
+        {
+          "title": "Calculate Total Moles",
+          "content": "$n_{\\text{total}} = n_{N_2} + n_{O_2} = 0.05355 + 0.02500 = 0.07855 \\text{ kmol}$."
+        },
+        {
+          "title": "Apply Ideal Gas Law",
+          "content": "$P_{\\text{total}} = \\dfrac{n_{\\text{total}} R_u T}{V} = \\dfrac{0.07855 \\times 8.314 \\times 320}{0.45} = 464.4 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Nonreacting Mixtures of Gases",
+    "title": "Mole Fraction of Oxygen in Dry Products",
+    "question": "Propane ($C_3H_8$) is burned with 150% theoretical air. Calculate the mole fraction of oxygen ($O_2$) in the dry products of combustion.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "3.5%",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "7.4%",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "10.2%",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "15.0%",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Find Stoichiometric Coefficient",
+          "content": "For $C_3H_8$, $a_{th} = 3 + (4/2) = 5$ moles of $O_2$."
+        },
+        {
+          "title": "Calculate Actual Products",
+          "content": "With 150% air, $n_{O_2, air} = 1.5 \\times 5 = 7.5$. The reaction is $C_3H_8 + 7.5(O_2 + 3.76N_2) \\rightarrow 3CO_2 + 4H_2O + 2.5O_2 + 28.2N_2$."
+        },
+        {
+          "title": "Determine Dry Mole Fraction",
+          "content": "$n_{dry} = 3 (CO_2) + 2.5 (O_2) + 28.2 (N_2) = 33.7$ moles. $y_{O_2} = \\dfrac{2.5}{33.7} \\approx 0.074$ or $7.4\\%$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Calculating Relative Humidity",
+    "question": "An air-water vapor mixture is at a total pressure of 101.325 kPa and a dry-bulb temperature of 30°C. If the partial pressure of water vapor is 2.12 kPa and the saturation pressure at 30°C is 4.24 kPa, what is the relative humidity?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "25.0%",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "42.4%",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "50.0%",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "100.0%",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Formula",
+          "content": "Relative humidity ($\\phi$) is the ratio of the actual partial pressure of water vapor ($P_v$) to the saturation pressure ($P_g$): $\\phi = \\frac{P_v}{P_g}$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$\\phi = \\frac{2.12 \\text{ kPa}}{4.24 \\text{ kPa}} \\times 100\\% = 0.5 \\times 100\\% = 50.0\\%$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Humidity Ratio Calculation",
+    "question": "At a dry-bulb temperature of 25$^{\\circ}$C and a relative humidity of 50%, with an atmospheric pressure of 101.325 kPa, what is the humidity ratio (kg water vapor/kg dry air)? Given the saturation pressure of water at 25$^{\\circ}$C is $P_g = 3.1698$ kPa.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.0064 kg/kg",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.0099 kg/kg",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "0.0121 kg/kg",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.0158 kg/kg",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Partial Pressure ($P_v$)",
+          "content": "$P_v = \\phi \\times P_g = 0.50 \\times 3.1698 = 1.5849 \\text{ kPa}$."
+        },
+        {
+          "title": "Calculate Humidity Ratio ($\\omega$)",
+          "content": "$\\omega = 0.622 \\times \\frac{P_v}{P - P_v} = 0.622 \\times \\frac{1.5849}{101.325 - 1.5849} \\approx 0.0099 \\text{ kg/kg}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Dew Point Temperature Calculation",
+    "question": "A moist air sample is at 30$^{\\circ}$C and 100 kPa with a humidity ratio of 0.015 kg/kg dry air. Based on the saturation pressure of water ($P_{sat} = 2.339$ kPa at 20$^{\\circ}$C and $P_{sat} = 3.170$ kPa at 25$^{\\circ}$C), what is the approximate dew point temperature?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "15$^{\\circ}$C",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "20$^{\\circ}$C",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "25$^{\\circ}$C",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "30$^{\\circ}$C",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Vapor Pressure ($P_v$)",
+          "content": "Rearrange $\\omega = 0.622 \\frac{P_v}{P - P_v}$ to find $P_v = \\frac{\\omega P}{0.622 + \\omega} = \\frac{0.015 \\times 100}{0.622 + 0.015} \\approx 2.355 \\text{ kPa}$."
+        },
+        {
+          "title": "Compare with Saturation Pressures",
+          "content": "$P_v \\approx 2.355 \\text{ kPa}$ is closest to the saturation pressure at 20$^{\\circ}$C (2.339 kPa)."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Calculating Relative Humidity",
+    "question": "Atmospheric air at 101.325 kPa has a dry-bulb temperature of 40$^{\\circ}$C and a humidity ratio of 0.012 kg/kg dry air. If the saturation pressure of water at 40$^{\\circ}$C is 7.385 kPa, what is the relative humidity?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "18.5%",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "26.0%",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "32.4%",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "41.2%",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Determine Vapor Pressure ($P_v$)",
+          "content": "$P_v = \\frac{\\omega P}{0.622 + \\omega} = \\frac{0.012 \\times 101.325}{0.622 + 0.012} \\approx 1.9178 \\text{ kPa}$."
+        },
+        {
+          "title": "Calculate $\\phi$",
+          "content": "$\\phi = \\frac{P_v}{P_g} = \\frac{1.9178}{7.385} \\times 100\\% \\approx 26.0\\%$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Partial Pressure of Water Vapor",
+    "question": "Moist air is at a dry-bulb temperature of 30°C and a total pressure of 101.325 kPa. If the relative humidity is 60%, what is the partial pressure of the water vapor? (Saturation pressure of water at 30°C is $P_{sat} = 4.246$ kPa).",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.274 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2.548 kPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "4.246 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "60.795 kPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Perform Calculation",
+          "content": "$P_v = \\phi \\cdot P_{sat} = 0.60 \\times 4.246 = 2.5476 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Temperature Relationships in Unsaturated Air",
+    "question": "For an atmospheric air mixture that is not saturated (relative humidity < 100%), which of the following relationships between the dry-bulb temperature ($T_{db}$), wet-bulb temperature ($T_{wb}$), and dew-point temperature ($T_{dp}$) is correct?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$T_{db} < T_{wb} < T_{dp}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$T_{dp} < T_{wb} < T_{db}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$T_{wb} < T_{db} < T_{dp}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$T_{db} = T_{wb} = T_{dp}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Analyze Unsaturated Conditions",
+          "content": "For unsaturated air, evaporative cooling occurs ($T_{wb} < T_{db}$) and significant cooling is needed to reach saturation ($T_{dp}$ is the lowest)."
+        },
+        {
+          "title": "Conclusion",
+          "content": "The hierarchy is $T_{dp} < T_{wb} < T_{db}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Relative Humidity Calculation",
+    "question": "An air-water vapor mixture exists at a total pressure of 101.325 kPa and a dry-bulb temperature of 35°C. If the partial pressure of water vapor is 2.81 kPa and the saturation pressure at 35°C is 5.63 kPa, what is the relative humidity?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "25%",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "50%",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "75%",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "100%",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculation",
+          "content": "$\\phi = \\frac{P_v}{P_g} \\times 100\\% = \\frac{2.81}{5.63} \\times 100\\% \\approx 50\\%$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Humidity Ratio Calculation",
+    "question": "At a total pressure of 101.325 kPa, the vapor pressure of water in a sample of moist air is 1.5 kPa. What is the humidity ratio $\\omega$ in kg of water vapor per kg of dry air?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.0064 kg/kg",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.0093 kg/kg",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "0.0125 kg/kg",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.0151 kg/kg",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculation",
+          "content": "$\\omega = 0.622 \\times \\frac{P_v}{P_t - P_v} = 0.622 \\times \\frac{1.5}{101.325 - 1.5} \\approx 0.0093 \\text{ kg/kg}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Psychrometrics",
+    "title": "Partial Pressure of Water Vapor",
+    "question": "Atmospheric air at 101.325 kPa has a dry-bulb temperature of 30°C and a humidity ratio of 0.015 kg of water vapor per kg of dry air. Determine the partial pressure of the water vapor $P_v$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.52 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2.39 kPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "3.17 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "4.25 kPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Rearrange Formula",
+          "content": "$P_v = \\frac{\\omega \\times P_t}{0.622 + \\omega}$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$P_v = \\frac{0.015 \\times 101.325}{0.622 + 0.015} \\approx 2.39 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "HVAC Processes",
+    "title": "Adiabatic Air Mixing Humidity Ratio",
+    "question": "Two streams of air are mixed adiabatically. Stream 1 has a dry air mass flow rate of $2.0 \\text{ kg/s}$ and a humidity ratio of $0.010 \\text{ kg/kg}$. Stream 2 has a dry air mass flow rate of $1.0 \\text{ kg/s}$ and a humidity ratio of $0.005 \\text{ kg/kg}$. What is the humidity ratio of the resulting mixture?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.0065 kg/kg",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.0075 kg/kg",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0.0083 kg/kg",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "0.0091 kg/kg",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Conservation Principle",
+          "content": "For adiabatic mixing, the mixture humidity ratio ($\\omega_{mix}$) is the mass-weighted average of the inlet humidity ratios: $\\omega_{mix} = \\dfrac{\\dot{m}_1 \\omega_1 + \\dot{m}_2 \\omega_2}{\\dot{m}_1 + \\dot{m}_2}$."
+        },
+        {
+          "title": "Calculate Result",
+          "content": "$\\omega_{mix} = \\dfrac{(2.0 \\times 0.010) + (1.0 \\times 0.005)}{2.0 + 1.0} = \\dfrac{0.025}{3.0} \\approx 0.00833 \\text{ kg/kg}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "HVAC Processes",
+    "title": "Calculating Total Cooling Capacity",
+    "question": "Moist air enters a cooling coil with a dry air mass flow rate of $100 \\text{ lb/min}$. The enthalpy of the air at the inlet is $38.6 \\text{ Btu/lb}_{da}$ and the enthalpy at the outlet is $23.2 \\text{ Btu/lb}_{da}$. The total cooling capacity provided by the coil (Btu/min) is most nearly:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1,540",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "2,320",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "3,860",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "6,180",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "State Formula",
+          "content": "Total cooling capacity is $\\dot{Q}_{total} = \\dot{m}_{da} (h_{in} - h_{out})$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$\\dot{Q}_{total} = 100 \\text{ lb/min} \\times (38.6 - 23.2) \\text{ Btu/lb} = 100 \\times 15.4 = 1,540 \\text{ Btu/min}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "HVAC Processes",
+    "title": "Sensible Heating Rate Calculation",
+    "question": "Air at a flow rate of 2,000 cfm enters a heating coil at 55°F. The air is heated to 85°F through a sensible heating process. Assuming standard air density (0.075 lb/ft$^3$) and specific heat (0.24 Btu/lb $\\cdot$ °F), the rate of heat addition to the air (Btu/hr) is most nearly:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "45,200",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "64,800",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "72,400",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "108,000",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Mass Flow Rate",
+          "content": "$\\dot{m} = \\rho \\times \\dot{V} \\times 60 = 0.075 \\times 2,000 \\times 60 = 9,000 \\text{ lb/hr}$."
+        },
+        {
+          "title": "Calculate Sensible Heat",
+          "content": "$\\dot{Q} = \\dot{m} c_p (T_2 - T_1) = 9,000 \\times 0.24 \\times (85 - 55) = 2,160 \\times 30 = 64,800 \\text{ Btu/hr}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "HVAC Processes",
+    "title": "Adiabatic Mixing of Air Streams",
+    "question": "Two streams of moist air mix adiabatically at a constant pressure of 101.3 kPa. Stream 1 has a mass flow rate of dry air $m_{a1} = 2$ kg/s and enthalpy $h_1 = 40$ kJ/kg. Stream 2 has $m_{a2} = 3$ kg/s and enthalpy $h_2 = 60$ kJ/kg. What is the enthalpy of the mixture $h_3$?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "48 kJ/kg",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "50 kJ/kg",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "52 kJ/kg",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "55 kJ/kg",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Energy Balance",
+          "content": "For adiabatic mixing: $h_3 = \\dfrac{m_{a1}h_1 + m_{a2}h_2}{m_{a1} + m_{a2}}$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$h_3 = \\dfrac{(2 \\times 40) + (3 \\times 60)}{2 + 3} = \\dfrac{260}{5} = 52 \\text{ kJ/kg}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "HVAC Processes",
+    "title": "Sensible Heating of Air",
+    "question": "A stream of air at 15$^\\circ$C and 40% relative humidity enters a heating coil at a mass flow rate of 0.5 kg/s. If the air is heated to 35°C without the addition or removal of moisture, what is the rate of heat transfer $\\dot{Q}$ to the air? Assume the specific heat of air $c_p = 1.005$ kJ/kg $\\cdot$ K.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "5.03 kW",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "10.05 kW",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "15.08 kW",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "20.10 kW",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Formula Identification",
+          "content": "For sensible heating: $\\dot{Q} = \\dot{m} \\times c_p \\times (T_2 - T_1)$."
+        },
+        {
+          "title": "Calculation",
+          "content": "$\\dot{Q} = 0.5 \\text{ kg/s} \\times 1.005 \\text{ kJ/kg}\\cdot\\text{K} \\times (35 - 15) = 0.5 \\times 1.005 \\times 20 = 10.05 \\text{ kW}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "HVAC Processes",
+    "title": "Heat Removal in Cooling Coil",
+    "question": "A stream of moist air enters a cooling coil at 30°C dry-bulb and 50% relative humidity ($h_1 = 64.3$ kJ/kg). It leaves at 15°C dry-bulb and 100% relative humidity ($h_2 = 42.1$ kJ/kg). If the mass flow rate of dry air is $2$ kg/s, what is the rate of heat removal from the air stream (neglecting the enthalpy of the condensate)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "22.2 kW",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "44.4 kW",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "86.5 kW",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "128.6 kW",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Energy Balance",
+          "content": "Heat removal $\\dot{Q}_{out} = \\dot{m}_a(h_1 - h_2)$."
+        },
+        {
+          "title": "Calculation",
+          "content": "$\\dot{Q}_{out} = 2 \\text{ kg/s} \\times (64.3 - 42.1) \\text{ kJ/kg} = 2 \\times 22.2 = 44.4 \\text{ kW}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "HVAC Processes",
+    "title": "Partial Pressure of Water Vapor",
+    "question": "At a standard atmospheric pressure of $101.325$ kPa, a sample of air at 25°C has a relative humidity of 60%. If the saturation pressure of water vapor at 25°C is $3.17$ kPa, what is the partial pressure of the water vapor in the air?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.27 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "1.90 kPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "2.54 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "3.17 kPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Define Relative Humidity",
+          "content": "$\\phi = \\dfrac{P_v}{P_{sat}}$."
+        },
+        {
+          "title": "Calculate Partial Pressure",
+          "content": "$P_v = \\phi \\times P_{sat} = 0.60 \\times 3.17 \\text{ kPa} = 1.902 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combustion and Combustion Products",
+    "title": "Stoichiometric AFR of Methane",
+    "question": "Determine the stoichiometric air-fuel ratio ($AFR$) on a mass basis for the complete combustion of methane ($CH_4$). Assume the molecular weight of air is 28.97 g/mol and the molecular weight of methane is 16.04 g/mol.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "17.2",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "14.7",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "9.5",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "34.1",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Balanced Equation",
+          "content": "The balanced chemical equation is: $CH_4 + 2(O_2 + 3.76N_2) \\rightarrow CO_2 + 2H_2O + 7.52N_2$."
+        },
+        {
+          "title": "Calculation",
+          "content": "$n_{air} = 2 \\times 4.76 = 9.52 \\text{ moles of air}$. $AFR = \\frac{n_{air} \\times M_{air}}{n_{fuel} \\times M_{fuel}} = \\frac{9.52 \\times 28.97}{1 \\times 16.04} \\approx 17.2$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combustion and Combustion Products",
+    "title": "Actual Air-Fuel Ratio Calculation",
+    "question": "A fuel is burned with 20% excess air. If the stoichiometric air-fuel ratio is 15.08 kg air/kg fuel, what is the actual air-fuel ratio?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "15.1",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "12.6",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "18.1",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "20.4",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Determine Theoretical Air",
+          "content": "Theoretical Air Percentage = $100\\% + \\text{Excess Air} = 120\\% = 1.20$."
+        },
+        {
+          "title": "Calculation",
+          "content": "$AFR_{act} = AFR_{stoich} \\times 1.20 = 15.08 \\times 1.20 = 18.096$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combustion and Combustion Products",
+    "title": "Partial Pressure of Water Vapor",
+    "question": "Methane ($CH_4$) is burned completely with stoichiometric air at 101.325 kPa. Calculate the partial pressure of the water vapor in the combustion products.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "10.1 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "19.3 kPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "25.4 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "9.8 kPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Determine Mole Fraction",
+          "content": "From the balanced equation: $CH_4 + 2(O_2 + 3.76N_2) \\rightarrow 1CO_2 + 2H_2O + 7.52N_2$. Total moles $n_{total} = 1 + 2 + 7.52 = 10.52$. $y_{H_2O} = 2 / 10.52 \\approx 0.1901$."
+        },
+        {
+          "title": "Calculate Partial Pressure",
+          "content": "$P_v = y_{H_2O} \\times P_{total} = 0.1901 \\times 101.325 \\approx 19.3 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combustion and Combustion Products",
+    "title": "Stoichiometric Air-Fuel Ratio of Methane",
+    "question": "What is the stoichiometric air-fuel ratio ($AF$) on a mass basis for the complete combustion of methane ($CH_4$) with dry air? Assume air consists of 21% oxygen and 79% nitrogen by volume.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "14.7",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "15.5",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "17.2",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "19.3",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Mass Calculation",
+          "content": "Mass of fuel = 16.04 kg. Mass of air = $2 \\times (1/0.21) \\times 28.97 \\approx 275.91$ kg."
+        },
+        {
+          "title": "Ratio Calculation",
+          "content": "$AF = 275.91 / 16.04 \\approx 17.2$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combustion and Combustion Products",
+    "title": "Combustion of Propane with Excess Air",
+    "question": "Propane ($C_3H_8$) is burned with 150% theoretical air. Determine the number of moles of $O_2$ in the products per mole of fuel burned.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.5 moles",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2.5 moles",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "5.0 moles",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "7.5 moles",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Theoretical Oxygen",
+          "content": "For $C_3H_8$, $a_{th} = 5$ moles of $O_2$."
+        },
+        {
+          "title": "Excess Oxygen Calculation",
+          "content": "Actual $O_2 = 1.5 \\times 5 = 7.5$ moles. Oxygen in products = Actual - Consumed = $7.5 - 5 = 2.5$ moles."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combustion and Combustion Products",
+    "title": "Mole Fraction of Water Vapor",
+    "question": "Calculate the mole fraction of water vapor ($H_2O$) in the combustion products of Octane ($C_8H_{18}$) burned with 100% theoretical dry air.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.095",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.125",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0.141",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "0.162",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Product Moles",
+          "content": "Reaction: $C_8H_{18} + 12.5(O_2 + 3.76N_2) \\rightarrow 8CO_2 + 9H_2O + 47N_2$. Total product moles = $8 + 9 + 47 = 64$."
+        },
+        {
+          "title": "Mole Fraction",
+          "content": "$y_{H_2O} = 9 / 64 \\approx 0.141$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combustion and Combustion Products",
+    "title": "HHV and LHV Differences",
+    "question": "Which of the following statements correctly describes the difference between the Higher Heating Value (HHV) and the Lower Heating Value (LHV) of a fuel?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "HHV includes the latent heat of vaporization of the water in the products.",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "LHV is used only for solid fuels while HHV is used for gaseous fuels.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The difference is equal to the enthalpy of formation of the fuel.",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "HHV is measured at constant volume, while LHV is measured at constant pressure.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Comparison",
+          "content": "HHV assumes water in products is liquid (recovering latent heat), while LHV assumes it remains vapor."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combustion and Combustion Products",
+    "title": "Theoretical Air from Exhaust Analysis",
+    "question": "A molar analysis of the dry exhaust gases from the combustion of a hydrocarbon fuel yields 12% $CO_2$, 3% $O_2$, and 85% $N_2$. What is the percent theoretical air used?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "110.5%",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "115.3%",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "125.0%",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "130.2%",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Solve for Air Supplied",
+          "content": "Nitrogen balance: $3.76b = 85 \\implies b = 22.606$ moles actual $O_2$."
+        },
+        {
+          "title": "Calculate Theoretical Air",
+          "content": "Theoretical $O_2 = b - 3 = 19.606$ moles (since actual air contains theoretical air + excess oxygen). Percentage = $(22.606 / 19.606) \\times 100 \\approx 115.3\\%$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  }, 
+  {
+    "topic": "Conduction",
+    "title": "Fourier’s Law of Heat Conduction",
+    "question": "A plane wall has a thickness of $L = 0.1 \\text{ m}$ and a thermal conductivity of $k = 0.5 \\text{ W/(m} \\cdot \\text{K)}$. The surface temperatures are maintained at $T_1 = 100^\\circ\\text{C}$ and $T_2 = 20^\\circ\\text{C}$. If the surface area of the wall is $A = 2 \\text{ m}^2$, what is the rate of heat transfer $Q$ through the wall?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "160 W",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "400 W",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "800 W",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "1600 W",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the formula",
+          "content": "The rate of heat transfer ($Q$) is given by Fourier's Law: $Q = \\dfrac{kA(T_1 - T_2)}{L}$"
+        },
+        {
+          "title": "Perform the calculation",
+          "content": "$Q = \\dfrac{0.5 \\times 2 \\times (100 - 20)}{0.1} = \\dfrac{1.0 \\times 80}{0.1} = 800 \\text{ W}$"
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Conduction",
+    "title": "Conduction through a Plane Wall",
+    "question": "A plane wall has a thickness of $L = 0.15 \\text{ m}$, a surface area of $A = 1.2 \\text{ m}^2$, and a thermal conductivity of $k = 0.8 \\text{ W/(m} \\cdot \\text{K)}$. If the temperature difference across the wall is $\\Delta T = 40^\\circ\\text{C}$, what is the heat transfer rate $Q$ through the wall?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "128 W",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "256 W",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "384 W",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "512 W",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Substitute values into the equation",
+          "content": "Using $Q = \\dfrac{k A \\Delta T}{L}$: $Q = \\dfrac{(0.8 \\text{ W/(m} \\cdot \\text{K)}) \\times (1.2 \\text{ m}^2) \\times (40 \\text{ K})}{0.15 \\text{ m}}$"
+        },
+        {
+          "title": "Perform the calculation",
+          "content": "$Q = \\dfrac{38.4}{0.15} = 256 \\text{ W}$"
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Conduction",
+    "title": "Heat Loss through a Pipe",
+    "question": "A steam pipe with an inner radius $r_1 = 0.05 \\text{ m}$ and an outer radius $r_2 = 0.07 \\text{ m}$ is made of a material with thermal conductivity $k = 15 \\text{ W/(m} \\cdot \\text{K)}$. The inner surface is maintained at $T_1 = 150^\\circ\\text{C}$ and the outer surface at $T_2 = 80^\\circ\\text{C}$. Calculate the heat loss per unit length ($q/L$).",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "19,608 W/m",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "12,500 W/m",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "22,415 W/m",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "31,250 W/m",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the formula for heat loss per unit length",
+          "content": "$\\dfrac{q}{L} = \\dfrac{2\\pi k (T_1 - T_2)}{\\ln(r_2 / r_1)}$"
+        },
+        {
+          "title": "Perform the calculation",
+          "content": "$\\dfrac{q}{L} = \\dfrac{2\\pi (15) (150 - 80)}{\\ln(0.07 / 0.05)} = \\dfrac{6597.34}{0.33647} \\approx 19,608 \\text{ W/m}$"
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Conduction",
+    "title": "Heat Loss through a Composite Wall",
+    "question": "A composite plane wall consists of two layers. Layer A has a thickness of $L_A = 0.05 \\text{ m}$ and a thermal conductivity of $k_A = 0.2 \\text{ W/(m}\\cdot\\text{K)}$. Layer B has a thickness of $L_B = 0.1 \\text{ m}$ and a thermal conductivity of $k_B = 0.5 \\text{ W/(m}\\cdot\\text{K)}$. If the temperature on the left surface is $T_1 = 150^\\circ\\text{C}$ and the temperature on the right surface is $T_2 = 50^\\circ\\text{C}$, what is the heat flux $q''$ through the wall?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "100 W/m^2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "222 W/m^2",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "350 W/m^2",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "500 W/m^2",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate the thermal resistance of each layer",
+          "content": "$R''_A = L_A/k_A = 0.05/0.2 = 0.25$ and $R''_B = L_B/k_B = 0.1/0.5 = 0.20$."
+        },
+        {
+          "title": "Calculate the heat flux",
+          "content": "$q'' = \\dfrac{T_1 - T_2}{R''_A + R''_B} = \\dfrac{150 - 50}{0.25 + 0.20} = \\dfrac{100}{0.45} \\approx 222 \\text{ W/m}^2$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Conduction",
+    "title": "Thermal Resistance of a Composite Wall",
+    "question": "A composite wall consists of two layers. Layer 1 has a thickness of $L_1 = 0.1 \\text{ m}$ and a thermal conductivity of $k_1 = 15 \\text{ W/(m} \\cdot \\text{K)}$. Layer 2 has a thickness of $L_2 = 0.05 \\text{ m}$ and a thermal conductivity of $k_2 = 2 \\text{ W/(m} \\cdot \\text{K)}$. If the temperature at the inner surface of Layer 1 is $T_i = 400 \\text{ K}$ and the temperature at the outer surface of Layer 2 is $T_o = 300 \\text{ K}$, what is the steady-state heat flux $q''$ through the composite wall?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "2158 W/m^2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3158 W/m^2",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "4500 W/m^2",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "6250 W/m^2",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate total thermal resistance",
+          "content": "$R''_{total} = \\dfrac{0.1}{15} + \\dfrac{0.05}{2} = 0.00667 + 0.025 = 0.03167 \\text{ m}^2 \\cdot \\text{K/W}$."
+        },
+        {
+          "title": "Calculate the heat flux",
+          "content": "$q'' = \\dfrac{\\Delta T}{R''_{total}} = \\dfrac{100}{0.03167} \\approx 3158 \\text{ W/m}^2$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Conduction",
+    "title": "Fourier Number",
+    "question": "The Fourier number ($Fo$) is a dimensionless time used in heat conduction. What is the correct expression for the Fourier number, where $\\alpha$ is thermal diffusivity, $t$ is time, and $L$ is the characteristic length?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Fo = \\dfrac{\\alpha L^2}{t}",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Fo = \\dfrac{\\alpha t}{L^2}",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Fo = \\dfrac{L^2}{\\alpha t}",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Fo = \\dfrac{k t}{\\rho c_p L}",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Definition",
+          "content": "The Fourier number is defined as $Fo = \\dfrac{\\alpha t}{L^2}$, representing the ratio of conduction rate to thermal storage rate."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Conduction",
+    "title": "Insulation Thickness for Heat Loss",
+    "question": "A hot fluid is flowing through a long pipe of $4\\text{ cm}$ outer diameter and covered with $2\\text{ cm}$ thick insulation. It is proposed to reduce the conduction heat loss to the surroundings to one third of the present rate by increasing the same insulation thickness. The additional thickness of insulation required will be:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "2 cm",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "6 cm",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "9 cm",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "12 cm",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Set Up Ratio",
+          "content": "Ratio of radii: $\\dfrac{r_3}{r_1} = \\left(\\dfrac{r_2}{r_1}\\right)^3$. Given $r_1=2$, $r_2=4$, then $r_3/2 = (4/2)^3 = 8 \\Rightarrow r_3 = 16\\text{ cm}$."
+        },
+        {
+          "title": "Calculate Additional Thickness",
+          "content": "New outer radius is 16 cm. Current outer radius is 4 cm. Additional thickness = $16 - 4 = 12\\text{ cm}$."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Conduction",
+    "title": "Conductivity and Temperature Gradient",
+    "question": "The temperature variation under steady heat conduction across a composite slab of two materials of conductivities $k_1$ and $k_2$ is shown in Fig. Then which one of the following statements holds?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "k1 > k2",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "k1 = k2",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "k1 = 0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "k1 < k2",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Analyze Slopes",
+          "content": "In steady state, $q = -k_1 (dT/dx)_1 = -k_2 (dT/dx)_2$. Higher conductivity $k$ leads to a smaller (less steep) temperature gradient $|dT/dx|$."
+        },
+        {
+          "title": "Visual Comparison",
+          "content": "The slope in material 1 is less steep than in material 2 ($|dT/dx|_1 < |dT/dx|_2$), therefore $k_1 > k_2$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  }, 
+  {
+    "topic": "Convection",
+    "title": "Convective Heat Loss through a Pipe",
+    "question": "A long horizontal pipe with an outer diameter of $D = 0.05 \\text{ m}$ is maintained at a surface temperature of $T_s = 100^\\circ\\text{C}$ in a cross-flow of air at $T_\\infty = 20^\\circ\\text{C}$. If the average convection heat transfer coefficient is $h = 25 \\text{ W/(m}^2 \\cdot \\text{K)}$, what is the heat loss per unit length ($q'$) of the pipe?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "157 W/m",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "314 W/m",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "628 W/m",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "942 W/m",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the formula",
+          "content": "For a pipe, the heat loss per unit length is $q' = h (\\pi D) (T_s - T_\\infty)$."
+        },
+        {
+          "title": "Perform calculation",
+          "content": "$q' = 25 \\times (\\pi \\times 0.05) \\times (100 - 20) = 25 \\times 0.15708 \\times 80 = 314.16 \\text{ W/m}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Convection",
+    "title": "Convection with Constant Surface Heat Flux Condition",
+    "question": "Water flows through a tube with a diameter $D = 0.02 \\text{ m}$. The flow is fully developed and laminar. For a constant surface heat flux condition, the Nusselt number is $Nu_D = 4.36$. If the thermal conductivity of water is $k = 0.6 \\text{ W/(m} \\cdot \\text{K)}$, what is the convection heat transfer coefficient $h$?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "65.4 W/m²K",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "130.8 W/m²K",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "261.6 W/m²K",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "13.08 W/m²K",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Use Nusselt definition",
+          "content": "$Nu_D = \\dfrac{h D}{k} \\implies h = \\dfrac{Nu_D \\cdot k}{D}$"
+        },
+        {
+          "title": "Calculation",
+          "content": "$h = \\dfrac{4.36 \\times 0.6}{0.02} = \\dfrac{2.616}{0.02} = 130.8 \\text{ W/(m}^2 \\cdot \\text{K)}$"
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Convection",
+    "title": "Heat Flux from the Plate",
+    "question": "Water flows over a flat plate of length $L = 0.2 \\text{ m}$ at a free-stream velocity of $u_{\\infty} = 0.2 \\text{ m/s}$. The plate is maintained at a uniform temperature of $T_s = 330 \\text{ K}$, and the water temperature is $T_{\\infty} = 310 \\text{ K}$. Given the properties of water at the film temperature: kinematic viscosity $\\nu = 1.0 \\times 10^{-6} \\text{ m}^2/\\text{s}$, thermal conductivity $k = 0.6 \\text{ W/(m} \\cdot \\text{K)}$, and Prandtl number $Pr = 7.0$. Using the correlation $\\overline{Nu}_L = 0.664 Re_L^{0.5} Pr^{1/3}$, the average heat flux from the plate to the water is most nearly:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "15,240 W/m²",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "7,621 W/m²",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "30,484 W/m²",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "1,524 W/m²",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Reynolds Number",
+          "content": "$Re_L = \\dfrac{u_\\infty L}{\\nu} = \\dfrac{0.2 \\times 0.2}{10^{-6}} = 40,000$."
+        },
+        {
+          "title": "Calculate Nusselt and h",
+          "content": "$\\overline{Nu}_L = 0.664(40000)^{0.5}(7)^{1/3} \\approx 254.03$. $\\bar{h} = \\dfrac{254.03 \\times 0.6}{0.2} = 762.09 \\text{ W/m}^2\\text{K}$."
+        },
+        {
+          "title": "Calculate Heat Flux",
+          "content": "$q'' = \\bar{h}(T_s - T_\\infty) = 762.09 \\times (330 - 310) = 15,241.8 \\text{ W/m}^2$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Convection",
+    "title": "Convection Heat Transfer",
+    "question": "Air at $T_{\\infty} = 300 \\text{ K}$ flows over a flat plate maintained at a constant temperature of $T_s = 350 \\text{ K}$. If the average convection heat transfer coefficient is $h = 25 \\text{ W/(m}^2 \\cdot \\text{K)}$, what is the rate of heat transfer per unit area $\\dot{q}''$ from the plate to the air?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1250 W/m²",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "1500 W/m²",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "1750 W/m²",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "2000 W/m²",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Newton's Law of Cooling",
+          "content": "$\\dot{q}'' = h(T_s - T_\\infty) = 25 \\times (350 - 300) = 25 \\times 50 = 1250 \\text{ W/m}^2$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Convection",
+    "title": "Dimensionless Numbers",
+    "question": "In the study of convective heat transfer, the Nusselt number ($Nu$) is physically interpreted as:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "The ratio of momentum diffusivity to thermal diffusivity.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The ratio of buoyancy forces to viscous forces.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The ratio of convective heat transfer to conductive heat transfer across a fluid layer.",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "The ratio of inertia forces to viscous forces.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Physical Interpretation",
+          "content": "The Nusselt number ($Nu = hL/k$) represents the enhancement of heat transfer through a fluid layer due to convection relative to conduction."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Convection",
+    "title": "Nusselt Numbers in Fully Developed Flow",
+    "question": "For a hydrodynamically and thermally fully developed laminar flow through a circular pipe of constant cross-section, the Nusselt number at constant wall heat flux ($\\text{Nu}_\\text{q}$) and that at constant wall temperature ($\\text{Nu}_\\text{T}$) are related as:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Nu_q > Nu_T",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Nu_q = Nu_T",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Nu_q < Nu_T",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Nu_q = (Nu_T)^2",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Compare Values",
+          "content": "For laminar fully developed flow in a pipe: $Nu_q = 4.36$ and $Nu_T = 3.66$. Since $4.36 > 3.66$, $Nu_q > Nu_T$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Radiation",
+    "title": "Radiation between Two Large Parallel Plates",
+    "question": "Two large, parallel plates are maintained at constant temperatures of $T_1 = 800 \\text{ K}$ and $T_2 = 400 \\text{ K}$. The emissivity of Plate 1 is $\\epsilon_1 = 0.75$, and the emissivity of Plate 2 is $\\epsilon_2 = 0.50$. Assuming the plates behave as gray surfaces and are infinite in extent, determine the net radiation heat transfer rate per unit area ($q/A$) between the plates. Use the Stefan-Boltzmann constant $\\sigma = 5.67 \\times 10^{-8} \\text{ W/(m}^2 \\cdot \\text{K}^4\\text{)}$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "6.52 kW/m²",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "9.33 kW/m²",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "12.45 kW/m²",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "21.77 kW/m²",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the formula",
+          "content": "For two large parallel plates, the net radiation heat flux is: $\\dfrac{q}{A} = \\dfrac{\\sigma(T_1^4 - T_2^4)}{\\dfrac{1}{\\epsilon_1} + \\dfrac{1}{\\epsilon_2} - 1}$"
+        },
+        {
+          "title": "Calculate the denominator",
+          "content": "$\\text{Denominator} = \\dfrac{1}{0.75} + \\dfrac{1}{0.50} - 1 = 1.333 + 2.0 - 1 = 2.333$"
+        },
+        {
+          "title": "Solve for heat flux",
+          "content": "$\\dfrac{q}{A} = \\dfrac{5.67 \\times 10^{-8} \\times (800^4 - 400^4)}{2.333} \\approx \\dfrac{21772.8}{2.333} \\approx 9332.5 \\text{ W/m}^2 = 9.33 \\text{ kW/m}^2$"
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Radiation",
+    "title": "Net Radiation Heat Transfer",
+    "question": "A small blackbody sphere with a surface area of $A = 0.01 \\text{ m}^2$ is maintained at $T_s = 1000 \\text{ K}$ in a large vacuum chamber whose walls are at $T_{sur} = 300 \\text{ K}$. What is the net rate of radiation heat transfer $\\dot{Q}_{net}$ from the sphere? Use $\\sigma = 5.67 \\times 10^{-8} \\text{ W/(m}^2 \\cdot \\text{K}^4\\text{)}$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "567 W",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "562 W",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "572 W",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "615 W",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the formula",
+          "content": "For a small blackbody in a large enclosure, the net radiation heat transfer is: $\\dot{Q}_{net} = \\epsilon \\sigma A (T_s^4 - T_{sur}^4)$. For a blackbody, $\\epsilon = 1$."
+        },
+        {
+          "title": "Calculation",
+          "content": "$\\dot{Q}_{net} = (1) \\cdot (5.67 \\times 10^{-8}) \\cdot (0.01) \\cdot (1000^4 - 300^4)$ \n $\\dot{Q}_{net} = (5.67 \\times 10^{-10}) \\cdot (1 \\times 10^{12} - 8.1 \\times 10^9) \\approx 562.4 \\text{ W}$"
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
   }
     ]
 };
