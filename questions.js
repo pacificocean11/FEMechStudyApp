@@ -8,9 +8,9 @@ const SUBJECTS = [
     { id: 'econ', name: 'Engineering Economics', icon: '💰', topics: ['Time Value of Money', 'Cost Types and Breakdowns', 'Economic Analyses'] },
     { id: 'statics', name: 'Statics', icon: '⚖️', topics: ['Resultants of Force Systems', 'Concurrent Force Systems', 'Equilibrium of Rigid Bodies', 'Frames and Trusses', 'Centroids and Moments of Inertia', 'Static Friction'] },
     { id: 'dynamics', name: 'Dynamics', icon: '🏎️', topics: ['Kinematics of Particles', 'Kinetic Friction', 'Newton\'s Second Law for Particles', 'Work-Energy of Particles', 'Impulse-Momentum of Particles','Kinematics of Rigid Bodies', 'Kinematics of Mechanisms', 'Newton\'s Second Law for Rigid Bodies', 'Work-Energy of Rigid Bodies', 'Impulse-Momentum of Rigid Bodies', 'Free and Forced Vibrations'] },
-    { id: 'materials-strength', name: 'Strength of Materials', icon: '🏗️', topics: ['Shear and Moment Diagrams', 'Stress Transformations and Mohr Circle', 'Stress/Strain Caused by Axial Loads','Stress/Strain Caused by Bending Loads','Stress/Strain Caused by Torsional Loads'] },
-    { id: 'materials-science', name: 'Materials Science', icon: '🔬', topics: ['Physical properties', 'Mechanical properties', 'Chemical properties', 'Thermal properties', 'Electrical properties', 'Material selection'] },
-    { id: 'fluids', name: 'Fluid Mechanics', icon: '🌊', topics: ['Fluid properties', 'Dimensionless numbers', 'Laminar and turbulent flow', 'Fluid statics', 'Energy and momentum equations', 'Pipe and duct flow', 'Open-channel flow', 'Fluid transport systems', 'Flow measurement'] },
+    { id: 'materials-strength', name: 'Strength of Materials', icon: '🏗️', topics: ['Shear and Moment Diagrams', 'Stress Transformations and Mohr Circle', 'Stress/Strain Caused by Axial Loads','Stress/Strain Caused by Bending Loads','Stress/Strain Caused by Torsional Loads', 'Stress/Strain Caused by Shear','Stress/Strain Caused by Temp. Changes', 'Combined Loading','Deformations', 'Column Buckling','Statically Indeterminate Systems'] },
+    { id: 'materials-science', name: 'Materials Science', icon: '🔬', topics: ['Properties', 'Stress-Strain Diagrams', 'Ferrous Metals', 'Nonferrous Metals','Engineered Materials','Manufacturing Processes', 'Phase Diagrams, Phase Transformation, and Heat Treating','Materials Selection','Corrosion Mechanisms and Control','Failure Mechanisms'] },
+    { id: 'fluids', name: 'Fluid Mechanics', icon: '🌊', topics: ['Fluid Properties', 'Fluid Statics','Energy, Impulse, and Momentum', 'Internal Flow', 'External Flow', 'Compressible Flow', 'Power and Efficiency', 'Performance Curves', 'Scaling Laws' ] },
     { id: 'electricity', name: 'Electricity, Power, and Magnetism', icon: '⚡', topics: ['Charge and current', 'Voltage and resistance', 'Circuit analysis', 'Power and energy', 'Magnetic fields'] },
     { id: 'thermo-heat', name: 'Thermodynamics and Heat Transfer', icon: '🔥', topics: ['Laws of thermodynamics', 'Properties of substances', 'Heat transfer mechanisms', 'Thermodynamic cycles'] }
 ];
@@ -8932,10 +8932,3459 @@ const QUESTIONS = {
       "final_answer": "B",
       "solution_image": ""
     }
+  }, 
+  {
+    "topic": "Stress/Strain Caused by Shear",
+    "title": "Average Shear Stress in a Bolt",
+    "question": "A steel bolt with a diameter of $20\\text{ mm}$ is used to join two plates. If the plates are pulled apart with a force of $50\\text{ kN}$, creating a single shear condition on the bolt, what is the average shear stress in the bolt?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$125.6\\text{ MPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$159.2\\text{ MPa}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$198.9\\text{ MPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$318.3\\text{ MPa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Data",
+          "content": "Force $V = 50\\text{ kN} = 50,000\\text{ N}$, Diameter $d = 20\\text{ mm}$, Condition: Single shear."
+        },
+        {
+          "title": "Calculate the Cross-sectional Area",
+          "content": "$A = \\dfrac{\\pi d^2}{4} = \\dfrac{\\pi (20\\text{ mm})^2}{4} = 100\\pi \\approx 314.16\\text{ mm}^2$."
+        },
+        {
+          "title": "Calculate the Average Shear Stress",
+          "content": "$\\tau = \\dfrac{V}{A} = \\dfrac{50,000\\text{ N}}{314.16\\text{ mm}^2} \\approx 159.155\\text{ MPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress/Strain Caused by Shear",
+    "title": "Modulus of Rigidity Calculation",
+    "question": "An aluminum alloy has a modulus of elasticity $E = 70\\text{ GPa}$ and a Poisson's ratio $\\nu = 0.33$. What is the modulus of rigidity $G$ for this material?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$23.3\\text{ GPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$26.3\\text{ GPa}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$35.0\\text{ GPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$52.6\\text{ GPa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Relationship",
+          "content": "For an isotropic material: $E = 2G(1 + \\nu)$."
+        },
+        {
+          "title": "Rearrange for G",
+          "content": "$G = \\dfrac{E}{2(1 + \\nu)}$."
+        },
+        {
+          "title": "Substitute and Calculate",
+          "content": "$G = \\dfrac{70\\text{ GPa}}{2(1 + 0.33)} = \\dfrac{70}{2.66} \\approx 26.3157\\text{ GPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress/Strain Caused by Shear",
+    "title": "Force Required to Punch Hole",
+    "question": "A $30\\text{ mm}$ diameter hole is punched in a steel plate that is $10\\text{ mm}$ thick. If the ultimate shear strength of the steel is $400\\text{ MPa}$, what is the minimum force required to punch the hole?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$113\\text{ kN}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$188\\text{ kN}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$377\\text{ kN}$",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$754\\text{ kN}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Data",
+          "content": "Diameter $d = 30\\text{ mm}$, Thickness $t = 10\\text{ mm}$, Ultimate shear strength $\\tau_{u} = 400\\text{ MPa}$."
+        },
+        {
+          "title": "Calculate Shear Area",
+          "content": "The material fails along the cylindrical surface: $A = \\pi d t = \\pi \\times 30 \\times 10 = 300\\pi \\approx 942.48\\text{ mm}^2$."
+        },
+        {
+          "title": "Calculate Punching Force",
+          "content": "$P = A \\times \\tau_{u} = 942.48\\text{ mm}^2 \\times 400\\text{ N/mm}^2 = 376,992\\text{ N}$."
+        },
+        {
+          "title": "Convert to kN",
+          "content": "$P = \\dfrac{376,992}{1000} \\approx 377\\text{ kN}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress/Strain Caused by Shear",
+    "title": "Horizontal Displacement from Shear Strain",
+    "question": "A square block of material is subjected to a shear stress that results in a shear strain of $0.0005$ radians. If the block has a height of $50\\text{ mm}$, what is the horizontal displacement of the top surface relative to the bottom surface?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$0.010\\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$0.025\\text{ mm}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$0.050\\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$0.100\\text{ mm}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understand Shear Strain Relationship",
+          "content": "Shear strain $\\gamma = \\dfrac{\\delta}{h}$, where $\\delta$ is horizontal displacement and $h$ is height."
+        },
+        {
+          "title": "Identify Given Data",
+          "content": "$\\gamma = 0.0005\\text{ radians}$, $h = 50\\text{ mm}$."
+        },
+        {
+          "title": "Calculate Displacement",
+          "content": "$\\delta = \\gamma \\times h = 0.0005 \\times 50\\text{ mm} = 0.025\\text{ mm}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress/Strain Caused by Shear",
+    "title": "Shear Stress in a Clevis Pin",
+    "question": "A clevis joint connects two rods with a $15\\text{ mm}$ diameter pin. The assembly is subjected to a tensile load of $60\\text{ kN}$. Assuming the pin is in double shear, determine the average shear stress in the pin.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$84.9\\text{ MPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$169.8\\text{ MPa}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$212.2\\text{ MPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$339.5\\text{ MPa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Data",
+          "content": "Load $P = 60,000\\text{ N}$, $d = 15\\text{ mm}$, Condition: Double shear."
+        },
+        {
+          "title": "Calculate Area of One Cross-section",
+          "content": "$A = \\dfrac{\\pi d^2}{4} = \\dfrac{\\pi (15\\text{ mm})^2}{4} \\approx 176.71\\text{ mm}^2$."
+        },
+        {
+          "title": "Calculate Average Shear Stress",
+          "content": "For double shear, $\\tau = \\dfrac{P}{2A} = \\dfrac{60,000}{2 \\times 176.71} \\approx 169.77\\text{ MPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress/Strain Caused by Shear",
+    "title": "Average Shear Stress in Bolt",
+    "question": "A bolt with a diameter of $20$ mm is used in a double-lap joint to connect three plates. If the joint is subjected to a tensile force of $100$ kN, what is the average shear stress in the bolt?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$159.2$ MPa",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$79.6$ MPa",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$318.3$ MPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$636.6$ MPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "$d = 20$ mm, $F = 100,000$ N, Joint: Double-lap (double shear)."
+        },
+        {
+          "title": "Calculate Total Shear Area",
+          "content": "$A = \\dfrac{\\pi d^2}{4} \\approx 314.16\\text{ mm}^2$. Total area $A_{total} = 2 \\times A = 628.32\\text{ mm}^2$."
+        },
+        {
+          "title": "Calculate Average Shear Stress",
+          "content": "$\\tau = \\dfrac{F}{A_{total}} = \\dfrac{100,000}{628.32} \\approx 159.2\\text{ MPa}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress/Strain Caused by Shear",
+    "title": "Safe Diameter for Circular Beam",
+    "question": "A circular beam section is subjected to a shear force of $40\\pi\\text{ kN}$. The maximum shear stress allowed in the material is $6\\text{ MPa}$. Calculate the safe diameter of the section, assuming a factor of safety equal to $2$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$266.66\\text{ mm}$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$133.33\\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$233.33\\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Cannot be predicted using the given data",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Working Shear Stress",
+          "content": "$\\tau_{per} = \\dfrac{\\tau_{allowable}}{FOS} = \\dfrac{6}{2} = 3\\text{ N/mm}^2$."
+        },
+        {
+          "title": "Relate Maximum and Average Shear Stress",
+          "content": "For a circular section: $\\tau_{max} = \\dfrac{4}{3} \\tau_{avg} = \\dfrac{4}{3} \\dfrac{V}{A}$."
+        },
+        {
+          "title": "Solve for Diameter",
+          "content": "$3 = \\dfrac{4}{3} \\left( \\dfrac{40\\pi \\times 10^3}{\\pi d^2 / 4} \\right) \\implies 3 = \\dfrac{640 \\times 10^3}{3d^2} \\implies 9d^2 = 640,000 \\implies d = \\dfrac{800}{3} \\approx 266.66\\text{ mm}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress/Strain Caused by Temp. Changes",
+    "title": "Thermal Expansion",
+    "question": "A copper rod has an initial length of $2.5 \\text{ m}$ at a temperature of $20^\\circ\\text{C}$. The coefficient of linear thermal expansion for copper is $17.0 \\times 10^{-6} / ^\\circ\\text{C}$. Determine the total change in length, $\\Delta L$, if the rod is heated to a final temperature of $150^\\circ\\text{C}$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$0.0055 \\text{ m}$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$0.0022 \\text{ m}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$0.0083 \\text{ m}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$0.0121 \\text{ m}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "Initial length $L_0 = 2.5 \\text{ m}$, Initial temperature $T_i = 20^\\circ\\text{C}$, Final temperature $T_f = 150^\\circ\\text{C}$, Coefficient of linear expansion $\\alpha = 17.0 \\times 10^{-6} / ^\\circ\\text{C}$."
+        },
+        {
+          "title": "Calculate the Change in Temperature (ΔT)",
+          "content": "$\\Delta T = T_f - T_i = 150^\\circ\\text{C} - 20^\\circ\\text{C} = 130^\\circ\\text{C}$."
+        },
+        {
+          "title": "Calculate Change in Length (ΔL)",
+          "content": "Using the formula $\\Delta L = \\alpha L_0 \\Delta T$: \n$$\\Delta L = (17.0 \\times 10^{-6} / ^\\circ\\text{C}) \\times (2.5 \\text{ m}) \\times (130^\\circ\\text{C})$$\n$$\\Delta L = 0.005525 \\text{ m}$$"
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  }, 
+  {
+    "topic": "Combined Loading",
+    "title": "Maximum Stress in Eccentric Column",
+    "question": "A rectangular short column with cross-sectional dimensions of $200\\text{ mm} \\times 100\\text{ mm}$ is subjected to a compressive load of $P = 500\\text{ kN}$. The load is applied at an eccentricity of $20\\text{ mm}$ from the centroidal axis along the $200\\text{ mm}$ dimension. Calculate the maximum compressive stress in the column.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "25.0 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "32.5 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "40.0 MPa",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "50.0 MPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Data",
+          "content": "$P = 500 \\times 10^3\\text{ N}$, $b = 100\\text{ mm}$, $h = 200\\text{ mm}$, $e = 20\\text{ mm}$."
+        },
+        {
+          "title": "Calculate Section Properties",
+          "content": "$A = b \\times h = 20,000\\text{ mm}^2$. Section modulus $Z = \\dfrac{bh^2}{6} = \\dfrac{100 \\times 200^2}{6} \\approx 666,666.67\\text{ mm}^3$."
+        },
+        {
+          "title": "Calculate Stresses",
+          "content": "Direct stress $\\sigma_d = \\dfrac{P}{A} = 25\\text{ MPa}$. Bending stress $\\sigma_b = \\dfrac{P \\times e}{Z} = \\dfrac{10,000,000}{666,666.67} = 15\\text{ MPa}$."
+        },
+        {
+          "title": "Total Maximum Stress",
+          "content": "$\\sigma_{\\max} = \\sigma_d + \\sigma_b = 25 + 15 = 40\\text{ MPa}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combined Loading",
+    "title": "Maximum Eccentricity in Square Column",
+    "question": "To prevent tension from occurring in a square column of side length $a = 150\\text{ mm}$ under a compressive load, what is the maximum allowable eccentricity $e$ from the centroidal axis (along one of the principal axes)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "12.5 mm",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "25.0 mm",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "37.5 mm",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "50.0 mm",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "The 'No Tension' Condition",
+          "content": "Tension is avoided if $e \\le \\dfrac{Z}{A}$."
+        },
+        {
+          "title": "Section Properties",
+          "content": "For a square, $A = a^2$ and $Z = \\dfrac{a^3}{6}$."
+        },
+        {
+          "title": "Middle-Third Rule",
+          "content": "$e \\le \\dfrac{a^3/6}{a^2} \\implies e \\le \\dfrac{a}{6}$."
+        },
+        {
+          "title": "Calculation",
+          "content": "$e_{\\max} = \\dfrac{150\\text{ mm}}{6} = 25.0\\text{ mm}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Combined Loading",
+    "title": "Maximum Stress in Circular Shaft",
+    "question": "A solid circular shaft with a diameter of $80\\text{ mm}$ is subjected to a compressive load of $100\\text{ kN}$ applied at an eccentricity of $5\\text{ mm}$ from the center. What is the maximum compressive stress in the shaft?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "19.9 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "24.5 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "29.8 MPa",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "35.2 MPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "$d = 80\\text{ mm}$, $P = 100 \\times 10^3\\text{ N}$, $e = 5\\text{ mm}$."
+        },
+        {
+          "title": "Calculate Section Properties",
+          "content": "$A = \\dfrac{\\pi d^2}{4} \\approx 5026.55\\text{ mm}^2$. $Z = \\dfrac{\\pi d^3}{32} \\approx 50265.48\\text{ mm}^3$."
+        },
+        {
+          "title": "Calculate Component Stresses",
+          "content": "Direct stress $\\sigma_d = \\dfrac{P}{A} \\approx 19.89\\text{ MPa}$. Bending stress $\\sigma_b = \\dfrac{P \\times e}{Z} \\approx 9.95\\text{ MPa}$."
+        },
+        {
+          "title": "Determine Maximum Compressive Stress",
+          "content": "$\\sigma_{\\max} = 19.89 + 9.95 = 29.84\\text{ MPa}$. Rounding gives $29.8\\text{ MPa}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Deformations",
+    "title": "Deflection of Beam",
+    "question": "A cantilever beam of length $L = 4 \\text{ m}$ is fixed at the left support ($x = 0$) and free at the right end ($x = 4 \\text{ m}$). The beam has a constant flexural rigidity $EI = 5000 \\text{ kNm}^2$. It is subjected to a downward vertical point load $P = 10 \\text{ kN}$ at the free end and a clockwise concentrated moment $M = 20 \\text{ kNm}$ at its midpoint ($x = 2 \\text{ m}$). What is the total downward deflection at the free end?",
+    "question_image": "Deflection of Beam.png",
+    "options": [
+      {
+        "label": "A",
+        "text": "$66.7 \\text{ mm}$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$50.7 \\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$74.7 \\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$42.7 \\text{ mm}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Deflection due to Point Load P",
+          "content": "Using $\\delta_P = \\dfrac{PL^3}{3EI} = \\dfrac{(10)(4)^3}{3(5000)} = \\dfrac{640}{15000} \\approx 0.04267 \\text{ m} = 42.67 \\text{ mm}$."
+        },
+        {
+          "title": "Deflection due to Moment M",
+          "content": "Using superposition for a moment at distance $a$: $\\delta_M = \\dfrac{Ma^2}{2EI} + \\dfrac{Ma}{EI}(L - a)$. For $a=2, L=4$: $\\delta_M = \\dfrac{(20)(2)^2}{2(5000)} + \\dfrac{(20)(2)}{5000}(2) = 0.008 + 0.016 = 0.024 \\text{ m} = 24 \\text{ mm}$."
+        },
+        {
+          "title": "Total Deflection",
+          "content": "$\\delta_{total} = \\delta_P + \\delta_M = 42.67 + 24 = 66.67 \\text{ mm}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Deformations",
+    "title": "Deflection in Cantilever Beam",
+    "question": "A free end of a cantilever beam rotates by $0.001$ radians under a point load of $10\\text{ kN}$. Then deflection at the free end due to a moment of $100\\text{ kN} \\cdot \\text{m}$ is:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$10\\text{ mm}$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$20\\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$25\\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$40\\text{ mm}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Establish Relationships",
+          "content": "For a point load $P$: $\\theta_P = \\dfrac{PL^2}{2EI}$. For a moment $M$: $\\delta_M = \\dfrac{ML^2}{2EI}$."
+        },
+        {
+          "title": "Form a Ratio",
+          "content": "Comparing the two equations: $\\dfrac{\\delta_M}{\\theta_P} = \\dfrac{M}{P}$."
+        },
+        {
+          "title": "Calculate Deflection",
+          "content": "$\\delta_M = \\theta_P \\cdot \\left(\\dfrac{M}{P}\\right) = 0.001 \\cdot \\left(\\dfrac{100}{10}\\right) = 0.01\\text{ m} = 10\\text{ mm}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+    {
+    "topic": "Column Buckling",
+    "title": "Column End Conditions and Buckling",
+    "question": "Which of the following end conditions results in the highest critical buckling load for a column of a given length $L$ and constant flexural rigidity $EI$?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Pinned-Pinned",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Fixed-Free",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Fixed-Pinned",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Fixed-Fixed",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understand Euler's Buckling Load Formula",
+          "content": "The critical buckling load is $P_{cr} = \\dfrac{\\pi^2 EI}{(KL)^2}$. $P_{cr}$ is inversely proportional to the square of the effective length factor $K$."
+        },
+        {
+          "title": "Compare Effective Length Factors (K)",
+          "content": "Standard $K$ values: Pinned-Pinned ($K=1.0$), Fixed-Free ($K=2.0$), Fixed-Pinned ($K \\approx 0.7$), and Fixed-Fixed ($K=0.5$)."
+        },
+        {
+          "title": "Determine the Highest Load",
+          "content": "The Fixed-Fixed condition has the smallest $K$ value (0.5), which results in the highest critical buckling load: $P_{cr} = \\dfrac{4\\pi^2 EI}{L^2}$."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Column Buckling",
+    "title": "Critical Euler Buckling Load",
+    "question": "A steel column with a length of $L = 4.5 \\text{ m}$ has a rectangular cross-section of $100 \\text{ mm} \\times 150 \\text{ mm}$. The column is fixed at one end and pinned at the other. Assuming the modulus of elasticity for steel is $E = 200 \\text{ GPa}$, what is the critical Euler buckling load, $P_{cr}$, for this column?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$1,243 \\text{ kN}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$2,487 \\text{ kN}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$5,075 \\text{ kN}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$10,150 \\text{ kN}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Data",
+          "content": "$L = 4500 \\text{ mm}$, $E = 200,000 \\text{ N/mm}^2$, End conditions: Fixed-Pinned ($K=0.7$)."
+        },
+        {
+          "title": "Calculate Moment of Inertia (I)",
+          "content": "Buckling occurs about the weak axis: $I_{min} = \\dfrac{b \\cdot h^3}{12} = \\dfrac{150 \\cdot 100^3}{12} = 1.25 \\times 10^7 \\text{ mm}^4$."
+        },
+        {
+          "title": "Determine Effective Length",
+          "content": "$L_e = K \\cdot L = 0.7 \\cdot 4500 = 3150 \\text{ mm}$."
+        },
+        {
+          "title": "Calculate Buckling Load",
+          "content": "$P_{cr} = \\dfrac{\\pi^2 E I}{L_e^2} = \\dfrac{\\pi^2 \\cdot 200,000 \\cdot 1.25 \\times 10^7}{3150^2} \\approx 2,486,897 \\text{ N}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Column Buckling",
+    "title": "Column Slenderness Ratio Calculation",
+    "question": "A column with a pinned-pinned end condition has a length of $4.0\\text{ m}$ and a radius of gyration $r = 40\\text{ mm}$. What is the slenderness ratio of this column?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "50",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "100",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "150",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "200",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "$L = 4000\\text{ mm}$, $r = 40\\text{ mm}$, End Condition: Pinned-pinned."
+        },
+        {
+          "title": "Determine Effective Length",
+          "content": "For Pinned-pinned, $K=1.0$. $L_e = K \\cdot L = 4000\\text{ mm}$."
+        },
+        {
+          "title": "Calculate Slenderness Ratio",
+          "content": "$\\lambda = \\dfrac{L_e}{r} = \\dfrac{4000}{40} = 100$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Column Buckling",
+    "title": "Critical Buckling Stress Calculation",
+    "question": "An aluminum column ($E = 70\\text{ GPa}$) has a slenderness ratio of 120. Using Euler's formula, what is the critical buckling stress $\\sigma_{cr}$ for this column?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "35.4 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "41.2 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "47.9 MPa",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "52.8 MPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Data",
+          "content": "$E = 70,000\\text{ MPa}$, Slenderness Ratio $\\lambda = 120$."
+        },
+        {
+          "title": "Apply Euler's Stress Formula",
+          "content": "$\\sigma_{cr} = \\dfrac{\\pi^2 E}{\\lambda^2}$."
+        },
+        {
+          "title": "Calculate Result",
+          "content": "$\\sigma_{cr} = \\dfrac{\\pi^2 \\times 70,000}{120^2} = \\dfrac{690,872.3}{14,400} \\approx 47.97\\text{ MPa}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Statically Indeterminate Systems",
+    "title": "Static Indeterminacy of 2D Frame",
+    "question": "A 2D rigid frame consists of 3 members and 4 joints (including supports). If the frame is fixed to the ground at two of these joints and has no internal hinges or pins, what is the degree of static indeterminacy?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0 (Statically Determinate)",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "6",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "9",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "Number of members ($m$) = 3, Number of joints ($j$) = 4. There are 2 fixed supports; each fixed support in 2D provides 3 reactions, so total reaction components $r = 2 \\times 3 = 6$. There are no internal releases ($rr = 0$)."
+        },
+        {
+          "title": "Apply Static Indeterminacy Formula",
+          "content": "For a 2D rigid frame, the degree of static indeterminacy ($D_s$) is given by: \n$$D_s = (3m + r) - 3j$$"
+        },
+        {
+          "title": "Calculation",
+          "content": "Substitute the values: \n$$D_s = (3 \\times 3 + 6) - (3 \\times 4)$$\n$$D_s = (9 + 6) - 12$$\n$$D_s = 15 - 12 = 3$$"
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
   }
     ],
-    'materials-science': [],
-    'fluids': [],
+    'materials-science': [
+      {
+    "topic": "Properties",
+    "title": "Mechanical Properties of a Material",
+    "question": "Which of the following mechanical properties is defined as the capacity of a material to absorb energy and deform plastically before fracturing, representing the total area under the stress-strain curve?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Resilience",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Ductility",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Hardness",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Toughness",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Analyze Energy Absorption Concepts",
+          "content": "In materials science, energy absorption is represented by the area under the stress-strain curve. Resilience refers specifically to the elastic region, while the total area up to fracture represents the material's ability to handle both stress and deformation."
+        },
+        {
+          "title": "Evaluate Definitions",
+          "content": "Toughness is the total capacity to absorb energy before failure, requiring a balance of strength and ductility. Mathematically, it is the integral: $\\text{Toughness} = \\int_{0}^{\\epsilon_f} \\sigma \\, d\\epsilon$."
+        },
+        {
+          "title": "Distinguish from Other Properties",
+          "content": "Resilience only covers elastic energy recovery. Ductility measures plastic deformation (strain) without specific regard to total energy. Hardness measures surface resistance to indentation."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress-Strain Diagrams",
+    "title": "Ductile Metal Yield Strength Definition",
+    "question": "In a standard stress-strain diagram for a ductile metal, which of the following represents the stress level at which plastic deformation first becomes noticeable, typically defined by a line drawn parallel to the elastic region?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ultimate Tensile Strength",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Proportional Limit",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0.2% Offset Yield Strength",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Fracture Strength",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understanding the Stress-Strain Regions",
+          "content": "Transition from elastic to plastic deformation is often gradual. The Proportional Limit is where linearity ends, while the Elastic Limit is the maximum stress without permanent deformation."
+        },
+        {
+          "title": "The Offset Method",
+          "content": "To define yield strength in metals, engineers use the offset method: selecting a plastic strain (typically 0.2%), drawing a line parallel to the elastic region, and finding the intersection with the curve."
+        },
+        {
+          "title": "Conclusion",
+          "content": "The definition provided describes the 0.2% Offset Yield Strength, a standard convention for the onset of plastic deformation."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress-Strain Diagrams",
+    "title": "Material Behavior at UTS",
+    "question": "Which of the following statements best describes the behavior of a material on a stress-strain diagram at the point of the Ultimate Tensile Strength (UTS)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "The material is still within its proportional limit",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The specimen begins to experience localized necking",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "The material has reached its highest possible stiffness",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The material returns to its original length upon unloading",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Define Ultimate Tensile Strength (UTS)",
+          "content": "The UTS is the maximum stress a material can withstand on an engineering stress-strain curve."
+        },
+        {
+          "title": "Evaluate Physical Behavior at UTS",
+          "content": "Up to the UTS, deformation is uniform. At the peak (UTS), the material can no longer support uniform strain hardening, leading to a significant decrease in cross-sectional area in one region, known as localized necking."
+        },
+        {
+          "title": "Analyze Incorrect Options",
+          "content": "Proportional limit and stiffness peaks occur much earlier in the loading cycle. Elastic recovery only occurs if the material is below the yield point."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Stress-Strain Diagrams",
+    "title": "Metal Elastic and Plastic Strains",
+    "question": "The loading and unloading response of a metal is shown in the figure. The elastic and plastic strains corresponding to $200\\text{ MPa}$ stress, respectively, are",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$0.02$ and $0.01$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$0.02$ and $0.02$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$0.01$ and $0.01$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$0.01$ and $0.02$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understand the Stress-Strain Diagram",
+          "content": "The diagram shows a loading cycle to $200\\text{ MPa}$ followed by an unloading path. The unloading path is a straight line that reveals the permanent (plastic) strain."
+        },
+        {
+          "title": "Read Values from the Graph",
+          "content": "At $200\\text{ MPa}$, the total strain ($\\epsilon_{total}$) is $0.03$. After complete unloading (stress = 0), the plastic strain ($\\epsilon_p$) remaining is $0.01$."
+        },
+        {
+          "title": "Calculate the Elastic Strain",
+          "content": "Using the relationship $\\epsilon_{total} = \\epsilon_e + \\epsilon_p$, we find: \n$$\\epsilon_e = \\epsilon_{total} - \\epsilon_p = 0.03 - 0.01 = 0.02$$"
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Ferrous Metals",
+    "title": "Estimating Tensile Strength from Hardness",
+    "question": "The Brinell hardness ($HB$) of a specimen of 1040 steel is measured to be 250. Estimate the tensile strength ($TS$) of the specimen in MPa.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "720 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "860 MPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "1150 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "125,000 MPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Data",
+          "content": "Brinell Hardness ($HB$) = 250 for 1040 Steel."
+        },
+        {
+          "title": "Correlation Formula",
+          "content": "For most steels, the empirical relationship between Brinell hardness and tensile strength in MPa is: \n$$TS (\\text{MPa}) \\approx 3.45 \\times HB$$"
+        },
+        {
+          "title": "Calculation",
+          "content": "Substitute the value: \n$$TS \\approx 3.45 \\times 250 = 862.5 \\text{ MPa}$$"
+        },
+        {
+          "title": "Conclusion",
+          "content": "The estimate of 862.5 MPa is closest to the option 860 MPa."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Nonferrous Metals",
+    "title": "Aerospace Material Selection",
+    "question": "Which of the following non-ferrous metals is primarily chosen for aerospace applications due to its high specific strength (strength-to-weight ratio) and excellent corrosion resistance, despite having a lower density than steel?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Copper",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Lead",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Titanium",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Tin",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Properties of Aerospace Materials",
+          "content": "Aerospace applications prioritize high performance and low weight to increase fuel efficiency. Key criteria include high specific strength and corrosion resistance."
+        },
+        {
+          "title": "Analysis of Options",
+          "content": "Titanium is significantly lighter than steel but offers comparable strength, resulting in a high strength-to-weight ratio. It also has a natural oxide layer for superior corrosion resistance. Copper and Lead are too dense, while Tin lacks structural strength."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Nonferrous Metals",
+    "title": "Composition of Brass Alloy",
+    "question": "The binary alloy 'Brass' consists primarily of which two chemical elements?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Copper and Tin",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Copper and Zinc",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Nickel and Chromium",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Aluminum and Magnesium",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Chemical Composition of Brass",
+          "content": "Brass is a binary substitution alloy primarily composed of Copper (Cu) as the base metal and Zinc (Zn) as the primary alloying element."
+        },
+        {
+          "title": "Comparison with Other Alloys",
+          "content": "Bronze is made of copper and tin; Nichrome is nickel and chromium; Magnalium is aluminum and magnesium."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Engineered Materials",
+    "title": "Thermosetting vs. Thermoplastic Polymers",
+    "question": "Which statement best describes the molecular structure and behavior of thermosetting polymers compared to thermoplastic polymers?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Thermosets consist of long linear chains that slide easily when heated.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Thermosets can be repeatedly melted and reshaped without chemical change.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Thermosets form a permanent three-dimensional network through cross-linking and do not soften upon heating.",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Thermosets have lower mechanical strength and higher ductility than thermoplastics due to lack of bonding between chains.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Molecular Structure of Thermosets",
+          "content": "Thermosetting polymers form strong covalent bonds between chains during curing, creating a rigid, 3D networked structure that prevents chains from sliding."
+        },
+        {
+          "title": "Behavior Under Heat",
+          "content": "Due to permanent cross-links, thermosets do not melt or soften when heated; instead, they decompose at very high temperatures. This differs from thermoplastics, which can be repeatedly melted."
+        },
+        {
+          "title": "Evaluating the Options",
+          "content": "Options A and B describe thermoplastics. Option D is incorrect because cross-linking increases strength and reduces ductility. Option C accurately describes the 3D network and thermal stability."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Engineered Materials",
+    "title": "Young’s Modulus of Composite",
+    "question": "A composite material is reinforced with $25\\%$ volume fraction of continuous and aligned glass fibers ($E = 72$ GPa) in an epoxy matrix ($E = 3.5$ GPa). What is the modulus of elasticity of this composite in the longitudinal direction?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$15.4$ GPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$20.6$ GPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$25.8$ GPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$31.2$ GPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "$V_f = 0.25$, $V_m = 0.75$, $E_f = 72$ GPa, $E_m = 3.5$ GPa."
+        },
+        {
+          "title": "Apply the Rule of Mixtures",
+          "content": "For longitudinal loading of aligned fibers, use the upper-bound rule: $E_l = E_f V_f + E_m V_m$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$E_l = (72 \\times 0.25) + (3.5 \\times 0.75) = 18.0 + 2.625 = 20.625$ GPa."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Engineered Materials",
+    "title": "Transverse Modulus of Composite",
+    "question": "A continuous and aligned glass fiber-reinforced composite consists of $40\\%$ volume fraction of glass fibers ($E_f = 72$ GPa) and $60\\%$ volume fraction of an epoxy matrix ($E_m = 3.4$ GPa). What is the modulus of elasticity of this composite in the transverse direction?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$3.8$ GPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$5.5$ GPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$8.2$ GPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$30.8$ GPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "$V_f = 0.40$, $V_m = 0.60$, $E_f = 72$ GPa, $E_m = 3.4$ GPa."
+        },
+        {
+          "title": "Apply the Lower-Bound Rule of Mixtures",
+          "content": "For transverse direction, use the series model: $E_t = \\dfrac{E_f E_m}{V_f E_m + V_m E_f}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$E_t = \\dfrac{72 \\times 3.4}{(0.40 \\times 3.4) + (0.60 \\times 72)} = \\dfrac{244.8}{1.36 + 43.2} = \\dfrac{244.8}{44.56} \\approx 5.494$ GPa."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Manufacturing Processes",
+    "title": "Advantages of Hot Working",
+    "question": "Which of the following is a primary advantage of hot working compared to cold working in metal forming processes?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Better surface finish and dimensional accuracy.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Increased strength due to strain hardening.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Lower forces required for deformation and higher ductility.",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Absence of oxidation on the surface of the part.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Define Hot Working",
+          "content": "Hot working refers to plastic deformation processes carried out above the recrystallization temperature of the metal, where the material is softer and constantly recrystallizing."
+        },
+        {
+          "title": "Evaluate Material Properties at High Temperatures",
+          "content": "At elevated temperatures, the yield strength decreases and ductility increases. This allows for significant deformation without cracking and eliminates strain hardening."
+        },
+        {
+          "title": "Comparison with Cold Working",
+          "content": "Surface finish and dimensional accuracy (Options A and D) are advantages of cold working. Strain hardening (Option B) is also a feature of cold working. Hot working is preferred for achieving massive shape changes with less energy (Option C)."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Phase Diagrams, Phase Transformation, and Heat Treating",
+    "title": "Peritectic Reaction in Binary Alloys",
+    "question": "Which of the following describes a peritectic reaction in a binary alloy system during cooling?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "A liquid phase transforms into two different solid phases.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "A solid phase transforms into two different solid phases.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "A liquid phase and a solid phase transform into a different solid phase.",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Two solid phases transform into a single, different solid phase.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Analyzing the Peritectic Reaction",
+          "content": "A peritectic reaction occurs when a liquid phase ($L$) and a solid phase (e.g., $\\alpha$) react at a specific temperature to form a new, different solid phase (e.g., $\\beta$). This is represented as: $L + \\alpha \\xrightarrow{\\text{cooling}} \\beta$."
+        },
+        {
+          "title": "Comparison with Other Reactions",
+          "content": "Eutectic: $L \\rightarrow \\alpha + \\beta$; Eutectoid: $\\gamma \\rightarrow \\alpha + \\beta$; Peritectoid: $\\alpha + \\beta \\rightarrow \\gamma$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Phase Diagrams, Phase Transformation, and Heat Treating",
+    "title": "Invariant Points in a Phase Diagram",
+    "question": "In the iron-iron carbide ($Fe - Fe_3C$) phase diagram, the eutectoid reaction occurs at a specific temperature and carbon concentration. What are the correct values for this invariant point?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$727^\\circ\\text{C}$ and $0.76 \\text{ wt\\% C}$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$1147^\\circ\\text{C}$ and $4.30 \\text{ wt\\% C}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$1495^\\circ\\text{C}$ and $0.16 \\text{ wt\\% C}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$912^\\circ\\text{C}$ and $0.022 \\text{ wt\\% C}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Eutectoid Reaction Definition",
+          "content": "The eutectoid reaction in the $Fe-Fe_3C$ system involves solid Austenite ($\\gamma$) transforming into Ferrite ($\\alpha$) and Cementite ($Fe_3C$) at $727^\\circ\\text{C}$ and $0.76 \\text{ wt\\% C}$."
+        },
+        {
+          "title": "Comparison of Invariant Points",
+          "content": "Eutectic point occurs at $1147^\\circ\\text{C}$ and $4.30 \\text{ wt\\% C}$. Peritectic point occurs at $1495^\\circ\\text{C}$ and $0.16 \\text{ wt\\% C}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Phase Diagrams, Phase Transformation, and Heat Treating",
+    "title": "Lever Rule",
+    "question": "In a binary eutectic phase diagram for components $A$ and $B$, the eutectic point occurs at $60\\% B$ and $727^\\circ\\text{C}$. A $40\\% B$ alloy is cooled from the liquid phase to just below the eutectic temperature. What is the mass fraction of the primary $\\alpha$ phase (where the maximum solubility of $B$ in $A$ is $10\\%$ at the eutectic temperature)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.25",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.40",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "0.60",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.67",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Compositions",
+          "content": "$C_0$ (Alloy) = $40\\% B$, $C_{\\alpha}$ (Solubility limit) = $10\\% B$, $C_E$ (Eutectic/Liquid phase) = $60\\% B$."
+        },
+        {
+          "title": "Apply the Lever Rule",
+          "content": "The mass fraction of primary $\\alpha$ ($W_{\\alpha'}$) just above the eutectic temperature is: $W_{\\alpha'} = \\dfrac{C_E - C_0}{C_E - C_{\\alpha}}$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$W_{\\alpha'} = \\dfrac{60 - 40}{60 - 10} = \\dfrac{20}{50} = 0.40$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Materials Selection",
+    "title": "Cryogenic Material Selection",
+    "question": "When selecting a material for a cryogenic storage tank operating at temperatures below $-150$°C, which of the following materials is most likely to avoid catastrophic brittle failure?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "AISI 1020 Carbon Steel",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "ASTM A36 Steel",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Type 304 Stainless Steel",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Gray Cast Iron",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understanding Brittle-to-Ductile Transition",
+          "content": "Many materials, particularly those with a body-centered cubic (BCC) crystal structure, exhibit a Ductile-to-Brittle Transition Temperature (DBTT). Below this temperature, the material becomes susceptible to sudden brittle failure."
+        },
+        {
+          "title": "Analysis of Options",
+          "content": "AISI 1020 and ASTM A36 are ferritic steels (BCC) that become brittle at $-150$°C. Gray Cast Iron is inherently brittle due to graphite flakes. Type 304 Stainless Steel has a face-centered cubic (FCC) structure."
+        },
+        {
+          "title": "The Role of Crystal Structure",
+          "content": "Materials with an FCC structure do not exhibit a distinct ductile-to-brittle transition and maintain high toughness at cryogenic temperatures."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Corrosion Mechanisms and Control",
+    "title": "Faraday’s Law of Electrolysis",
+    "question": "An iron ($Fe$) plate is undergoing uniform corrosion in an acidic solution. If a constant current of $0.5 \\text{ A}$ flows for $4$ hours, calculate the mass of iron lost to corrosion. The atomic weight of iron is $55.85 \\text{ g/mol}$, and it corrodes to $Fe^{2+}$. (Faraday's constant $F = 96,500 \\text{ C/mol}$)",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$1.04 \\text{ g}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$2.08 \\text{ g}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$4.17 \\text{ g}$",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$8.34 \\text{ g}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "Current ($I$) = $0.5 \\text{ A}$; Time ($t$) = $4 \\text{ hours} = 14,400 \\text{ s}$; Atomic Weight ($M$) = $55.85 \\text{ g/mol}$; Valence ($n$) = $2$; Faraday's Constant ($F$) = $96,500 \\text{ C/mol}$."
+        },
+        {
+          "title": "Calculate Total Charge ($Q$)",
+          "content": "The total charge passed is: \n$$Q = I \\times t = 0.5 \\text{ A} \\times 14,400 \\text{ s} = 7,200 \\text{ C}$$"
+        },
+        {
+          "title": "Apply Faraday's Law",
+          "content": "The mass ($m$) lost is: \n$$m = \\dfrac{Q \\cdot M}{n \\cdot F} = \\dfrac{7,200 \\times 55.85}{2 \\times 96,500} \\approx 2.0835 \\text{ g}$$"
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Corrosion Mechanisms and Control",
+    "title": "Galvanic Cell",
+    "question": "A galvanic cell is formed between copper and zinc in an electrolytic solution. Given the standard reduction potentials are $E^0_{Cu^{2+}/Cu} = +0.340 \\text{ V}$ and $E^0_{Zn^{2+}/Zn} = -0.763 \\text{ V}$, which of the following statements is correct regarding the corrosion of this pair?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Zinc acts as the cathode and is protected from corrosion.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Copper acts as the anode and undergoes oxidation.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Zinc acts as the anode and undergoes oxidation.",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "The cell potential is $-0.423 \\text{ V}$, meaning no reaction occurs.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Anode and Cathode",
+          "content": "The metal with the lower (more negative) standard reduction potential acts as the anode. \n$E^0_{Zn^{2+}/Zn} = -0.763 \\text{ V}$ (Anode); $E^0_{Cu^{2+}/Cu} = +0.340 \\text{ V}$ (Cathode)."
+        },
+        {
+          "title": "Determine the Reactions",
+          "content": "Anode (Oxidation): $Zn(s) \\rightarrow Zn^{2+}(aq) + 2e^-$. Cathode (Reduction): $Cu^{2+}(aq) + 2e^- \\rightarrow Cu(s)$."
+        },
+        {
+          "title": "Conclusion",
+          "content": "Since zinc is the anode, it undergoes oxidation (corrosion), while copper is protected."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Failure Mechanisms",
+    "title": "Plane-Strain Fracture Toughness Calculation",
+    "question": "A large structural plate has a plane-strain fracture toughness of $K_{IC} = 50 \\text{ MPa} \\cdot \\sqrt{\\text{m}}$. If the plate contains a central through-thickness crack of length $2a = 4 \\text{ mm}$, what is the maximum allowable remote tensile stress $\\sigma$ that can be applied without causing brittle fracture? Assume the geometry factor $Y = 1.0$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "398 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "564 MPa",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "631 MPa",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "796 MPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Data",
+          "content": "Fracture toughness ($K_{IC}$) = $50 \\text{ MPa} \\cdot \\sqrt{\\text{m}}$, total crack length ($2a$) = $4 \\text{ mm} = 0.004 \\text{ m}$, half-crack length ($a$) = $2 \\text{ mm} = 0.002 \\text{ m}$, and geometry factor ($Y$) = $1.0$."
+        },
+        {
+          "title": "Formula for Fracture Stress",
+          "content": "The relationship is given by: \n$$K_{IC} = Y \\sigma \\sqrt{\\pi a}$$"
+        },
+        {
+          "title": "Calculation",
+          "content": "Rearranging for stress ($\\sigma$): \n$$\\sigma = \\dfrac{K_{IC}}{Y \\sqrt{\\pi a}} = \\dfrac{50}{1.0 \\times \\sqrt{\\pi \\times 0.002}} \\approx 630.78 \\text{ MPa}$$"
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Failure Mechanisms",
+    "title": "Secondary Creep Characteristics",
+    "question": "Which stage of creep is defined by a constant or minimum strain rate due to a balance between work hardening and thermally activated recovery?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Primary creep",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Secondary creep",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Tertiary creep",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Instantaneous deformation",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understanding the Creep Process",
+          "content": "Creep is time-dependent deformation under constant load at high temperatures, occurring in three main stages."
+        },
+        {
+          "title": "Identifying the Stages of Creep",
+          "content": "Primary creep features a decreasing rate due to work hardening. Secondary (Steady-State) creep has a constant rate because work hardening and thermal recovery are in balance. Tertiary creep features an accelerating rate leading to fracture."
+        },
+        {
+          "title": "Conclusion",
+          "content": "The stage with a constant strain rate resulting from a kinetic balance between hardening and recovery is secondary creep."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  }
+  
+    ],
+    'fluids': [
+      {
+    "topic": "Fluid Properties",
+    "title": "Kinematic Viscosity of a Fluid",
+    "question": "Given a fluid with a dynamic viscosity of $\\mu = 0.048 \\text{ Pa} \\cdot \\text{s}$ and a specific gravity of $SG = 0.85$, determine the kinematic viscosity ($\\nu$) in $\\text{m}^2/\\text{s}$. Assume the density of water $\\rho_w = 1000 \\text{ kg/m}^3$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$5.65 \\times 10^{-5} \\text{ m}^2/\\text{s}$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$4.08 \\times 10^{-5} \\text{ m}^2/\\text{s}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$4.80 \\times 10^{-5} \\text{ m}^2/\\text{s}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$1.77 \\times 10^{-5} \\text{ m}^2/\\text{s}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate the density of the fluid",
+          "content": "The density is found by multiplying the specific gravity by the density of water: $\\rho = SG \\times \\rho_w = 0.85 \\times 1000 \\text{ kg/m}^3 = 850 \\text{ kg/m}^3$."
+        },
+        {
+          "title": "Calculate the kinematic viscosity",
+          "content": "Using the formula $\\nu = \\mu / \\rho$: $\\nu = 0.048 / 850 \\approx 5.65 \\times 10^{-5} \\text{ m}^2/\\text{s}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Properties",
+    "title": "Shear Stress on a Newtonian Fluid",
+    "question": "A Newtonian fluid flows between two large parallel plates. The lower plate is fixed, and the upper plate moves at a constant velocity $U = 3 \\text{ m/s}$. The plates are separated by a distance $y = 0.75 \\text{ mm}$. If the dynamic viscosity of the fluid is $\\mu = 0.4 \\text{ Pa} \\cdot \\text{s}$, what is the magnitude of the shear stress $\\tau$ acting on the plates?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$1200 \\text{ Pa}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$1600 \\text{ Pa}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$2400 \\text{ Pa}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$3200 \\text{ Pa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify given values and units",
+          "content": "$\\mu = 0.4 \\text{ Pa} \\cdot \\text{s}$, $U = 3 \\text{ m/s}$, $y = 0.75 \\text{ mm} = 0.75 \\times 10^{-3} \\text{ m}$."
+        },
+        {
+          "title": "Calculate velocity gradient",
+          "content": "$du/dy = U/y = 3 / 0.00075 = 4000 \\text{ s}^{-1}$."
+        },
+        {
+          "title": "Calculate shear stress",
+          "content": "Using Newton's Law of Viscosity: $\\tau = \\mu(du/dy) = 0.4 \\times 4000 = 1600 \\text{ Pa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Properties",
+    "title": "Capilliary Rise",
+    "question": "A clean glass tube with a diameter of $d = 2 \\text{ mm}$ is inserted into a container of water at $20^\\circ\\text{C}$ (surface tension $\\sigma = 0.0728 \\text{ N/m}$, density $\\rho = 1000 \\text{ kg/m}^3$). Assuming a contact angle of $\\theta = 0^\\circ$ and $g = 9.81 \\text{ m/s}^2$, what is the expected capillary rise ($h$)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$7.4 \\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$14.8 \\text{ mm}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$29.7 \\text{ mm}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$3.7 \\text{ mm}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Capillary Rise Formula",
+          "content": "Use $h = (4\\sigma \\cos \\theta) / (\\rho g d)$. Given $\\sigma = 0.0728$, $\\theta = 0^\\circ$, $\\rho = 1000$, $g = 9.81$, and $d = 0.002 \\text{ m}$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$h = (4 \\times 0.0728 \\times 1) / (1000 \\times 9.81 \\times 0.002) \\approx 0.01484 \\text{ m}$."
+        },
+        {
+          "title": "Convert to Millimeters",
+          "content": "$0.01484 \\text{ m} \\times 1000 \\approx 14.8 \\text{ mm}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Properties",
+    "title": "Density Change from Bulk Modulus",
+    "question": "A liquid has a bulk modulus of elasticity $E_v = 2.2$ GPa. If the pressure on the liquid increases by 10 MPa, what is the approximate percentage change in the density of the liquid?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.23%",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.45%",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "2.2%",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.045%",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understand Bulk Modulus Relation",
+          "content": "The fractional change in density is $\\Delta \\rho / \\rho = \\Delta P / E_v$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "Substitute $10 \\text{ MPa}$ and $2.2 \\text{ GPa}$: $(10 \\times 10^6) / (2.2 \\times 10^9) = 10 / 2200 \\approx 0.004545$."
+        },
+        {
+          "title": "Convert to Percentage",
+          "content": "$0.004545 \\times 100 = 0.4545\\%$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Properties",
+    "title": "Vapor Pressure and Cavitation",
+    "question": "Which of the following statements regarding vapor pressure is correct?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Vapor pressure decreases as temperature increases.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Cavitation occurs when the local pressure in a liquid drops below its vapor pressure.",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "A fluid with a high vapor pressure is less likely to evaporate at room temperature.",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Vapor pressure is independent of the chemical composition of the fluid.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Define Cavitation",
+          "content": "Cavitation is the formation of vapor bubbles in a liquid when the local static pressure falls below the vapor pressure at the operating temperature."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Properties",
+    "title": "Specific Gravity Calculation",
+    "question": "If one liter of a fluid has a mass of 7.5 kg then its specific gravity is:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.75",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "7.5",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "75",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "750",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Fluid Density",
+          "content": "$\\rho_{fluid} = m / V = 7.5 \\text{ kg} / 0.001 \\text{ m}^3 = 7500 \\text{ kg/m}^3$."
+        },
+        {
+          "title": "Calculate Specific Gravity",
+          "content": "$SG = \\rho_{fluid} / \\rho_{water} = 7500 / 1000 = 7.5$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Properties",
+    "title": "Spherical Shape of Raindrops",
+    "question": "Raindrops are spherical because of:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "viscosity",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "air resistance",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "surface tension forces",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "atmospheric pressure",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Role of Surface Tension",
+          "content": "Surface tension results from cohesive forces that pull surface molecules inward, minimizing surface area. For a given volume, a sphere is the shape with minimum surface area."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Properties",
+    "title": "Calculating Specific Gravity of Oil",
+    "question": "2 litres of an oil weigh 16 N. Calculate the specific gravity of the oil. Consider the density of water to be 998 kg/m$^3$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.846",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.786",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0.856",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.816",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Determine weight density",
+          "content": "$\\gamma_{oil} = W/V = 16 / 0.002 = 8000 \\text{ N/m}^3$."
+        },
+        {
+          "title": "Calculate mass density",
+          "content": "$\\rho_{oil} = \\gamma_{oil} / g = 8000 / 9.81 \\approx 815.49 \\text{ kg/m}^3$."
+        },
+        {
+          "title": "Calculate specific gravity",
+          "content": "$SG = \\rho_{oil} / \\rho_{water} = 815.49 / 998 \\approx 0.817$. Closest option is 0.816."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "Hydrostatic Forces on Submerged Bodies",
+    "question": "A vertical rectangular gate is $4 \\text{ m}$ wide and $2 \\text{ m}$ high. The top edge of the gate is located $3 \\text{ m}$ below the water surface. What is the total hydrostatic force acting on one side of the gate? Use $\\gamma_{water} = 9.81 \\text{ kN/m}^3$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$235.4 \\text{ kN}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$313.9 \\text{ kN}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$156.9 \\text{ kN}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$470.8 \\text{ kN}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate the area (A)",
+          "content": "$A = \\text{width} \\times \\text{height} = 4 \\text{ m} \\times 2 \\text{ m} = 8 \\text{ m}^2$"
+        },
+        {
+          "title": "Calculate the depth to the centroid ($\\bar{h}$)",
+          "content": "The gate is $2 \\text{ m}$ high, so its centroid is at mid-height ($1 \\text{ m}$ from the top edge). $\\bar{h} = 3 \\text{ m} + (2 \\text{ m} / 2) = 4 \\text{ m}$."
+        },
+        {
+          "title": "Calculate the total force (F)",
+          "content": "$F = \\gamma \\cdot \\bar{h} \\cdot A = 9.81 \\text{ kN/m}^3 \\times 4 \\text{ m} \\times 8 \\text{ m}^2 = 313.92 \\text{ kN}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "Gauge Pressure",
+    "question": "A storage tank contains oil with a specific gravity ($SG$) of $0.82$ to a depth of $3 \\text{ m}$ resting on top of $2 \\text{ m}$ of water. What is the gauge pressure at the bottom of the tank? Use $g = 9.81 \\text{ m/s}^2$ and $\\rho_{water} = 1000 \\text{ kg/m}^3$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$34.2 \\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$43.8 \\text{ kPa}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$50.1 \\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$24.1 \\text{ kPa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate pressure due to oil layer",
+          "content": "$\\rho_{oil} = 0.82 \\times 1000 = 820 \\text{ kg/m}^3$. $P_{oil} = 820 \\times 9.81 \\times 3 = 24132.6 \\text{ Pa} \\approx 24.13 \\text{ kPa}$."
+        },
+        {
+          "title": "Calculate pressure due to water layer",
+          "content": "$P_{water} = 1000 \\times 9.81 \\times 2 = 19620 \\text{ Pa} = 19.62 \\text{ kPa}$."
+        },
+        {
+          "title": "Calculate total gauge pressure",
+          "content": "$P_{total} = P_{oil} + P_{water} = 24.13 + 19.62 = 43.75 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "U-tube Manometer",
+    "question": "A U-tube manometer containing mercury ($SG = 13.6$) is connected to a water pipe. The mercury level in the open-to-atmosphere arm is $15 \\text{ cm}$ higher than the level in the arm connected to the pipe. If the water-mercury interface is $10 \\text{ cm}$ below the pipe centerline, calculate the gauge pressure in the pipe. Use $\\gamma_{water} = 9.81 \\text{ kN/m}^3$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$19.0 \\text{ kPa}$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$21.1 \\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$17.4 \\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$25.2 \\text{ kPa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Set up the manometer equation",
+          "content": "$P_{pipe} + \\gamma_{w}h_{w} - \\gamma_{Hg}h_{Hg} = 0$. $P_{pipe} = (SG_{Hg} \\cdot \\gamma_{w})h_{Hg} - \\gamma_{w}h_{w}$."
+        },
+        {
+          "title": "Perform calculation",
+          "content": "$P_{pipe} = 9.81 \\times (13.6 \\times 0.15 - 0.1) = 9.81 \\times 1.94 = 19.0314 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "Archimedes’ Principle",
+    "question": "A rectangular wooden block with a specific gravity of $0.60$ measures $1.0 \\text{ m}$ wide, $1.0 \\text{ m}$ long, and $0.50 \\text{ m}$ high. If the block is floating in fresh water ($\\rho = 1000 \\text{ kg/m}^3$), what is the submerged depth (draft) of the block?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$0.20 \\text{ m}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$0.30 \\text{ m}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$0.40 \\text{ m}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$0.50 \\text{ m}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Equilibrium Equation",
+          "content": "For a floating body, $Weight = Buoyancy \\Rightarrow \\rho_{block} V_{block} = \\rho_{water} V_{submerged}$."
+        },
+        {
+          "title": "Simplify for Depth",
+          "content": "$(SG \\cdot \\rho_{water}) \\cdot (Area \\cdot H) = \\rho_{water} \\cdot (Area \\cdot d) \\Rightarrow d = SG \\times H$."
+        },
+        {
+          "title": "Final Calculation",
+          "content": "$d = 0.60 \\times 0.50 \\text{ m} = 0.30 \\text{ m}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "Hydrostatic Pressure at a Depth",
+    "question": "Assuming the density of water is $1,000\\text{ kg/m}^3$ and the acceleration due to gravity is $9.81\\text{ m/s}^2$. What is the hydrostatic pressure at a depth of $20\\text{ meters}$?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$98.1\\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$147.2\\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$196.2\\text{ kPa}$",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$245.3\\text{ kPa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Hydrostatic Pressure Formula",
+          "content": "$P = \\rho \\cdot g \\cdot h = 1000 \\times 9.81 \\times 20 = 196,200 \\text{ Pa}$."
+        },
+        {
+          "title": "Convert to kPa",
+          "content": "$P = 196,200 / 1,000 = 196.2 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "Total Pressure on Submerged Plate",
+    "question": "Determine the total pressure on a circular plate of diameter 2 m, which is placed vertically in water in such a way that the Center of the plate is 2.5 m below the free surface of the water.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "70058 N",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "72058 N",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "77048 N",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "71058 N",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Area",
+          "content": "$A = \\pi d^2 / 4 = \\pi (2)^2 / 4 = \\pi \\approx 3.14159 \\text{ m}^2$."
+        },
+        {
+          "title": "Calculate Hydrostatic Force",
+          "content": "$F = \\rho g A \\bar{h} = 1000 \\times 9.81 \\times 3.14159 \\times 2.5 \\approx 77047.5 \\text{ N}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "Calculating Relative Density of an Object",
+    "question": "An object weighing 100 N in the air was found to weight 75 N when fully submerged in water. The relative density of the object is:",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "4.0",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "4.5",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "2.5",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "1.125",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Buoyant Force",
+          "content": "$F_b = W_{air} - W_{water} = 100 - 75 = 25 \\text{ N}$."
+        },
+        {
+          "title": "Calculate Relative Density",
+          "content": "$RD = W_{air} / F_b = 100 / 25 = 4.0$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "Buoyancy and Displaced Volume",
+    "question": "A body of dimensions $1.5 \\text{ m} \\times 1.0 \\text{ m} \\times 3.0 \\text{ m}$ weighs 196.2 kN in water. Find its weight in air.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "196.2 kN",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "210.5 kN",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "440.3 kN",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "240.3 kN",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Volume",
+          "content": "$V = 1.5 \\times 1.0 \\times 3.0 = 4.5 \\text{ m}^3$."
+        },
+        {
+          "title": "Calculate Buoyant Force",
+          "content": "$F_b = \\rho g V = 1000 \\times 9.81 \\times 4.5 = 44145 \\text{ N} = 44.145 \\text{ kN}$."
+        },
+        {
+          "title": "Calculate Weight in Air",
+          "content": "$W_{air} = W_{water} + F_b = 196.2 + 44.145 = 240.345 \\text{ kN}$."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Fluid Statics",
+    "title": "Mountain Height from Barometric Pressure",
+    "question": "What is the approximate height of a mountain if barometer pressure at sea level and at the mountain is respectively $760\\text{ mm}$ and $724\\text{ mm}$ of Mercury considering air density as $1.2\\text{ kg/m}^3$?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$36\\text{ m}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$41\\text{ m}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$360\\text{ m}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$410\\text{ m}$",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Pressure Difference in Hg",
+          "content": "$\\Delta h_{Hg} = 760 - 724 = 36 \\text{ mm} = 0.036 \\text{ m of Hg}$."
+        },
+        {
+          "title": "Relate to Air Column",
+          "content": "$\\rho_{air} \\cdot g \\cdot H = \\rho_{Hg} \\cdot g \\cdot \\Delta h_{Hg} \\Rightarrow H = (\\rho_{Hg} \\cdot \\Delta h_{Hg}) / \\rho_{air}$."
+        },
+        {
+          "title": "Final Calculation",
+          "content": "$H = (13600 \\times 0.036) / 1.2 = 408 \\text{ m} \\approx 410 \\text{ m}$."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Energy, Impulse, and Momentum",
+    "title": "Continuity Equation",
+    "question": "Water flows through a horizontal pipe that undergoes a reduction in diameter. At section 1, the diameter is $D_1 = 10$ cm, the pressure is $P_1 = 200$ kPa, and the velocity is $v_1 = 2$ m/s. At section 2, the diameter is $D_2 = 5$ cm. Assuming incompressible, inviscid flow and neglecting changes in elevation, what is the pressure $P_2$ at section 2? (Density of water $\\rho = 1,000$ kg/m$^3$)",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "150 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "170 kPa",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "185 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "230 kPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Find Velocity $v_2$ using Continuity Equation",
+          "content": "For an incompressible fluid, $A_1 v_1 = A_2 v_2$. Solving for $v_2$: $v_2 = v_1 (D_1/D_2)^2 = 2 \\text{ m/s} \\times (10/5)^2 = 8 \\text{ m/s}$."
+        },
+        {
+          "title": "Find Pressure $P_2$ using Bernoulli's Equation",
+          "content": "Using $P_2 = P_1 + \\frac{1}{2}\\rho (v_1^2 - v_2^2)$ and converting $P_1$ to Pascals ($200,000 \\text{ Pa}$): $P_2 = 200,000 + \\frac{1}{2}(1,000)(2^2 - 8^2) = 200,000 - 30,000 = 170,000 \\text{ Pa} = 170 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Energy, Impulse, and Momentum",
+    "title": "Force Required to Hold a Bend",
+    "question": "Water flows through a $90^\\circ$ horizontal pipe bend at a rate of $0.1\\text{ m}^3/\\text{s}$. The pipe diameter is constant at $20\\text{ cm}$ and the gauge pressure throughout the bend is $150\\text{ kPa}$. What is the magnitude of the horizontal force component (in the direction of the initial flow) required to hold the bend in place?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$3.18\\text{ kN}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$4.71\\text{ kN}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$5.03\\text{ kN}$",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$7.11\\text{ kN}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Area and Velocity",
+          "content": "$A = \\pi D^2 / 4 = \\pi (0.2)^2 / 4 \\approx 0.031416\\text{ m}^2$. Velocity $v = Q/A = 0.1 / 0.031416 \\approx 3.183\\text{ m/s}$."
+        },
+        {
+          "title": "Apply Momentum Equation",
+          "content": "For a $90^\\circ$ bend, the horizontal reaction force $R_x$ must satisfy $P A + R_x = -\\rho Q v$. Therefore, $|R_x| = P A + \\rho Q v$."
+        },
+        {
+          "title": "Final Calculation",
+          "content": "$|R_x| = (150,000 \\times 0.031416) + (1000 \\times 0.1 \\times 3.183) = 4712.4 + 318.3 = 5030.7\\text{ N} \\approx 5.03\\text{ kN}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Energy, Impulse, and Momentum",
+    "title": "Force Exerted by a Jet",
+    "question": "A water jet with a diameter of $50\\text{ mm}$ and a velocity of $10\\text{ m/s}$ strikes a stationary hemispherical vane, which deflects the water by $180^\\circ$ back in the direction it came from. What is the magnitude of the force exerted by the jet on the vane? Assume water density is $1000\\text{ kg/m}^3$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$196\\text{ N}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$393\\text{ N}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$589\\text{ N}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$785\\text{ N}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Cross-sectional Area",
+          "content": "$A = \\pi d^2 / 4 = \\pi (0.05)^2 / 4 \\approx 0.0019635\\text{ m}^2$."
+        },
+        {
+          "title": "Apply Impulse-Momentum Principle",
+          "content": "The force for a $180^\\circ$ deflection is $F = \\rho A v [v - (-v)] = 2\\rho A v^2$."
+        },
+        {
+          "title": "Final Calculation",
+          "content": "$F = 2 \\times 1000 \\times 0.0019635 \\times (10)^2 = 392.7\\text{ N} \\approx 393\\text{ N}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Internal Flow",
+    "title": "Reynold’s Number",
+    "question": "A circular pipe with a diameter of $D = 0.5 \\text{ m}$ carries water at a velocity of $V = 2 \\text{ m/s}$. If the dynamic viscosity of water is $\\mu = 1.0 \\times 10^{-3} \\text{ Pa} \\cdot \\text{s}$ and its density is $\\rho = 1000 \\text{ kg/m}^3$, calculate the Reynolds number ($Re$) and determine the type of flow.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$Re = 1.0 \\times 10^5$, Laminar",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$Re = 1.0 \\times 10^6$, Turbulent",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$Re = 5.0 \\times 10^5$, Turbulent",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$Re = 2.0 \\times 10^6$, Turbulent",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate the Reynolds number",
+          "content": "$Re = \\dfrac{\\rho V D}{\\mu} = \\dfrac{1000 \\times 2 \\times 0.5}{1.0 \\times 10^{-3}} = \\dfrac{1000}{0.001} = 1.0 \\times 10^6$."
+        },
+        {
+          "title": "Determine flow type",
+          "content": "For pipe flow, $Re > 4000$ is considered turbulent. Since $1.0 \\times 10^6 > 4000$, the flow is turbulent."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Internal Flow",
+    "title": "Pressure Drop due to Friction",
+    "question": "Water flows through a horizontal $100 \\text{ mm}$ diameter pipe at a velocity of $2 \\text{ m/s}$. If the pipe length is $50 \\text{ m}$ and the Darcy friction factor is $0.02$, what is the pressure drop due to friction? (Assume density of water $\\rho = 1000 \\text{ kg/m}^3$)",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$10 \\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$20 \\text{ kPa}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$30 \\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$40 \\text{ kPa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Darcy-Weisbach Equation",
+          "content": "$\\Delta P = f \\cdot \\dfrac{L}{D} \\cdot \\dfrac{\\rho v^2}{2}$"
+        },
+        {
+          "title": "Substitute and Calculate",
+          "content": "$\\Delta P = 0.02 \\cdot \\left( \\dfrac{50}{0.1} \\right) \\cdot \\left( \\dfrac{1000 \\cdot 2^2}{2} \\right) = 0.02 \\cdot 500 \\cdot 2000 = 20,000 \\text{ Pa}$."
+        },
+        {
+          "title": "Convert to kPa",
+          "content": "$20,000 \\text{ Pa} = 20 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Internal Flow",
+    "title": "Venturi Meter",
+    "question": "A horizontal Venturi meter is used to measure water flow. The inlet diameter is $200\\text{ mm}$ and the throat diameter is $100\\text{ mm}$. If the pressure difference between the inlet and the throat is $50\\text{ kPa}$, find the ideal volumetric flow rate. Assume $\\rho = 1000\\text{ kg/m}^3$ and neglect losses.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$0.041\\text{ m}^3/\\text{s}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$0.062\\text{ m}^3/\\text{s}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$0.081\\text{ m}^3/\\text{s}$",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$0.103\\text{ m}^3/\\text{s}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Areas and Ratio",
+          "content": "$A_1 = \\pi(0.2)^2/4 \\approx 0.031416 \\text{ m}^2$, $A_2 = \\pi(0.1)^2/4 \\approx 0.007854 \\text{ m}^2$. Ratio $A_2/A_1 = 0.25$."
+        },
+        {
+          "title": "Apply Venturi Formula",
+          "content": "$Q = \\dfrac{A_2}{\\sqrt{1 - (A_2/A_1)^2}} \\sqrt{\\dfrac{2 \\Delta P}{\\rho}} = \\dfrac{0.007854}{\\sqrt{1 - 0.0625}} \\sqrt{\\dfrac{2 \\times 50,000}{1000}} \\approx 0.007854 \\times 1.033 \\times 10 \\approx 0.081 \\text{ m}^3/\\text{s}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Internal Flow",
+    "title": "Bernoulli Principle in Narrowing Pipe",
+    "question": "Water at 20°C ($\\rho = 1000$ kg/m$^3$) flows through a horizontal pipe that narrows from a diameter of 10 cm at section 1 to 5 cm at section 2. If the velocity at section 1 is 2 m/s and the gauge pressure is 200 kPa, what is the gauge pressure at section 2, assuming inviscid, incompressible flow?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "170 kPa",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "140 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "185 kPa",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "230 kPa",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Velocity at Section 2",
+          "content": "Using $A_1 v_1 = A_2 v_2 \\Rightarrow v_2 = v_1(d_1/d_2)^2 = 2(10/5)^2 = 8 \\text{ m/s}$."
+        },
+        {
+          "title": "Apply Bernoulli's Equation",
+          "content": "$P_2 = P_1 + \\frac{1}{2}\\rho(v_1^2 - v_2^2) = 200,000 + 500(2^2 - 8^2) = 200,000 - 30,000 = 170,000 \\text{ Pa}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "External Flow",
+    "title": "Airfoil Lift Per Unit Span",
+    "question": "An airfoil with a chord length of $1.5$ m is tested in a wind tunnel at a flow velocity of $50$ m/s and air density $\\rho = 1.225 \\text{ kg/m}^3$. If the lift coefficient $C_L$ is $0.8$, what is the lift force per unit span (width) of the airfoil?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$918.8$ N/m",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$1225.0$ N/m",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$1837.5$ N/m",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$2450.0$ N/m",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understand the Lift Force Formula",
+          "content": "The lift force per unit span ($L'$) is derived from the total lift formula $L = \\frac{1}{2} \\rho v^2 A C_L$. Since $A = c \\times b$ (chord $\\times$ span), the lift per unit span is $L' = \\frac{L}{b} = \\frac{1}{2} \\rho v^2 c C_L$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "Substitute the given values: $L' = 0.5 \\times 1.225 \\times (50)^2 \\times 1.5 \\times 0.8$. Calculating this gives $L' = 0.5 \\times 1.225 \\times 2500 \\times 1.2 = 1837.5 \\text{ N/m}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "External Flow",
+    "title": "Drag Force on a Submerged Sphere",
+    "question": "A smooth sphere with a diameter of $0.05$ m is submerged in water ($\\rho = 1000 \\text{ kg/m}^3$) and moves at a constant velocity of $2$ m/s. If the drag coefficient for the sphere is $C_D = 0.5$, what is the total drag force acting on the sphere?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$0.98$ N",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$1.96$ N",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$3.93$ N",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$7.85$ N",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate the Projected Area",
+          "content": "The projected area ($A$) of a sphere is the area of its central circle: $A = \\frac{\\pi d^2}{4} = \\frac{\\pi \\times (0.05)^2}{4} \\approx 0.0019635 \\text{ m}^2$."
+        },
+        {
+          "title": "Apply the Drag Force Equation",
+          "content": "Using the formula $F_D = \\frac{1}{2} \\rho v^2 A C_D$, substitute the known values: $F_D = 0.5 \\times 1000 \\times (2)^2 \\times 0.0019635 \\times 0.5$."
+        },
+        {
+          "title": "Final Calculation",
+          "content": "$F_D = 500 \\times 4 \\times 0.0019635 \\times 0.5 = 1000 \\times 0.0019635 = 1.9635 \\text{ N}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Compressible Flow",
+    "title": "Nozzle Flow Stagnation Temperature",
+    "question": "A gas flows through a nozzle where the temperature is $250$ K and the Mach number is $M = 2.0$. If the ratio of specific heats is $k = 1.4$, what is the stagnation temperature ($T_0$) of the flow?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$350$ K",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$400$ K",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$450$ K",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$500$ K",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Stagnation Temperature Relation",
+          "content": "Using the isentropic relation: $\\dfrac{T_0}{T} = 1 + \\dfrac{k - 1}{2} M^2$."
+        },
+        {
+          "title": "Calculate the Temperature Ratio",
+          "content": "Substitute the values: $\\dfrac{T_0}{250} = 1 + \\dfrac{1.4 - 1}{2} (2.0)^2 = 1 + (0.2)(4) = 1.8$."
+        },
+        {
+          "title": "Solve for $T_0$",
+          "content": "$T_0 = 250 \\times 1.8 = 450 \\text{ K}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Compressible Flow",
+    "title": "Mach Number",
+    "question": "An aircraft is flying at a speed of $250 \\text{ m/s}$ in air where the ambient temperature is $15^\\circ\\text{C}$. Assuming air behaves as an ideal gas with $k = 1.4$ and $R = 287 \\text{ J/kg} \\cdot \\text{K}$, what is the Mach number of the flow?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$0.54$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$0.63$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$0.73$",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$0.82$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate the Speed of Sound ($c$)",
+          "content": "$T = 15 + 273.15 = 288.15 \\text{ K}$. Speed of sound $c = \\sqrt{kRT} = \\sqrt{1.4 \\times 287 \\times 288.15} \\approx 340.26 \\text{ m/s}$."
+        },
+        {
+          "title": "Calculate the Mach Number ($M$)",
+          "content": "$M = \\dfrac{v}{c} = \\dfrac{250}{340.26} \\approx 0.735$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Compressible Flow",
+    "title": "Stagnation Temperature of Air",
+    "question": "Air ($k = 1.4$) flows at a Mach number of $0.80$ with a static temperature of $300 \\text{ K}$. What is the stagnation (total) temperature of the air?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$312.4 \\text{ K}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$338.4 \\text{ K}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$354.2 \\text{ K}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$368.1 \\text{ K}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Temperature Ratio",
+          "content": "$\\dfrac{T_0}{T} = 1 + \\dfrac{1.4 - 1}{2} (0.80)^2 = 1 + 0.2 \\times 0.64 = 1.128$."
+        },
+        {
+          "title": "Calculate $T_0$",
+          "content": "$T_0 = 300 \\times 1.128 = 338.4 \\text{ K}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Compressible Flow",
+    "title": "Flight Speed and Mach Number",
+    "question": "An aircraft is flying at an altitude where the ambient air temperature is $-30^\\circ$C. If the aircraft's Pitot-static tube measures a Mach number of $0.85$, what is the flight speed of the aircraft? (Assume $k = 1.4$ and $R = 287$ J/(kg $\\cdot$ K) for air).",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "245 m/s",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "266 m/s",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "283 m/s",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "312 m/s",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Convert Temperature",
+          "content": "$T = -30 + 273.15 = 243.15 \\text{ K}$."
+        },
+        {
+          "title": "Calculate Speed of Sound",
+          "content": "$a = \\sqrt{kRT} = \\sqrt{1.4 \\cdot 287 \\cdot 243.15} \\approx 312.57 \\text{ m/s}$."
+        },
+        {
+          "title": "Calculate Flight Speed",
+          "content": "$v = M \\cdot a = 0.85 \\cdot 312.57 \\approx 265.68 \\text{ m/s}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Compressible Flow",
+    "title": "Stagnation Temperature Calculation",
+    "question": "In a steady, isentropic, compressible flow of an ideal gas, if the static temperature is 300 K and the Mach number is 2.0, what is the stagnation (total) temperature? (Assume $k = 1.4$ for the gas).",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "360 K",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "480 K",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "540 K",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "600 K",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Formula",
+          "content": "$\\dfrac{T_0}{T} = 1 + \\dfrac{k - 1}{2}M^2$."
+        },
+        {
+          "title": "Calculation",
+          "content": "$T_0 = 300 \\times (1 + \\dfrac{0.4}{2} \\times 2.0^2) = 300 \\times (1 + 0.8) = 300 \\times 1.8 = 540 \\text{ K}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Power and Efficiency",
+    "title": "Pump Power",
+    "question": "A pump is used to move water between two open reservoirs with a surface elevation difference of $20\\text{ m}$. The total head loss in the system is $5\\text{ m}$. If the flow rate is $0.1\\text{ m}^3/\\text{s}$, what is the required power delivered to the fluid by the pump? Use $g = 9.81\\text{ m/s}^2$ and $\\rho = 1000\\text{ kg/m}^3$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$19.6\\text{ kW}$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$24.5\\text{ kW}$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "$29.4\\text{ kW}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$49.0\\text{ kW}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate the Total Dynamic Head ($H$)",
+          "content": "The total head is the sum of elevation difference and head loss: $H = \\Delta z + h_L = 20\\text{ m} + 5\\text{ m} = 25\\text{ m}$."
+        },
+        {
+          "title": "Apply the Hydraulic Power Formula",
+          "content": "Using $P = \\rho g Q H$: $P = 1000 \\times 9.81 \\times 0.1 \\times 25 = 24525\\text{ W}$."
+        },
+        {
+          "title": "Convert to kilowatts",
+          "content": "$P = 24525 / 1000 = 24.525\\text{ kW}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Power and Efficiency",
+    "title": "Pump Power Requirement Calculation",
+    "question": "A water pump delivers $500 \\text{ gpm}$ against a total dynamic head of $120 \\text{ ft}$. If the pump efficiency is $75\\%$, what is the required brake horsepower (BHP)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "11.4 HP",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "20.2 HP",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "15.2 HP",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "25.4 HP",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Determine the Water Horsepower (WHP)",
+          "content": "Using the US units formula $WHP = \\dfrac{Q \\cdot H \\cdot SG}{3960}$ where $SG=1.0$: $WHP = \\dfrac{500 \\cdot 120}{3960} \\approx 15.15 \\text{ HP}$."
+        },
+        {
+          "title": "Calculate the Brake Horsepower (BHP)",
+          "content": "Account for efficiency: $BHP = \\dfrac{WHP}{\\eta} = \\dfrac{15.15}{0.75} = 20.2 \\text{ HP}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Performance Curves",
+    "title": "Pump and System Curve Intersection",
+    "question": "A system curve is defined by the equation $H_s = 25 + 0.05Q^2$ and a pump performance curve is defined by $H_p = 100 - 0.10Q^2$, where $H$ is in feet and $Q$ is in gallons per minute (gpm). At what flow rate $Q$ will the pump operate in this system?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "15.8 gpm",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "22.4 gpm",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "30.0 gpm",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "50.0 gpm",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Algebraic Setup",
+          "content": "The operating point occurs where $H_s = H_p$. Set the equations equal: $25 + 0.05Q^2 = 100 - 0.10Q^2$."
+        },
+        {
+          "title": "Solve for Q",
+          "content": "Rearrange to group $Q^2$ terms: $0.15Q^2 = 75$. Dividing by $0.15$ gives $Q^2 = 500$. Taking the square root, $Q = \\sqrt{500} \\approx 22.36 \\text{ gpm}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Performance Curves",
+    "title": "Pumps in Parallel Configuration",
+    "question": "Two identical pumps are installed in a parallel configuration. Which of the following statements correctly describes the resulting combined pump performance curve compared to a single pump?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "The head is doubled for any given flow rate.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The flow rate is doubled for any given head.",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Both the head and the flow rate are doubled.",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The efficiency is doubled across all operating points.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Operating Principle",
+          "content": "In a parallel configuration, pumps discharge into a common header, meaning they all operate against the same system head."
+        },
+        {
+          "title": "Performance Characteristics",
+          "content": "For a constant head, the total flow rate is the sum of the individual flow rates. For two identical pumps, the flow rate doubles ($Q_{total} = 2Q$) while the head remains the same as a single pump."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Performance Curves",
+    "title": "Cavitation",
+    "question": "The vapor pressure of a liquid at a certain temperature is $P_v = 4.2 \\text{ kPa}$. If the atmospheric pressure is $P_{atm} = 101.3 \\text{ kPa}$, what is the minimum absolute pressure required at any point in a flow system to prevent cavitation?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$4.2 \\text{ kPa}$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$97.1 \\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$101.3 \\text{ kPa}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$105.5 \\text{ kPa}$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Threshold",
+          "content": "Cavitation occurs when the local static pressure drops below the vapor pressure ($P_{abs} < P_v$). To prevent it, $P_{abs} \\geq P_v$."
+        },
+        {
+          "title": "Determine Minimum Pressure",
+          "content": "Since $P_v$ is given as $4.2 \\text{ kPa}$ (absolute), the minimum absolute pressure required is $4.2 \\text{ kPa}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Performance Curves",
+    "title": "Net Positive Suction Head",
+    "question": "In the context of centrifugal pumps, which of the following statements best describes the effect of increasing the pump speed $N$ on the required Net Positive Suction Head ($NPSH_R$)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$NPSH_R$ remains constant because it depends only on the impeller geometry.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$NPSH_R$ decreases because the higher kinetic energy reduces the static pressure drop.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$NPSH_R$ increases approximately in proportion to the square of the speed ($N^2$).",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$NPSH_R$ increases linearly with the speed ($N$).",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Affinity Laws",
+          "content": "$NPSH_R$ is a head requirement. According to pump affinity laws, head varies with the square of the speed ratio: $H \\propto N^2$."
+        },
+        {
+          "title": "Relationship for $NPSH_R$",
+          "content": "Internal pressure drops that dictate $NPSH_R$ are tied to kinetic energy changes ($v^2/2g$). Thus, $NPSH_{R2} = NPSH_{R1} (N_2/N_1)^2$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Performance Curves",
+    "title": "Centrifugal Pump Affinity Laws",
+    "question": "A centrifugal pump operating at 1750 RPM provides a head of 50 ft. If the pump speed is increased to 3500 RPM, what is the new head produced by the pump, assuming the impeller diameter remains constant?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "100 ft",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "150 ft",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "200 ft",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "250 ft",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Speed Ratio",
+          "content": "The speed ratio is $N_2/N_1 = 3500/1750 = 2$."
+        },
+        {
+          "title": "Apply Head Affinity Law",
+          "content": "Using $H_2/H_1 = (N_2/N_1)^2$, we get $H_2 = 50 \\times (2)^2 = 50 \\times 4 = 200 \\text{ ft}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Scaling Laws",
+    "title": "Pump Affinity Laws for Head",
+    "question": "A centrifugal pump delivers $100$ gpm at a head of $50$ ft when rotating at $1750$ rpm. If the speed is increased to $3500$ rpm while the impeller diameter remains constant, what is the new head produced by the pump according to the affinity laws?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "75 ft",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "100 ft",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "150 ft",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "200 ft",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Affinity Laws Principle",
+          "content": "For a constant impeller diameter, the head ($H$) is proportional to the square of the rotational speed ($N$): $H_2 = H_1 \\times (N_2/N_1)^2$."
+        },
+        {
+          "title": "Calculation",
+          "content": "The speed ratio is $3500/1750 = 2$. Substituting into the formula: $H_2 = 50 \\times (2)^2 = 50 \\times 4 = 200 \\text{ ft}$."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Scaling Laws",
+    "title": "Pump Affinity Laws for Power",
+    "question": "A centrifugal pump operating at $1,750$ rpm delivers $500$ gpm at a head of $100$ ft with a power requirement of $15$ hp. If the pump speed is increased to $3,500$ rpm while maintaining the same impeller diameter, what is the new power requirement of the pump?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "30 hp",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "60 hp",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "120 hp",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "240 hp",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Affinity Laws for Power",
+          "content": "For a constant impeller diameter, the power required ($P$) is proportional to the cube of the rotational speed ($N$): $P_2 = P_1 \\times (N_2/N_1)^3$."
+        },
+        {
+          "title": "Calculation",
+          "content": "The speed ratio is $3500/1750 = 2$. Substituting into the formula: $P_2 = 15 \\times (2)^3 = 15 \\times 8 = 120 \\text{ hp}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  }
+    ],
     'electricity': [],
     'thermo-heat': []
 };
