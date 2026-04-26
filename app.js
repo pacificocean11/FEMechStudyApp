@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.add('active');
 
                 // Close sidebar on mobile after navigation
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
+                if (sidebar) sidebar.classList.remove('active');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
             });
         });
     }
@@ -119,7 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'settings': 'Settings',
             'quiz-view': 'Practice Session'
         };
-        pageTitle.textContent = titles[pageId] || 'ENGG.tv';
+        if (pageTitle) {
+            pageTitle.textContent = titles[pageId] || 'ENGG.tv';
+        }
 
         // Toggle Pages
         pages.forEach(page => {
@@ -136,44 +138,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Render Subjects in Study Tab
+    
     function renderSubjects() {
         if (!subjectList) return;
         subjectList.innerHTML = '';
         
-        SUBJECTS.forEach(subject => {
-            const subjectHeader = document.createElement('div');
-            subjectHeader.className = 'subject-section-header';
-            subjectHeader.innerHTML = `
-                <div class="subject-title">
-                    <span class="subject-icon">${subject.icon}</span>
-                    <h2>${subject.name}</h2>
+        const colors = [
+            {bg: 'bg-primary-fixed', text: 'text-primary', icon: 'thermostat'},
+            {bg: 'bg-tertiary-fixed', text: 'text-tertiary', icon: 'water_drop'},
+            {bg: 'bg-orange-100', text: 'text-primary', icon: 'architecture'},
+            {bg: 'bg-primary-fixed-dim/30', text: 'text-primary', icon: 'waves'},
+            {bg: 'bg-green-100', text: 'text-green-700', icon: 'payments'}
+        ];
+        
+        SUBJECTS.forEach((subject, idx) => {
+            const color = colors[idx % colors.length];
+            
+            // Calculate progress
+            const questionsInSubject = (QUESTIONS[subject.id] || []).length;
+            const completed = (state.userProgress[subject.id] && state.userProgress[subject.id].completed) || 0;
+            const percentage = questionsInSubject > 0 ? Math.round((completed / questionsInSubject) * 100) : 0;
+            
+            const subjectCard = document.createElement('div');
+            subjectCard.className = 'bg-surface-container-lowest rounded-[16px] p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-white/50 flex flex-col gap-4 active:scale-[0.98] transition-transform duration-150 cursor-pointer';
+            
+            subjectCard.onclick = () => startQuiz(subject.id);
+            
+            subjectCard.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl ${color.bg} flex items-center justify-center">
+                            <span class="material-symbols-outlined ${color.text} text-2xl" data-icon="${color.icon}">${color.icon}</span>
+                        </div>
+                        <div>
+                            <h3 class="font-title-sm text-title-sm text-on-surface">${subject.name}</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">${questionsInSubject} Questions Available</p>
+                        </div>
+                    </div>
+                    <span class="font-label-caps text-label-caps text-secondary">${percentage}%</span>
+                </div>
+                <div class="w-full bg-surface-container-high h-2.5 rounded-full overflow-hidden">
+                    <div class="bg-secondary h-full rounded-full" style="width: ${percentage}%"></div>
                 </div>
             `;
-            subjectList.appendChild(subjectHeader);
-
-            const topicGrid = document.createElement('div');
-            topicGrid.className = 'topic-grid-study';
             
-            subject.topics.forEach(topic => {
-                const questionsCount = (QUESTIONS[subject.id] || []).filter(q => q.topic === topic).length;
-                const topicCard = document.createElement('div');
-                topicCard.className = 'topic-card-study';
-                topicCard.innerHTML = `
-                    <div class="topic-info">
-                        <h3>${topic}</h3>
-                        <p>${questionsCount} Questions</p>
-                    </div>
-                    <button class="btn-start-topic" onclick="startQuiz('${subject.id}', '${topic}')">Start Quiz</button>
-                `;
-                topicGrid.appendChild(topicCard);
-            });
-            
-            subjectList.appendChild(topicGrid);
+            subjectList.appendChild(subjectCard);
         });
-
-        // Inline handlers in generated HTML now handle startQuiz
     }
-
+    
     // Quiz Engine
     function startQuiz(subjectId, topicName) {
         const subject = SUBJECTS.find(s => s.id === subjectId);
@@ -706,6 +718,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // Settings Functionality
+    const btnAccount = document.getElementById('btn-account-info');
+    const btnNotif = document.getElementById('btn-notifications');
+    const toggleDark = document.getElementById('toggle-dark-mode');
+    const btnSub = document.getElementById('btn-subscription');
+    const btnSupport = document.getElementById('btn-support');
+    const btnLogout = document.getElementById('btn-logout');
+
+    if (btnAccount) btnAccount.addEventListener('click', () => alert('Account Information settings coming soon!'));
+    if (btnNotif) btnNotif.addEventListener('click', () => alert('Notification Preferences coming soon!'));
+    if (btnSub) btnSub.addEventListener('click', () => alert('Subscription Plan settings coming soon!'));
+    if (btnSupport) btnSupport.addEventListener('click', () => alert('Help & Support coming soon!'));
+    if (btnLogout) btnLogout.addEventListener('click', () => { if(confirm('Are you sure you want to log out?')) alert('Logged out successfully.'); });
+
+    if (toggleDark) {
+        // Initialize toggle state based on body classes
+        toggleDark.checked = document.body.classList.contains('dark-theme') || document.documentElement.classList.contains('dark');
+        toggleDark.addEventListener('change', (e) => {
+            if(e.target.checked) {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark-theme');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('dark-theme');
+            }
+        });
     }
 
     // Expose functions to global scope for inline handlers

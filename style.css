@@ -26,7 +26,7 @@
     font-family: 'Inter', sans-serif;
 }
 
-body {
+.legacy-wrapper {
     background-color: var(--bg-main);
     background-image: linear-gradient(rgba(255, 248, 245, 0.95), rgba(255, 248, 245, 0.95)), url('fe_mechanical_hero_1776590848661.png');
     background-size: cover;
@@ -37,7 +37,7 @@ body {
     height: 100vh;
 }
 
-#app {
+.legacy-wrapper #app {
     display: flex;
     height: 100vh;
 }
@@ -933,6 +933,13 @@ header h1 {
     display: block;
 }
 
+/* Fix Tailwind making MathJax SVGs block elements */
+mjx-container svg {
+    display: inline !important;
+    max-width: 100%;
+    height: auto;
+}
+
 .question-image-container, .step-image-container {
     margin: 1.5rem 0;
     display: flex;
@@ -1233,11 +1240,14 @@ header h1 {
     }
 
     .quiz-container {
-        padding: 1.5rem;
+        padding: 1rem;
+        width: 100%;
+        overflow-x: hidden;
     }
 
     #question-text {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
+        word-break: break-word;
     }
 
     .quiz-header {

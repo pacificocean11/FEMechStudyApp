@@ -37,146 +37,317 @@
     <link rel="stylesheet" type="text/css" href="https://tikzjax.com">
     <script src="https://tikzjax.com"></script>
 
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Lexend:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#281900",
+            "inverse-primary": "#ffba38",
+            "on-error-container": "#93000a",
+            "inverse-on-surface": "#f3f0ef",
+            "secondary-fixed-dim": "#ffb1c3",
+            "secondary-container": "#e4006c",
+            "surface": "#fcf9f8",
+            "surface-bright": "#fcf9f8",
+            "tertiary-fixed": "#eddcff",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#d7baff",
+            "inverse-surface": "#313030",
+            "surface-container-low": "#f6f3f2",
+            "on-tertiary-fixed-variant": "#5a2a9c",
+            "primary": "#7e5700",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#3f0019",
+            "secondary": "#b60055",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#dcd9d9",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "outline": "#847560",
+            "primary-container": "#ffb300",
+            "on-primary": "#ffffff",
+            "on-background": "#1c1b1b",
+            "on-surface": "#1c1b1b",
+            "background": "#fcf9f8",
+            "on-primary-container": "#6b4900"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "card-padding": "24px",
+            "stack-lg": "24px",
+            "stack-sm": "4px",
+            "base": "8px",
+            "stack-md": "12px",
+            "gutter": "16px",
+            "margin-page": "20px"
+          },
+          "fontFamily": {
+            "display-lg": ["Space Grotesk"],
+            "body-sm": ["Lexend"],
+            "label-caps": ["Lexend"],
+            "body-base": ["Lexend"],
+            "headline-md": ["Space Grotesk"],
+            "title-sm": ["Lexend"]
+          },
+          "fontSize": {
+            "display-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+            "body-base": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .circular-progress {
+      background: conic-gradient(#b60055 35% 0%, #f0eded 35% 100%);
+    }
+  </style>
 </head>
 
-<body class="dark-theme">
-    <div class="sidebar-overlay" id="sidebar-overlay"></div>
-    <div id="app">
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar">
-            <div class="logo">
-                <img src="engg_tv_logo.png" alt="ENGG.tv" class="logo-img">
+<body class="bg-background text-on-surface font-body-base min-h-screen pb-24 dark-theme overflow-x-hidden break-words">
+    
+    
+    <!-- TopAppBar Section -->
+<header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm docked full-width top-0 z-50 fixed w-full">
+<div class="flex justify-between items-center w-full px-5 py-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young male engineering student with a friendly expression in a modern bright setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe2S82u2sZJ3xmW3cB9zBfpog-Qu3ypJ-ZTjq6ymCTfI96k-XIcFqQH3_f-tnsCfhMQ8xlR31x9mShYD9i8-wV6691uWOysJOwRmYJOT1Ri-FqPpcoLhpq1mI6oavBfjrHajem7t3UOUFVx768eyERSx9s7OsNOezurrmnjosEF6xlDNMD4mV6KEGawwDBhd8IsqV63tn97lLQ5B0aCocCRUAL3iKJJLR_byQT4Dg_BIwq5vtnwpwp3QJNAE0FMVnXpM1IfkQKccq4"/>
+</div>
+<span class="text-2xl font-black text-amber-500 dark:text-amber-400 tracking-tighter font-space-grotesk">Engg.tv</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-50 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+    <main class="px-margin-page pt-20 flex flex-col gap-stack-lg max-w-xl mx-auto">
+        <section id="dashboard" class="page active">
+            
+<!-- Hero Greeting -->
+<section class="mt-4">
+<p class="font-label-caps text-label-caps text-secondary mb-stack-sm uppercase">Welcome back, Alex</p>
+<h1 class="font-display-lg text-display-lg text-on-surface leading-tight">Your Engineering Journey</h1>
+</section>
+<!-- Bento Grid Dashboard -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Overall Progress Card -->
+<div class="col-span-2 bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-surface-variant/20 flex items-center justify-between">
+<div class="flex flex-col gap-stack-sm">
+<span class="font-label-caps text-label-caps text-outline uppercase">Overall Progress</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">35% Completed</h2>
+<p class="font-body-sm text-body-sm text-outline">You're ahead of 60% of peers!</p>
+<button class="mt-stack-md bg-primary-container text-on-primary-container font-body-base font-bold px-4 py-2 rounded-lg active:scale-95 transition-transform w-fit">
+            Resume Course
+          </button>
+</div>
+<div class="relative w-24 h-24 flex items-center justify-center">
+<div class="circular-progress w-full h-full rounded-full flex items-center justify-center">
+<div class="bg-surface-container-lowest w-20 h-20 rounded-full flex items-center justify-center">
+<span class="font-display-lg text-title-sm text-secondary">35%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Daily Streak Card -->
+<div class="col-span-1 bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col items-center text-center gap-stack-md">
+<span class="font-label-caps text-label-caps text-outline uppercase">Daily Streak</span>
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<p class="font-display-lg text-display-lg text-primary">5</p>
+<p class="font-body-sm text-body-sm text-outline">Days</p>
+</div>
+</div>
+<!-- Upcoming Exam Card -->
+<div class="col-span-1 bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
+<span class="font-label-caps text-label-caps text-outline uppercase">Next Exam</span>
+<div class="flex flex-col">
+<p class="font-title-sm text-title-sm text-on-surface">Thermodynamics</p>
+<p class="font-body-sm text-body-sm text-secondary font-bold mt-1">In 2 days</p>
+</div>
+<div class="mt-auto flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-amber-100 flex items-center justify-center text-[10px] font-bold text-amber-700">MS</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-pink-100 flex items-center justify-center text-[10px] font-bold text-pink-700">+12</div>
+</div>
+</div>
+<!-- Recent Activity Section -->
+<div class="col-span-2 flex flex-col gap-stack-md">
+<div class="flex justify-between items-center px-1">
+<h3 class="font-headline-md text-title-sm text-on-surface">Recent Activity</h3>
+<button class="text-secondary font-label-caps text-label-caps uppercase">View All</button>
+</div>
+<div class="flex flex-col gap-stack-md">
+<!-- Activity Item 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="quiz">quiz</span>
+</div>
+<div class="flex-1">
+<p class="font-title-sm text-body-base text-on-surface">Fluid Mechanics Quiz</p>
+<p class="font-body-sm text-body-sm text-outline">Score: 85% • Completed 2h ago</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Activity Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="menu_book">menu_book</span>
+</div>
+<div class="flex-1">
+<p class="font-title-sm text-body-base text-on-surface">Digital Logic Review</p>
+<p class="font-body-sm text-body-sm text-outline">15 pages • Reviewed 5h ago</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+
+        </section>
+        
+        <section id="study" class="page">
+            <div class="mb-stack-lg mt-4">
+                <span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-stack-sm block">Core Curriculum</span>
+                <h1 class="font-display-lg text-display-lg text-on-surface leading-tight">Study Topics</h1>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Master the fundamentals of engineering through curated practice tracks.</p>
             </div>
-            <ul class="nav-links">
-                <li class="active" data-page="dashboard" id="nav-dashboard">
-                    <span class="icon">📊</span> Dashboard
-                </li>
-                <li data-page="study" id="nav-study">
-                    <span class="icon">📚</span> Study Topics
-                </li>
-                <li data-page="exam" id="nav-exam">
-                    <span class="icon">⏱️</span> Mock Exam
-                </li>
+            <!-- Container for JS injected subjects -->
+            <div id="subject-list" class="flex flex-col gap-gutter"></div>
+        </section>
 
-                <li data-page="settings" id="nav-settings">
-                    <span class="icon">⚙️</span> Settings
-                </li>
-            </ul>
-            <div class="user-profile">
-                <div class="avatar">JS</div>
-                <div class="user-info">
-                    <p class="user-name">John Smith</p>
-                    <p class="user-rank">Novice Engineer</p>
-                </div>
-            </div>
-        </nav>
+        <section id="settings" class="page">
+            
+<!-- Profile Header Section -->
+<section class="mb-stack-lg flex flex-col items-center text-center">
+<div class="relative mb-stack-md">
+<div class="w-24 h-24 rounded-3xl bg-surface-container-highest flex items-center justify-center overflow-hidden card-shadow">
+<img alt="John Smith" class="w-full h-full object-cover" data-alt="Close-up profile photo of John Smith, a professional young man, studio lighting, clear high quality aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5KvXfnOr12k5SzP6fbV0MWcvNYjQppUc89dWdHwtt0LrMrxWc1UtbF12daBvTIvDM4-Pbiso8pORGGDZgEp95bsmWYDbPdggsVh89FcxWsuzHhPxhY9KM5FxwbYYVVJlRdHw1eVngYCCJYLEwkE1OZnwygR0y-za4B_I1aACLrZJ5_SsP0Uundq_5ePMlIxpXJi2YoSsNZnCF4Mp0shocQ1xiC60lxWTjsK-CY3Md962fc6vAc6Csv8KEhV8gBTOGs4jAoTC5mKjN"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-secondary text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</div>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-1">John Smith</h2>
+<div class="inline-flex items-center gap-2 bg-amber-50 px-4 py-1.5 rounded-full border border-amber-100">
+<span class="material-symbols-outlined text-amber-600 text-[18px]" data-icon="military_tech">military_tech</span>
+<span class="font-label-caps text-label-caps text-amber-700 uppercase">Novice Engineer</span>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<div class="grid grid-cols-2 gap-gutter mb-stack-lg">
+<div class="bg-white rounded-xl p-card-padding card-shadow border border-slate-50">
+<span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">STREAK</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500" data-icon="local_fire_department">local_fire_department</span>
+<span class="font-headline-md text-headline-md">12 Days</span>
+</div>
+</div>
+<div class="bg-white rounded-xl p-card-padding card-shadow border border-slate-50">
+<span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">COURSES</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="school">school</span>
+<span class="font-headline-md text-headline-md">4 Total</span>
+</div>
+</div>
+</div>
+<!-- Settings List -->
+<section class="space-y-stack-md">
+<h3 class="font-label-caps text-label-caps text-slate-400 px-2">PREFERENCES</h3>
+<div class="bg-white rounded-2xl card-shadow overflow-hidden border border-slate-50">
+<!-- Account Info -->
+<button id="btn-account-info" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed/30 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<span class="font-title-sm text-title-sm">Account Information</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Notification Prefs -->
+<button id="btn-notifications" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 transition-colors border-t border-slate-50 group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed/30 text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+<span class="font-title-sm text-title-sm">Notification Preferences</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Dark Mode -->
+<div class="w-full flex items-center justify-between p-card-padding border-t border-slate-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</div>
+<span class="font-title-sm text-title-sm">Dark Mode</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input id="toggle-dark-mode" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</div>
+<!-- Subscription Plan -->
+<button id="btn-subscription" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 transition-colors border-t border-slate-50 group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div class="text-left">
+<span class="font-title-sm text-title-sm block">Subscription Plan</span>
+<span class="text-[12px] font-medium text-secondary">Free Tier</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Help & Support -->
+<button id="btn-support" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 transition-colors border-t border-slate-50 group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-on-tertiary-fixed-variant/10 text-on-tertiary-fixed-variant flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</div>
+<span class="font-title-sm text-title-sm">Help &amp; Support</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Logout Section -->
+<section class="mt-stack-lg pb-stack-lg">
+<button id="btn-logout" class="w-full h-12 flex items-center justify-center gap-2 rounded-2xl border-2 border-error/20 text-error font-title-sm hover:bg-error/5 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </button>
+<p class="text-center text-[12px] text-slate-400 mt-stack-md font-medium tracking-wide">VERSION 2.4.0 (BETA)</p>
+</section>
 
-        <!-- Main Content Area -->
-        <main class="content">
-            <header>
-                <div class="header-left">
-                    <button id="menu-toggle" class="mobile-only">☰</button>
-                    <h1 id="page-title">Dashboard</h1>
-                </div>
-                <div class="header-actions">
-                    <div class="search-bar">
-                        <input type="text" placeholder="Search topics...">
-                    </div>
-                    <div class="notifications">
-                        <span class="icon">🔔</span>
-                    </div>
-                </div>
-            </header>
-
-            <div id="page-container">
-                <!-- Dashboard Page -->
-                <section id="dashboard" class="page active">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3>Overall Progress</h3>
-                            <div class="progress-ring-container">
-                                <div class="progress-ring" style="--progress: 35%;">
-                                    <span>35%</span>
-                                </div>
-                            </div>
-                            <p>You've completed 142/400 questions</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Ready for Exam?</h3>
-                            <div class="readiness-score">
-                                <span class="score-value">62</span>
-                                <span class="score-label">Confidence Score</span>
-                            </div>
-                            <p>Improve Statics & Dynamics to reach 80+</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3>Daily Streak</h3>
-                            <div class="streak-value">5 Days 🔥</div>
-                            <p>Keep going to unlock the "Steady State" badge!</p>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-secondary-grid">
-                        <div class="recent-activity card">
-                            <h2>Recent Activity</h2>
-                            <ul class="activity-list">
-                                <li>
-                                    <span class="activity-icon blue">🔥</span>
-                                    <div class="activity-details">
-                                        <p>Completed Thermodynamics Quiz</p>
-                                        <span>2 hours ago • Score: 85%</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="activity-icon green">📐</span>
-                                    <div class="activity-details">
-                                        <p>Reviewed Mechanics of Materials</p>
-                                        <span>Yesterday • 15 formulas saved</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="activity-icon purple">⚠️</span>
-                                    <div class="activity-details">
-                                        <p>Struggled with Heat Transfer</p>
-                                        <span>2 days ago • Review suggested</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="recommended-topics card">
-                            <h2>Recommended for You</h2>
-                            <div class="topic-grid">
-                                <div class="topic-item">
-                                    <div class="topic-info">
-                                        <h4>Fluid Mechanics</h4>
-                                        <p>24 Questions</p>
-                                    </div>
-                                    <button class="btn-small">Start</button>
-                                </div>
-                                <div class="topic-item">
-                                    <div class="topic-info">
-                                        <h4>Engineering Economics</h4>
-                                        <p>12 Questions</p>
-                                    </div>
-                                    <button class="btn-small">Start</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Study Page -->
-                <section id="study" class="page">
-                    <div class="subject-filter">
-                        <button class="filter-btn active">All Topics</button>
-                    </div>
-                    <div id="subject-list">
-                        <!-- Loaded by JS -->
-                    </div>
-                </section>
-
-                <!-- Mock Exam Page -->
-                <section id="exam" class="page">
+        </section>
+        
+        <!-- Keep old pages but wrap them safely -->
+        <div class="legacy-wrapper">
+    
+            <section id="exam" class="page">
                     <div class="mock-exam-landing">
                         <div class="exam-hero-card">
                             <div class="hero-content">
@@ -238,39 +409,13 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- Formulas Page -->
-                <section id="formulas" class="page">
+            <section id="formulas" class="page">
                     <div class="card">
                         <h2>Formula Reference</h2>
                         <p>Access key FE Mechanical formulas and constants.</p>
                     </div>
                 </section>
-
-                <!-- Settings View -->
-                <section id="settings" class="page">
-                    <div class="settings-container card">
-                        <h2>Settings & Account</h2>
-                        <div class="settings-section">
-                            <h3>Profile</h3>
-                            <div class="profile-info">
-                                <div class="avatar">JS</div>
-                                <div>
-                                    <h4>John Smith</h4>
-                                    <p>FE Mechanical Candidate</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="settings-section">
-                            <h3>Data Management</h3>
-                            <p>Resetting your progress will clear all subject completion data and confidence scores.</p>
-                            <button id="reset-data-btn" class="btn-secondary danger">Reset All Progress</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Quiz View (Dynamic) -->
-                <section id="quiz-view" class="page">
+            <section id="quiz-view" class="page">
                     <div class="quiz-header">
                         <button id="exit-quiz" class="btn-text">← Back to Topics</button>
                         <div class="quiz-progress-bar">
@@ -319,9 +464,7 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- Results View -->
-                <section id="results-view" class="page">
+            <section id="results-view" class="page">
                     <div class="results-container card text-center">
                         <div class="results-header">
                             <span class="results-icon">🏆</span>
@@ -366,10 +509,46 @@
                         </div>
                     </div>
                 </section>
-            </div>
-        </main>
-    </div>
-
+        </div>
+    </main>
+    
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_rgba(255,179,0,0.05)] rounded-t-2xl">
+        <ul class="nav-links flex justify-around w-full m-0 p-0" style="list-style: none;">
+            <li data-page="dashboard" id="nav-dashboard" class="flex flex-col items-center justify-center px-3 py-1.5 active:scale-90 transition-transform duration-150 cursor-pointer active">
+                <span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+                <span class="font-space-grotesk text-[11px] font-semibold uppercase tracking-wider">Dashboard</span>
+            </li>
+            <li data-page="study" id="nav-study" class="flex flex-col items-center justify-center px-3 py-1.5 active:scale-90 transition-transform duration-150 cursor-pointer">
+                <span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+                <span class="font-space-grotesk text-[11px] font-semibold uppercase tracking-wider">Topics</span>
+            </li>
+            <li data-page="exam" id="nav-exam" class="flex flex-col items-center justify-center px-3 py-1.5 active:scale-90 transition-transform duration-150 cursor-pointer">
+                <span class="material-symbols-outlined mb-1" data-icon="quiz">quiz</span>
+                <span class="font-space-grotesk text-[11px] font-semibold uppercase tracking-wider">Exams</span>
+            </li>
+            <li data-page="settings" id="nav-settings" class="flex flex-col items-center justify-center px-3 py-1.5 active:scale-90 transition-transform duration-150 cursor-pointer">
+                <span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+                <span class="font-space-grotesk text-[11px] font-semibold uppercase tracking-wider">Settings</span>
+            </li>
+        </ul>
+    </nav>
+    <style>
+        .nav-links li {
+            color: #94a3b8;
+        }
+        .nav-links li.active {
+            background-color: #fffbeb;
+            color: #d97706;
+            border-radius: 0.75rem;
+        }
+        .nav-links li.active .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        .legacy-wrapper {
+            width: 100%;
+        }
+    </style>
+    
     <script src="questions.js"></script>
     <script src="app.js"></script>
 </body>
