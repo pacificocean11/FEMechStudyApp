@@ -62,7 +62,7 @@
                 <span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">engineering</span>
             </div>
             <h1 class="font-space text-4xl font-black tracking-tighter text-accent-navy">Engg.tv</h1>
-            <p class="text-slate-500 font-medium mt-1 text-center">Your FE Mechanical Exam Companion</p>
+            <p class="text-slate-500 font-medium mt-1 text-center">Your FE Exam Companion</p>
         </div>
 
         <!-- Auth Card -->
@@ -230,6 +230,10 @@
             if (mode === 'login') {
                 if (user === 'demo' && pass === 'habit-tracker') {
                     loginSuccess({ username: 'demo', email: 'demo@engg.tv', tier: 'premium', discipline: 'Mechanical' });
+                    return;
+                }
+                if (user === 'admin' && pass === 'tiptop007') {
+                    loginSuccess({ username: 'admin', email: 'admin@engg.tv', tier: 'premium', discipline: 'Mechanical' });
                     return;
                 }
                 if (users[user] && users[user].password === pass) {

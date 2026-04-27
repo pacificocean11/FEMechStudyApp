@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         })(),
         subjects: (() => {
             const discipline = localStorage.getItem('enggtv_discipline');
-            return discipline === 'Mechanical' ? MECHANICAL_SUBJECTS : OTHER_SUBJECTS;
+            if (discipline === 'Mechanical') return MECHANICAL_SUBJECTS;
+            if (discipline === 'Civil' || discipline === 'Civil Engineering') return CIVIL_SUBJECTS;
+            return OTHER_SUBJECTS;
         })()
     };
 
@@ -98,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupMobileMenu();
         updateUIForTier();
         startFreeTrialTimer();
+        updateDashboardStats();
     }
 
     function startFreeTrialTimer() {
@@ -186,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (examHeadline) {
             if (discipline === 'Mechanical') {
                 examHeadline.textContent = 'FE Mechanical Mock Exam';
+            } else if (discipline === 'Civil' || discipline === 'Civil Engineering') {
+                examHeadline.textContent = 'FE Civil Mock Exam';
             } else {
                 examHeadline.textContent = 'FE Other discipline Mock Exam';
             }
@@ -302,8 +307,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Specific Page Logic
+        if (pageId === 'dashboard') {
+            updateDashboardStats();
+        }
         if (pageId === 'study') {
             renderSubjects();
+        }
+        if (pageId === 'account-info-view') {
+            initAccountInfo();
+            const adminSelector = document.getElementById('admin-discipline-selector');
+            if (adminSelector) {
+                if (state.user.username === 'admin') {
+                    adminSelector.classList.remove('hidden');
+                    const selectDisc = document.getElementById('select-discipline');
+                    if (selectDisc) {
+                        selectDisc.value = localStorage.getItem('enggtv_discipline') || 'Mechanical';
+                    }
+                } else {
+                    adminSelector.classList.add('hidden');
+                }
+            }
         }
 
         // Update nav active state (Sidebar and Bottom Nav)
@@ -367,6 +390,41 @@ document.addEventListener('DOMContentLoaded', () => {
             
             subjectList.appendChild(subjectCard);
         });
+        updateDashboardStats();
+    }
+
+    function updateDashboardStats() {
+        const textDisplay = document.getElementById('overall-progress-text');
+        const circleDisplay = document.getElementById('overall-progress-circle-text');
+        const circleBg = document.getElementById('overall-progress-circle');
+        
+        if (!textDisplay || !circleDisplay || !circleBg) return;
+
+        let totalQuestions = 0;
+        let totalCompleted = 0;
+
+        state.subjects.forEach(subject => {
+            const questionsInSubject = (QUESTIONS[subject.id] || []).length;
+            const completed = (state.userProgress[subject.id] && state.userProgress[subject.id].completed) || 0;
+            
+            totalQuestions += questionsInSubject;
+            totalCompleted += completed;
+        });
+
+        const percentage = totalQuestions > 0 ? Math.round((totalCompleted / totalQuestions) * 100) : 0;
+
+        textDisplay.textContent = `${percentage}% Completed`;
+        circleDisplay.textContent = `${percentage}%`;
+        
+        // Update circle visual
+        circleBg.style.background = `conic-gradient(#FF006E ${percentage}% 0%, #f0eded ${percentage}% 100%)`;
+        
+        // Optional: Update peer comparison text
+        const peerText = textDisplay.nextElementSibling;
+        if (peerText && peerText.tagName === 'P') {
+            const peerPercent = Math.min(99, Math.max(5, percentage + 25)); // Mock logic
+            peerText.textContent = `You're ahead of ${peerPercent}% of peers!`;
+        }
     }
     
     // Quiz Engine
@@ -683,6 +741,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.removeItem('enggtv_progress');
                     state.userProgress = {};
                     renderSubjects();
+                    updateDashboardStats();
                     alert("All progress has been reset.");
                 }
             });
@@ -934,8 +993,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initAccountInfo() {
         // Display Discipline (Static)
-        const savedDiscipline = state.user.discipline || 'Mechanical';
+        const savedDiscipline = localStorage.getItem('enggtv_discipline') || state.user.discipline || 'Mechanical';
         if (userDisciplineDisplay) userDisciplineDisplay.textContent = savedDiscipline;
+        if (document.getElementById('discipline-profile-display')) {
+            document.getElementById('discipline-profile-display').textContent = savedDiscipline;
+        }
 
         // Load/Set Date Joined
         let dateJoined = localStorage.getItem('enggtv_date_joined');
@@ -945,6 +1007,32 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('enggtv_date_joined', dateJoined);
         }
         if (dateJoinedDisplay) dateJoinedDisplay.textContent = dateJoined;
+    }
+
+    const selectDiscipline = document.getElementById('select-discipline');
+    if (selectDiscipline) {
+        selectDiscipline.addEventListener('change', (e) => {
+            const newDiscipline = e.target.value;
+            localStorage.setItem('enggtv_discipline', newDiscipline);
+            state.user.discipline = newDiscipline;
+            
+            // Reload subjects
+            if (newDiscipline === 'Mechanical') state.subjects = MECHANICAL_SUBJECTS;
+            else if (newDiscipline === 'Civil' || newDiscipline === 'Civil Engineering') state.subjects = CIVIL_SUBJECTS;
+            else state.subjects = OTHER_SUBJECTS;
+            
+            updateUIForTier();
+            renderSubjects();
+            updateDashboardStats();
+            
+            // Update labels in account info view immediately
+            if (userDisciplineDisplay) userDisciplineDisplay.textContent = newDiscipline;
+            if (document.getElementById('discipline-profile-display')) {
+                document.getElementById('discipline-profile-display').textContent = newDiscipline;
+            }
+            
+            alert(`Discipline changed to ${newDiscipline}. Content updated.`);
+        });
     }
 
     initAccountInfo();

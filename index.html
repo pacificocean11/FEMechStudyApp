@@ -168,44 +168,43 @@
 <div class="col-span-2 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-surface-variant/20 dark:border-slate-800 flex items-center justify-between">
 <div class="flex flex-col gap-stack-sm">
 <span class="font-label-caps text-label-caps text-outline uppercase">Overall Progress</span>
-<h2 class="font-headline-md text-headline-md text-on-surface dark:text-slate-100">35% Completed</h2>
+<h2 id="overall-progress-text" class="font-headline-md text-headline-md text-on-surface dark:text-slate-100">0% Completed</h2>
 <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">You're ahead of 60% of peers!</p>
 <button class="mt-stack-md bg-primary-container text-on-primary-container font-body-base font-bold px-4 py-2 rounded-lg active:scale-95 transition-transform w-fit" onclick="navigateTo('study')">
             Resume Course
           </button>
 </div>
 <div class="relative w-24 h-24 flex items-center justify-center">
-<div class="circular-progress w-full h-full rounded-full flex items-center justify-center">
+<div id="overall-progress-circle" class="circular-progress w-full h-full rounded-full flex items-center justify-center">
 <div class="bg-surface-container-lowest dark:bg-slate-900 w-20 h-20 rounded-full flex items-center justify-center">
-<span class="font-display-lg text-title-sm text-secondary">35%</span>
+<span id="overall-progress-circle-text" class="font-display-lg text-title-sm text-secondary">0%</span>
 </div>
 </div>
 </div>
 </div>
-<!-- Daily Streak Card -->
-<div class="col-span-1 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col items-center text-center gap-stack-md">
-  <span class="font-label-caps text-label-caps text-outline uppercase">Daily Streak</span>
-  <div class="w-16 h-16 bg-[#FF006E]/10 rounded-full flex items-center justify-center">
-    <span class="material-symbols-outlined text-[#FF006E] text-4xl" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
-  </div>
-  <div>
-    <p class="font-display-lg text-display-lg text-[#FF006E] dark:text-[#FF006E]">5</p>
-    <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">Days</p>
-  </div>
-</div>
-
 <!-- Announcements Card -->
-<div class="col-span-1 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
-  <span class="font-label-caps text-label-caps text-outline uppercase">Announcements</span>
-  <div class="flex flex-col gap-1">
-    <p class="font-title-sm text-title-sm text-on-surface dark:text-slate-100">Next Lecture: Thermodynamics</p>
-    <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">May 2, 2026 • 10:00 AM</p>
-    <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">Lecturer: Dr. Sarah Chen</p>
+<div class="col-span-2 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
+  <div class="flex justify-between items-start">
+    <span class="font-label-caps text-label-caps text-outline uppercase">Announcements</span>
+    <span class="material-symbols-outlined text-secondary" data-icon="campaign">campaign</span>
   </div>
-    <button class="mt-auto bg-[#FF006E] text-white font-bold px-4 py-2 rounded-lg text-sm active:scale-95 transition-all w-fit" onclick="alert('Join link will be active 15 mins before lecture.')">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div class="flex flex-col gap-1">
+      <p class="font-title-sm text-title-sm text-on-surface dark:text-slate-100">Next Lecture: Thermodynamics</p>
+      <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">May 2, 2026 • 10:00 AM EDT</p>
+      <div class="flex flex-wrap gap-x-2 gap-y-0.5 mt-0.5">
+          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">SF: 7:00 AM</span>
+          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Chicago: 9:00 AM</span>
+          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Egypt: 5:00 PM</span>
+          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Dubai: 6:00 PM</span>
+          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Mumbai: 7:30 PM</span>
+      </div>
+      <p class="font-body-sm text-body-sm text-outline dark:text-slate-400 mt-1">Lecturer: Dr. Sarah Chen</p>
+    </div>
+    <button class="bg-[#FF006E] text-white font-bold px-6 py-2.5 rounded-xl text-sm active:scale-95 transition-all w-fit shadow-lg shadow-[#FF006E]/20" onclick="alert('Join link will be active 15 mins before lecture.')">
       Join Session
     </button>
-
+  </div>
 </div>
 
 <!-- Recent Activity Section -->
@@ -276,12 +275,15 @@
 </section>
 <!-- Stats Grid (Bento Style) -->
 <div class="grid grid-cols-2 gap-gutter mb-stack-lg">
-<div class="bg-white dark:bg-slate-900 rounded-xl p-card-padding card-shadow border border-slate-50 dark:border-slate-800">
-<span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">STREAK</span>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-amber-500" data-icon="local_fire_department">local_fire_department</span>
-<span class="font-headline-md text-headline-md dark:text-slate-100">12 Days</span>
-</div>
+<!-- Daily Streak Card -->
+<div class="bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col items-center text-center gap-2 border border-slate-50 dark:border-slate-800">
+  <span class="font-label-caps text-label-caps text-secondary uppercase block">STREAK</span>
+  <div class="w-12 h-12 bg-[#FF006E]/10 rounded-full flex items-center justify-center">
+    <span class="material-symbols-outlined text-[#FF006E] text-2xl" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+  </div>
+  <div>
+    <p class="font-headline-md text-[#FF006E] dark:text-[#FF006E]">5 Days</p>
+  </div>
 </div>
 <div class="bg-white dark:bg-slate-900 rounded-xl p-card-padding card-shadow border border-slate-50 dark:border-slate-800">
 <span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">COURSES</span>
@@ -579,7 +581,15 @@
                                         <span class="font-bold text-accent-pink" id="premium-expiry-display">May 26, 2026</span>
                                     </div>
                                 </div>
-
+                                
+                                <div id="admin-discipline-selector" class="hidden pt-6 border-t border-slate-50 dark:border-slate-800">
+                                    <label class="block text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 ml-1">Change Discipline</label>
+                                    <select id="select-discipline" class="w-full p-4 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-accent-yellow outline-none transition-all font-bold text-slate-800 dark:text-slate-100">
+                                        <option value="Mechanical">Mechanical</option>
+                                        <option value="Civil">Civil</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <button onclick="navigateTo('settings')" class="w-full mt-10 py-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold rounded-2xl active:scale-[0.98] transition-all uppercase tracking-widest text-sm">
