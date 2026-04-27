@@ -19,6 +19,21 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Dark Mode Overrides */
+html.dark {
+    --bg-main: #020617;
+    --card-bg: #0f172a;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --accent-navy: #ffba38;
+}
+
+html.dark body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -35,6 +50,11 @@
     color: var(--text-secondary);
     overflow-x: hidden;
     height: 100vh;
+}
+
+html.dark .legacy-wrapper {
+    background-color: var(--bg-main);
+    background-image: none; /* Remove background image in dark mode for better legibility */
 }
 
 .legacy-wrapper #app {
@@ -142,6 +162,10 @@
     overflow-y: auto;
     padding: 2rem 3rem;
     background: radial-gradient(circle at top right, rgba(255, 0, 110, 0.04), transparent);
+}
+
+html.dark .content {
+    background: radial-gradient(circle at top right, rgba(255, 186, 56, 0.05), transparent);
 }
 
 header {
@@ -624,7 +648,7 @@ header h1 {
 
 .option {
     padding: 1.2rem 1.5rem;
-    background: #fff9f6;
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -633,6 +657,11 @@ header h1 {
     align-items: center;
     gap: 15px;
     color: var(--text-secondary);
+}
+
+html.dark .option:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-pink);
 }
 
 .option:hover {
@@ -661,13 +690,18 @@ header h1 {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #fde8ef;
+    background: rgba(114, 0, 38, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     font-size: 0.9rem;
     color: var(--accent-navy);
+}
+
+html.dark .option-prefix {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-yellow);
 }
 
 .option.selected .option-prefix {
@@ -737,7 +771,7 @@ header h1 {
     aspect-ratio: 1;
     border-radius: 8px;
     border: 1px solid var(--border-color);
-    background: #fff9f6;
+    background: var(--card-bg);
     color: var(--text-secondary);
     font-weight: 600;
     cursor: pointer;
@@ -858,6 +892,11 @@ header h1 {
     transition: var(--transition);
 }
 
+html.dark .result-item {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+
 .result-item:hover {
     transform: translateX(5px);
     border-color: var(--accent-pink);
@@ -881,11 +920,10 @@ header h1 {
 .result-text {
     font-size: 0.95rem;
     font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.4;
     color: var(--text-primary);
 }
+
 
 .quiz-footer {
     display: flex;
@@ -1024,6 +1062,11 @@ mjx-container svg {
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
 }
+
+html.dark .results-stat {
+    background: rgba(255, 255, 255, 0.03);
+}
+
 
 .results-stat .label {
     display: block;
@@ -1298,7 +1341,7 @@ mjx-container svg {
 }
 
 .exam-hero-card {
-    background: linear-gradient(135deg, var(--sidebar-bg), #3d0015);
+    background: linear-gradient(135deg, #FF006E, #720026);
     border-radius: var(--radius-lg);
     padding: 3.5rem;
     display: grid;
@@ -1337,7 +1380,7 @@ mjx-container svg {
 }
 
 .hero-content h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-family: 'Outfit';
     margin-bottom: 1.5rem;
     line-height: 1.1;
@@ -1472,18 +1515,20 @@ mjx-container svg {
 }
 
 .empty-history {
-    background: white;
+    background: var(--card-bg);
     padding: 3rem;
     border-radius: var(--radius-lg);
-    border: 2px dashed var(--border-color);
     text-align: center;
-    color: var(--text-secondary);
+    border: 1px dashed var(--border-color);
 }
 
 @media (max-width: 900px) {
     .exam-hero-card {
         grid-template-columns: 1fr;
         padding: 2rem;
+    }
+    .hero-content h2 {
+        font-size: 1.5rem;
     }
     .hero-visual {
         display: none;

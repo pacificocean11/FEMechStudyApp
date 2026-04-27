@@ -21,8 +21,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })(),
         isFinished: false,
-        isMockExam: false
+        isMockExam: false,
+        user: (() => {
+            try {
+                const user = JSON.parse(localStorage.getItem('enggtv_user')) || { tier: 'free' };
+                // Force Mechanical for demo user
+                if (user.username === 'demo') {
+                    user.discipline = 'Mechanical';
+                    localStorage.setItem('enggtv_user', JSON.stringify(user));
+                    localStorage.setItem('enggtv_discipline', 'Mechanical');
+                }
+                return user;
+            } catch (e) {
+                return { tier: 'free' };
+            }
+        })(),
+        subjects: (() => {
+            const discipline = localStorage.getItem('enggtv_discipline');
+            return discipline === 'Mechanical' ? MECHANICAL_SUBJECTS : OTHER_SUBJECTS;
+        })()
     };
+
+
+    // For backward compatibility with existing code that uses global SUBJECTS
+    const SUBJECTS = state.subjects;
+
 
     // DOM Elements
     const navItems = document.querySelectorAll('.nav-links li');
@@ -73,7 +96,134 @@ document.addEventListener('DOMContentLoaded', () => {
         renderSubjects();
         setupNavigation();
         setupMobileMenu();
+        updateUIForTier();
+        startFreeTrialTimer();
     }
+
+    function startFreeTrialTimer() {
+        // Only for free tier users
+        if (state.user.tier !== 'free') return;
+
+        const TRIAL_DURATION = 30 * 1000; // 30 seconds
+        const startTime = sessionStorage.getItem('enggtv_trial_start');
+        
+        const now = Date.now();
+        let remainingTime = TRIAL_DURATION;
+
+        if (startTime) {
+            const elapsed = now - parseInt(startTime);
+            remainingTime = TRIAL_DURATION - elapsed;
+        } else {
+            sessionStorage.setItem('enggtv_trial_start', now.toString());
+        }
+
+        if (remainingTime <= 0) {
+            // Trial already expired in this session
+            navigateTo('upgrade-view');
+        } else {
+            // Start the countdown
+            setTimeout(() => {
+                // Double check they haven't upgraded in the meantime
+                const currentUser = JSON.parse(localStorage.getItem('enggtv_user') || '{}');
+                if (currentUser.tier === 'free') {
+                    navigateTo('upgrade-view');
+                    // We could also show a toast message here
+                    console.log('Trial expired. Redirecting to upgrade screen.');
+                }
+            }, remainingTime);
+        }
+    }
+
+    function updateUIForTier() {
+        const badges = [
+            document.getElementById('user-tier-badge'),
+            document.getElementById('user-tier-badge-settings')
+        ];
+        
+        badges.forEach(badge => {
+            if (badge) {
+                badge.textContent = state.user.tier === 'premium' ? 'Premium' : 'Free';
+                badge.className = state.user.tier === 'premium' ? 
+                    'text-[10px] font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full border border-amber-200 uppercase tracking-tighter' :
+                    'text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200 uppercase tracking-tighter';
+            }
+        });
+
+        // Update Subscription Plan labels
+        const subStatuses = [
+            document.getElementById('subscription-status'),
+            document.getElementById('subscription-status-settings')
+        ];
+        subStatuses.forEach(st => {
+            if (st) {
+                st.textContent = state.user.tier === 'premium' ? 'Premium Member' : 'Free Tier';
+                st.className = state.user.tier === 'premium' ? 
+                    'text-[12px] font-bold text-accent-pink' : 
+                    'text-[12px] font-medium text-secondary';
+            }
+        });
+        
+        // Update name display
+        const nameDisplays = document.querySelectorAll('h3.text-xl.font-bold, h2.font-display-lg');
+        nameDisplays.forEach(d => {
+            if ((d.textContent === 'Alex Riviera' || d.textContent === 'John Smith') && state.user.username !== 'demo') {
+                d.textContent = state.user.username;
+            }
+        });
+
+        // Update discipline display
+        const discipline = localStorage.getItem('enggtv_discipline') || 'FE_Other Discipline';
+        const disciplineBadge = document.getElementById('discipline-badge-display');
+        const disciplineProfile = document.getElementById('discipline-profile-display');
+        const disciplineInfo = document.getElementById('user-discipline-display');
+
+        if (disciplineBadge) disciplineBadge.textContent = discipline;
+        if (disciplineProfile) disciplineProfile.textContent = discipline;
+        if (disciplineInfo) disciplineInfo.textContent = discipline;
+
+        // Update Exam Headline
+        const examHeadline = document.getElementById('exam-headline');
+        if (examHeadline) {
+            if (discipline === 'Mechanical') {
+                examHeadline.textContent = 'FE Mechanical Mock Exam';
+            } else {
+                examHeadline.textContent = 'FE Other discipline Mock Exam';
+            }
+        }
+        
+        // Update Premium Expiration
+        const expiryRow = document.getElementById('premium-expiry-row');
+        const expiryDisplay = document.getElementById('premium-expiry-display');
+        const joinedDisplay = document.getElementById('date-joined-display');
+
+        if (expiryRow) {
+            if (state.user.tier === 'premium') {
+                expiryRow.classList.remove('hidden');
+                
+                // If we have a joined date in the UI, calculate 1 month after
+                // Default in HTML is "April 26, 2026", so "May 26, 2026"
+                if (joinedDisplay && joinedDisplay.textContent.includes('April 26')) {
+                    expiryDisplay.textContent = 'May 26, 2026';
+                }
+            } else {
+                expiryRow.classList.add('hidden');
+            }
+        }
+
+        // Hide Subscription Plan button for premium users
+        const subPlanBtn = document.getElementById('btn-subscription');
+        if (subPlanBtn) {
+            if (state.user.tier === 'premium') {
+                subPlanBtn.classList.add('hidden');
+            } else {
+                subPlanBtn.classList.remove('hidden');
+            }
+        }
+    }
+
+
+
+
 
     // Mobile Menu Toggle
     function setupMobileMenu() {
@@ -95,6 +245,20 @@ document.addEventListener('DOMContentLoaded', () => {
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 const pageId = item.getAttribute('data-page');
+                
+                // Tier Check
+                if (state.user.tier === 'free' && (pageId === 'study' || pageId === 'exam')) {
+                    // Check if trial is still active
+                    const TRIAL_DURATION = 30 * 1000;
+                    const startTime = sessionStorage.getItem('enggtv_trial_start');
+                    const isTrialActive = startTime && (Date.now() - parseInt(startTime) < TRIAL_DURATION);
+
+                    if (!isTrialActive) {
+                        navigateTo('upgrade-view');
+                        return;
+                    }
+                }
+
                 navigateTo(pageId);
                 
                 navItems.forEach(nav => nav.classList.remove('active'));
@@ -107,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function navigateTo(pageId) {
+    window.navigateTo = function(pageId) {
         state.currentPage = pageId;
         
         // Update Title
@@ -117,8 +281,14 @@ document.addEventListener('DOMContentLoaded', () => {
             'exam': 'Mock Exam',
             'formulas': 'Formula Reference',
             'settings': 'Settings',
-            'quiz-view': 'Practice Session'
+            'quiz-view': 'Practice Session',
+            'account-info-view': 'Account Information',
+            'support-view': 'Help & Support',
+            'upgrade-view': 'Premium Upgrade',
+            'plans-view': 'Membership Plans'
         };
+
+
         if (pageTitle) {
             pageTitle.textContent = titles[pageId] || 'ENGG.tv';
         }
@@ -135,9 +305,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pageId === 'study') {
             renderSubjects();
         }
-    }
 
-    // Render Subjects in Study Tab
+        // Update nav active state (Sidebar and Bottom Nav)
+        const allNavLinks = document.querySelectorAll('.nav-links li, .bottom-nav-link');
+        allNavLinks.forEach(link => {
+            link.classList.remove('active');
+            const targetPage = link.getAttribute('data-page') || 
+                             (link.getAttribute('onclick') && link.getAttribute('onclick').match(/'([^']+)'/)?.[1]);
+            
+            if (targetPage === pageId) {
+                link.classList.add('active');
+            }
+        });
+
+        window.scrollTo(0, 0);
+    };
+
     
     function renderSubjects() {
         if (!subjectList) return;
@@ -160,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const percentage = questionsInSubject > 0 ? Math.round((completed / questionsInSubject) * 100) : 0;
             
             const subjectCard = document.createElement('div');
-            subjectCard.className = 'bg-surface-container-lowest rounded-[16px] p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-white/50 flex flex-col gap-4 active:scale-[0.98] transition-transform duration-150 cursor-pointer';
+            subjectCard.className = 'bg-surface-container-lowest dark:bg-slate-900 rounded-[16px] p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-white/50 dark:border-slate-800 flex flex-col gap-4 active:scale-[0.98] transition-transform duration-150 cursor-pointer';
             
             subjectCard.onclick = () => startQuiz(subject.id);
             
@@ -171,11 +354,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="material-symbols-outlined ${color.text} text-2xl" data-icon="${color.icon}">${color.icon}</span>
                         </div>
                         <div>
-                            <h3 class="font-title-sm text-title-sm text-on-surface">${subject.name}</h3>
-                            <p class="font-body-sm text-body-sm text-on-surface-variant">${questionsInSubject} Questions Available</p>
+                            <h3 class="font-title-sm text-title-sm text-on-surface dark:text-slate-100">${subject.name}</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400">${questionsInSubject} Questions Available</p>
                         </div>
                     </div>
-                    <span class="font-label-caps text-label-caps text-secondary">${percentage}%</span>
+                    <span class="font-label-caps text-label-caps text-secondary dark:text-pink-400">${percentage}%</span>
                 </div>
                 <div class="w-full bg-surface-container-high h-2.5 rounded-full overflow-hidden">
                     <div class="bg-secondary h-full rounded-full" style="width: ${percentage}%"></div>
@@ -617,16 +800,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Clean up LaTeX for summary if needed, or just show as is
-            const shortText = q.question.replace(/\$/g, '').substring(0, 80) + '...';
+            // Keep LaTeX markers and truncate carefully
+            let displayHeader = q.question;
+            if (displayHeader.length > 100) {
+                displayHeader = displayHeader.substring(0, 100) + '...';
+            }
             
             return `
                 <div class="result-item" data-index="${idx}">
                     <div class="result-status-icon ${status}">${icon}</div>
-                    <div class="result-text">${idx + 1}. ${shortText}</div>
+                    <div class="result-text">${idx + 1}. ${displayHeader}</div>
                 </div>
             `;
         }).join('');
+
+        if (window.MathJax && window.MathJax.typesetPromise) {
+            window.MathJax.typesetPromise();
+        }
 
         document.querySelectorAll('.result-item').forEach(item => {
             item.addEventListener('click', () => {
@@ -636,6 +826,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadQuestion();
             });
         });
+
 
         // Save Progress
         if (!state.isMockExam) {
@@ -728,11 +919,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSupport = document.getElementById('btn-support');
     const btnLogout = document.getElementById('btn-logout');
 
-    if (btnAccount) btnAccount.addEventListener('click', () => alert('Account Information settings coming soon!'));
+    if (btnAccount) btnAccount.addEventListener('click', () => navigateTo('account-info-view'));
+    if (btnSupport) btnSupport.addEventListener('click', () => navigateTo('support-view'));
+    
+    // Account Info View Logic
+    const backToSettingsBtn = document.getElementById('back-to-settings');
+    const saveAccountBtn = document.getElementById('save-account-info');
+    const dateJoinedDisplay = document.getElementById('date-joined-display');
+    const userDisciplineDisplay = document.getElementById('user-discipline-display');
+    const backFromSupportBtn = document.getElementById('back-from-support');
+
+    if (backToSettingsBtn) backToSettingsBtn.addEventListener('click', () => navigateTo('settings'));
+    if (backFromSupportBtn) backFromSupportBtn.addEventListener('click', () => navigateTo('settings'));
+
+    function initAccountInfo() {
+        // Display Discipline (Static)
+        const savedDiscipline = state.user.discipline || 'Mechanical';
+        if (userDisciplineDisplay) userDisciplineDisplay.textContent = savedDiscipline;
+
+        // Load/Set Date Joined
+        let dateJoined = localStorage.getItem('enggtv_date_joined');
+        if (!dateJoined) {
+            const now = new Date();
+            dateJoined = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            localStorage.setItem('enggtv_date_joined', dateJoined);
+        }
+        if (dateJoinedDisplay) dateJoinedDisplay.textContent = dateJoined;
+    }
+
+    initAccountInfo();
     if (btnNotif) btnNotif.addEventListener('click', () => alert('Notification Preferences coming soon!'));
-    if (btnSub) btnSub.addEventListener('click', () => alert('Subscription Plan settings coming soon!'));
-    if (btnSupport) btnSupport.addEventListener('click', () => alert('Help & Support coming soon!'));
-    if (btnLogout) btnLogout.addEventListener('click', () => { if(confirm('Are you sure you want to log out?')) alert('Logged out successfully.'); });
+    if (btnSub) btnSub.addEventListener('click', () => navigateTo('plans-view'));
+    if (btnLogout) btnLogout.addEventListener('click', () => { 
+        if(confirm('Are you sure you want to log out?')) {
+            localStorage.removeItem('enggtv_authenticated');
+            window.location.href = 'login.html';
+        }
+    });
 
     if (toggleDark) {
         // Initialize toggle state based on body classes

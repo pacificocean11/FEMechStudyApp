@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (localStorage.getItem('enggtv_authenticated') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
     <title>ENGG.tv | FE Mechanical Exam Study Suite</title>
     <meta name="description"
         content="A premium study application for the Fundamentals of Engineering (FE) Mechanical Exam. Practice questions, mock exams, and progress tracking.">
@@ -122,17 +127,27 @@
   </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-base min-h-screen pb-24 dark-theme overflow-x-hidden break-words">
+<body class="bg-background dark:bg-slate-950 text-on-surface dark:text-slate-100 font-body-base min-h-screen pb-24 overflow-x-hidden break-words">
     
     
     <!-- TopAppBar Section -->
 <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm docked full-width top-0 z-50 fixed w-full">
 <div class="flex justify-between items-center w-full px-5 py-3">
-<div class="flex items-center gap-3">
+<div class="flex items-center gap-0.5">
 <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
 <img class="w-full h-full object-cover" data-alt="Portrait of a young male engineering student with a friendly expression in a modern bright setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe2S82u2sZJ3xmW3cB9zBfpog-Qu3ypJ-ZTjq6ymCTfI96k-XIcFqQH3_f-tnsCfhMQ8xlR31x9mShYD9i8-wV6691uWOysJOwRmYJOT1Ri-FqPpcoLhpq1mI6oavBfjrHajem7t3UOUFVx768eyERSx9s7OsNOezurrmnjosEF6xlDNMD4mV6KEGawwDBhd8IsqV63tn97lLQ5B0aCocCRUAL3iKJJLR_byQT4Dg_BIwq5vtnwpwp3QJNAE0FMVnXpM1IfkQKccq4"/>
 </div>
-<span class="text-2xl font-black text-amber-500 dark:text-amber-400 tracking-tighter font-space-grotesk">Engg.tv</span>
+<div class="h-10 w-40 flex items-center justify-start">
+<img class="h-full w-full object-contain" src="engg_tv_logo.png" alt="Engg.tv Logo"/>
+</div>
+
+
+
+
+
+
+
+
 </div>
 <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-50 active:scale-95 transition-all duration-200">
 <span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
@@ -145,78 +160,80 @@
 <!-- Hero Greeting -->
 <section class="mt-4">
 <p class="font-label-caps text-label-caps text-secondary mb-stack-sm uppercase">Welcome back, Alex</p>
-<h1 class="font-display-lg text-display-lg text-on-surface leading-tight">Your Engineering Journey</h1>
+<h1 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100 leading-tight">Pass FE Exam with Confidence</h1>
 </section>
 <!-- Bento Grid Dashboard -->
 <div class="grid grid-cols-2 gap-gutter">
 <!-- Overall Progress Card -->
-<div class="col-span-2 bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-surface-variant/20 flex items-center justify-between">
+<div class="col-span-2 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-surface-variant/20 dark:border-slate-800 flex items-center justify-between">
 <div class="flex flex-col gap-stack-sm">
 <span class="font-label-caps text-label-caps text-outline uppercase">Overall Progress</span>
-<h2 class="font-headline-md text-headline-md text-on-surface">35% Completed</h2>
-<p class="font-body-sm text-body-sm text-outline">You're ahead of 60% of peers!</p>
-<button class="mt-stack-md bg-primary-container text-on-primary-container font-body-base font-bold px-4 py-2 rounded-lg active:scale-95 transition-transform w-fit">
+<h2 class="font-headline-md text-headline-md text-on-surface dark:text-slate-100">35% Completed</h2>
+<p class="font-body-sm text-body-sm text-outline dark:text-slate-400">You're ahead of 60% of peers!</p>
+<button class="mt-stack-md bg-primary-container text-on-primary-container font-body-base font-bold px-4 py-2 rounded-lg active:scale-95 transition-transform w-fit" onclick="navigateTo('study')">
             Resume Course
           </button>
 </div>
 <div class="relative w-24 h-24 flex items-center justify-center">
 <div class="circular-progress w-full h-full rounded-full flex items-center justify-center">
-<div class="bg-surface-container-lowest w-20 h-20 rounded-full flex items-center justify-center">
+<div class="bg-surface-container-lowest dark:bg-slate-900 w-20 h-20 rounded-full flex items-center justify-center">
 <span class="font-display-lg text-title-sm text-secondary">35%</span>
 </div>
 </div>
 </div>
 </div>
 <!-- Daily Streak Card -->
-<div class="col-span-1 bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col items-center text-center gap-stack-md">
-<span class="font-label-caps text-label-caps text-outline uppercase">Daily Streak</span>
-<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="col-span-1 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col items-center text-center gap-stack-md">
+  <span class="font-label-caps text-label-caps text-outline uppercase">Daily Streak</span>
+  <div class="w-16 h-16 bg-[#FF006E]/10 rounded-full flex items-center justify-center">
+    <span class="material-symbols-outlined text-[#FF006E] text-4xl" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+  </div>
+  <div>
+    <p class="font-display-lg text-display-lg text-[#FF006E] dark:text-[#FF006E]">5</p>
+    <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">Days</p>
+  </div>
 </div>
-<div>
-<p class="font-display-lg text-display-lg text-primary">5</p>
-<p class="font-body-sm text-body-sm text-outline">Days</p>
+
+<!-- Announcements Card -->
+<div class="col-span-1 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
+  <span class="font-label-caps text-label-caps text-outline uppercase">Announcements</span>
+  <div class="flex flex-col gap-1">
+    <p class="font-title-sm text-title-sm text-on-surface dark:text-slate-100">Next Lecture: Thermodynamics</p>
+    <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">May 2, 2026 • 10:00 AM</p>
+    <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">Lecturer: Dr. Sarah Chen</p>
+  </div>
+    <button class="mt-auto bg-[#FF006E] text-white font-bold px-4 py-2 rounded-lg text-sm active:scale-95 transition-all w-fit" onclick="alert('Join link will be active 15 mins before lecture.')">
+      Join Session
+    </button>
+
 </div>
-</div>
-<!-- Upcoming Exam Card -->
-<div class="col-span-1 bg-surface-container-lowest rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
-<span class="font-label-caps text-label-caps text-outline uppercase">Next Exam</span>
-<div class="flex flex-col">
-<p class="font-title-sm text-title-sm text-on-surface">Thermodynamics</p>
-<p class="font-body-sm text-body-sm text-secondary font-bold mt-1">In 2 days</p>
-</div>
-<div class="mt-auto flex -space-x-2">
-<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold">JD</div>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-amber-100 flex items-center justify-center text-[10px] font-bold text-amber-700">MS</div>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-pink-100 flex items-center justify-center text-[10px] font-bold text-pink-700">+12</div>
-</div>
-</div>
+
 <!-- Recent Activity Section -->
 <div class="col-span-2 flex flex-col gap-stack-md">
 <div class="flex justify-between items-center px-1">
-<h3 class="font-headline-md text-title-sm text-on-surface">Recent Activity</h3>
-<button class="text-secondary font-label-caps text-label-caps uppercase">View All</button>
+<h3 class="font-headline-md text-title-sm text-on-surface dark:text-slate-100">Recent Activity</h3>
+<button class="text-secondary font-label-caps text-label-caps uppercase" onclick="navigateTo('study')">View All</button>
 </div>
 <div class="flex flex-col gap-stack-md">
 <!-- Activity Item 1 -->
-<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex items-center gap-4">
+<div class="bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex items-center gap-4">
 <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center">
 <span class="material-symbols-outlined text-secondary" data-icon="quiz">quiz</span>
 </div>
 <div class="flex-1">
-<p class="font-title-sm text-body-base text-on-surface">Fluid Mechanics Quiz</p>
-<p class="font-body-sm text-body-sm text-outline">Score: 85% • Completed 2h ago</p>
+<p class="font-title-sm text-body-base text-on-surface dark:text-slate-100">Fluid Mechanics Quiz</p>
+<p class="font-body-sm text-body-sm text-outline dark:text-slate-400">Score: 85% • Completed 2h ago</p>
 </div>
 <span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
 </div>
 <!-- Activity Item 2 -->
-<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex items-center gap-4">
+<div class="bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex items-center gap-4">
 <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
 <span class="material-symbols-outlined text-primary" data-icon="menu_book">menu_book</span>
 </div>
 <div class="flex-1">
-<p class="font-title-sm text-body-base text-on-surface">Digital Logic Review</p>
-<p class="font-body-sm text-body-sm text-outline">15 pages • Reviewed 5h ago</p>
+<p class="font-title-sm text-body-base text-on-surface dark:text-slate-100">Digital Logic Review</p>
+<p class="font-body-sm text-body-sm text-outline dark:text-slate-400">15 pages • Reviewed 5h ago</p>
 </div>
 <span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
 </div>
@@ -229,8 +246,8 @@
         <section id="study" class="page">
             <div class="mb-stack-lg mt-4">
                 <span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-stack-sm block">Core Curriculum</span>
-                <h1 class="font-display-lg text-display-lg text-on-surface leading-tight">Study Topics</h1>
-                <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Master the fundamentals of engineering through curated practice tracks.</p>
+                <h1 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100 leading-tight">Study Topics</h1>
+                <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400 mt-2">Master the fundamentals of engineering through curated practice tracks.</p>
             </div>
             <!-- Container for JS injected subjects -->
             <div id="subject-list" class="flex flex-col gap-gutter"></div>
@@ -248,92 +265,107 @@
 <span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
 </div>
 </div>
-<h2 class="font-display-lg text-display-lg text-on-surface mb-1">John Smith</h2>
-<div class="inline-flex items-center gap-2 bg-amber-50 px-4 py-1.5 rounded-full border border-amber-100">
+<div class="flex items-center justify-center gap-3">
+    <h2 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100 mb-1">Alex Riviera</h2>
+    <span id="user-tier-badge"></span>
+</div>
+<div class="inline-flex items-center gap-2 bg-amber-50 dark:bg-amber-900/20 px-4 py-1.5 rounded-full border border-amber-100 dark:border-amber-900/50">
 <span class="material-symbols-outlined text-amber-600 text-[18px]" data-icon="military_tech">military_tech</span>
-<span class="font-label-caps text-label-caps text-amber-700 uppercase">Novice Engineer</span>
+<span id="discipline-badge-display" class="font-label-caps text-label-caps text-amber-700 uppercase">Civil Engineer</span>
 </div>
 </section>
 <!-- Stats Grid (Bento Style) -->
 <div class="grid grid-cols-2 gap-gutter mb-stack-lg">
-<div class="bg-white rounded-xl p-card-padding card-shadow border border-slate-50">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-card-padding card-shadow border border-slate-50 dark:border-slate-800">
 <span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">STREAK</span>
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-amber-500" data-icon="local_fire_department">local_fire_department</span>
-<span class="font-headline-md text-headline-md">12 Days</span>
+<span class="font-headline-md text-headline-md dark:text-slate-100">12 Days</span>
 </div>
 </div>
-<div class="bg-white rounded-xl p-card-padding card-shadow border border-slate-50">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-card-padding card-shadow border border-slate-50 dark:border-slate-800">
 <span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">COURSES</span>
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-tertiary" data-icon="school">school</span>
-<span class="font-headline-md text-headline-md">4 Total</span>
+<span class="font-headline-md text-headline-md dark:text-slate-100">4 Total</span>
 </div>
 </div>
 </div>
 <!-- Settings List -->
 <section class="space-y-stack-md">
 <h3 class="font-label-caps text-label-caps text-slate-400 px-2">PREFERENCES</h3>
-<div class="bg-white rounded-2xl card-shadow overflow-hidden border border-slate-50">
+<div class="bg-white dark:bg-slate-900 rounded-2xl card-shadow overflow-hidden border border-slate-50 dark:border-slate-800">
 <!-- Account Info -->
-<button id="btn-account-info" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 transition-colors group">
+<button id="btn-account-info" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-xl bg-primary-fixed/30 text-primary flex items-center justify-center">
 <span class="material-symbols-outlined" data-icon="person">person</span>
 </div>
-<span class="font-title-sm text-title-sm">Account Information</span>
+<span class="font-title-sm text-title-sm dark:text-slate-100">Account Information</span>
 </div>
 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
 </button>
-<!-- Notification Prefs -->
-<button id="btn-notifications" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 transition-colors border-t border-slate-50 group">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-xl bg-tertiary-fixed/30 text-tertiary flex items-center justify-center">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-</div>
-<span class="font-title-sm text-title-sm">Notification Preferences</span>
-</div>
-<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
 </button>
 <!-- Dark Mode -->
-<div class="w-full flex items-center justify-between p-card-padding border-t border-slate-50">
+<div class="w-full flex items-center justify-between p-card-padding border-t border-slate-50 dark:border-slate-800">
 <div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center">
+<div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center">
 <span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
 </div>
-<span class="font-title-sm text-title-sm">Dark Mode</span>
+<span class="font-title-sm text-title-sm dark:text-slate-100">Dark Mode</span>
 </div>
-<div class="relative inline-flex items-center cursor-pointer">
+<label class="relative inline-flex items-center cursor-pointer">
 <input id="toggle-dark-mode" class="sr-only peer" type="checkbox" value=""/>
-<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
-</div>
+<div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
 </div>
 <!-- Subscription Plan -->
-<button id="btn-subscription" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 transition-colors border-t border-slate-50 group">
+<button id="btn-subscription" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors border-t border-slate-50 dark:border-slate-800 group">
 <div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-xl bg-secondary-fixed/30 text-secondary flex items-center justify-center">
+<div class="w-10 h-10 rounded-xl bg-accent-pink/10 text-accent-pink flex items-center justify-center">
 <span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
 </div>
 <div class="text-left">
-<span class="font-title-sm text-title-sm block">Subscription Plan</span>
-<span class="text-[12px] font-medium text-secondary">Free Tier</span>
+<span class="font-title-sm text-title-sm dark:text-slate-100 block">Subscription Plan</span>
+<span id="subscription-status" class="text-[12px] font-medium text-secondary">Free Tier</span>
 </div>
 </div>
 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
 </button>
 <!-- Help & Support -->
-<button id="btn-support" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 transition-colors border-t border-slate-50 group">
+<button id="btn-support" class="w-full flex items-center justify-between p-card-padding hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors border-t border-slate-50 dark:border-slate-800 group">
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-xl bg-on-tertiary-fixed-variant/10 text-on-tertiary-fixed-variant flex items-center justify-center">
 <span class="material-symbols-outlined" data-icon="help">help</span>
 </div>
-<span class="font-title-sm text-title-sm">Help &amp; Support</span>
+<span class="font-title-sm text-title-sm dark:text-slate-100">Help &amp; Support</span>
 </div>
 <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
 </button>
 </div>
 </section>
+
+<!-- Danger Zone -->
+<section class="mt-stack-lg">
+    <h3 class="font-label-caps text-label-caps text-error px-2 mb-2 uppercase">Danger Zone</h3>
+    <div class="bg-white dark:bg-slate-900 rounded-2xl card-shadow overflow-hidden border border-error/10">
+        <button id="reset-data-btn" class="w-full flex items-center justify-between p-card-padding hover:bg-error/5 transition-colors group">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-xl bg-error/10 text-error flex items-center justify-center">
+                    <span class="material-symbols-outlined" data-icon="restart_alt">restart_alt</span>
+                </div>
+                <div class="text-left">
+                    <span class="font-title-sm text-title-sm text-error block">Reset My Progress</span>
+                    <span class="text-[11px] font-medium text-slate-400">Erase all scores and statistics</span>
+                </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-300 group-hover:text-error transition-colors" data-icon="chevron_right">chevron_right</span>
+        </button>
+    </div>
+</section>
+
 <!-- Logout Section -->
+
 <section class="mt-stack-lg pb-stack-lg">
 <button id="btn-logout" class="w-full h-12 flex items-center justify-center gap-2 rounded-2xl border-2 border-error/20 text-error font-title-sm hover:bg-error/5 transition-all active:scale-[0.98]">
 <span class="material-symbols-outlined" data-icon="logout">logout</span>
@@ -351,9 +383,9 @@
                     <div class="mock-exam-landing">
                         <div class="exam-hero-card">
                             <div class="hero-content">
-                                <div class="hero-badge">Official Simulation</div>
-                                <h2>FE Mechanical Mock Exam</h2>
-                                <p>Test your readiness with a full-length simulated exam. This session follows the official NCEES format guidelines to help you manage time and pressure.</p>
+                                <div class="hero-badge">Simulation</div>
+                                <h2 id="exam-headline">FE Mechanical Mock Exam</h2>
+                                <p>Test your readiness with a full-length simulated exam. This session follows the NCEES format guidelines to help you manage time and pressure.</p>
                                 
                                 <div class="exam-specs">
                                     <div class="spec-item">
@@ -509,26 +541,211 @@
                         </div>
                     </div>
                 </section>
+            <section id="account-info-view" class="page">
+                    <div class="max-w-md mx-auto">
+                        <div class="flex items-center gap-4 mb-8">
+                            <button id="back-to-settings" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center active:scale-90 transition-all">
+                                <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">chevron_left</span>
+                            </button>
+                            <h2 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100">Account Info</h2>
+                        </div>
+
+                        <div class="bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-xl border border-slate-50 dark:border-slate-800">
+                            <div class="flex flex-col items-center mb-8">
+                                <div class="w-24 h-24 rounded-3xl bg-surface-container-highest flex items-center justify-center overflow-hidden card-shadow mb-4">
+                                    <img alt="Alex Riviera" class="w-full h-full object-cover" data-alt="Close-up profile photo of Alex Riviera, a professional young man, studio lighting, clear high quality aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5KvXfnOr12k5SzP6fbV0MWcvNYjQppUc89dWdHwtt0LrMrxWc1UtbF12daBvTIvDM4-Pbiso8pORGGDZgEp95bsmWYDbPdggsVh89FcxWsuzHhPxhY9KM5FxwbYYVVJlRdHw1eVngYCCJYLEwkE1OZnwygR0y-za4B_I1aACLrZJ5_SsP0Uundq_5ePMlIxpXJi2YoSsNZnCF4Mp0shocQ1xiC60lxWTjsK-CY3Md962fc6vAc6Csv8KEhV8gBTOGs4jAoTC5mKjN"/>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100">Alex Riviera</h3>
+                                <p id="discipline-profile-display" class="text-slate-500 dark:text-slate-400">Civil Engineer</p>
+                            </div>
+
+                            <div class="space-y-6">
+                                <div>
+                                <div>
+                                    <div class="flex justify-between items-center px-1">
+                                        <span class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Discipline</span>
+                                        <span class="font-bold text-slate-800 dark:text-slate-100" id="user-discipline-display">Mechanical</span>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6 border-t border-slate-50 dark:border-slate-800">
+                                    <div class="flex justify-between items-center px-1">
+                                        <span class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date Joined</span>
+                                        <span class="font-bold text-slate-800 dark:text-slate-100" id="date-joined-display">April 26, 2026</span>
+                                    </div>
+                                <div id="premium-expiry-row" class="pt-6 border-t border-slate-50 dark:border-slate-800 hidden">
+                                    <div class="flex justify-between items-center px-1">
+                                        <span class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Premium Account expiration</span>
+                                        <span class="font-bold text-accent-pink" id="premium-expiry-display">May 26, 2026</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button onclick="navigateTo('settings')" class="w-full mt-10 py-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold rounded-2xl active:scale-[0.98] transition-all uppercase tracking-widest text-sm">
+                                Return to Settings
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            <section id="support-view" class="page">
+                    <div class="max-w-md mx-auto">
+                        <div class="flex items-center gap-4 mb-8">
+                            <button id="back-from-support" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center active:scale-90 transition-all">
+                                <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">chevron_left</span>
+                            </button>
+                            <h2 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100">Help & Support</h2>
+                        </div>
+
+                        <div class="bg-white dark:bg-slate-900 rounded-[32px] p-10 shadow-xl border border-slate-50 dark:border-slate-800 text-center">
+                            <div class="w-20 h-20 bg-accent-pink/10 text-accent-pink rounded-3xl flex items-center justify-center mx-auto mb-8">
+                                <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">help</span>
+                            </div>
+
+                            <div class="space-y-6">
+                                <p class="text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
+                                    Developed by <span class="text-accent-navy dark:text-accent-yellow font-bold">ENGG.tv developer team</span>.
+                                </p>
+                                
+                                <div class="py-4 border-y border-slate-50 dark:border-slate-800">
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-2">Official Website</p>
+                                    <a href="https://www.ENGG.tv" target="_blank" class="text-xl font-bold text-accent-pink hover:underline">www.ENGG.tv</a>
+                                </div>
+
+                                <p class="text-slate-400 dark:text-slate-500 text-sm font-bold tracking-widest uppercase mt-8">
+                                    ©2026, All rights reserved.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            <section id="upgrade-view" class="page">
+                    <div class="max-w-md mx-auto text-center px-6 pt-10">
+                        <div class="mb-10 animate-bounce">
+                            <div class="w-24 h-24 bg-amber-100 rounded-[40px] flex items-center justify-center mx-auto shadow-inner">
+                                <span class="material-symbols-outlined text-accent-yellow text-5xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            </div>
+                        </div>
+                        
+                        <h2 class="font-display-lg text-3xl font-black text-slate-800 dark:text-slate-100 mb-4 leading-tight">Unlock Your Full Potential</h2>
+                        <p class="text-slate-500 dark:text-slate-400 mb-10 text-lg">Mastering the FE exam requires access to our full library of topics and exam simulations.</p>
+                        
+                        <div class="bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-2xl border border-slate-50 dark:border-slate-800 mb-10 text-left">
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100 mb-6 uppercase tracking-wider text-sm">Premium Benefits</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+                                    <span class="text-slate-600 dark:text-slate-300 font-medium">500+ Practice Questions</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+                                    <span class="text-slate-600 dark:text-slate-300 font-medium">Full-length Mock Simulations</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+                                    <span class="text-slate-600 dark:text-slate-300 font-medium">Detailed Step-by-Step Solutions</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+                                    <span class="text-slate-600 dark:text-slate-300 font-medium">Performance Analytics & Tracking</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button onclick="navigateTo('plans-view')" class="w-full py-5 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 font-black rounded-3xl border-2 border-amber-200 dark:border-amber-900/50 shadow-xl shadow-amber-100 dark:shadow-none transform hover:scale-[1.02] active:scale-95 transition-all text-lg uppercase tracking-widest mb-6">
+                            Check Plans
+                        </button>
+                        
+                        <button onclick="navigateTo('dashboard')" class="text-slate-500 dark:text-slate-400 font-bold hover:text-slate-800 dark:hover:text-slate-200 transition-colors uppercase tracking-widest text-sm">
+                            Maybe Later
+                        </button>
+                    </div>
+                </section>
+
+            <section id="plans-view" class="page">
+                    <div class="max-w-md mx-auto px-6 pt-10">
+                        <div class="flex items-center gap-4 mb-8">
+                            <button onclick="navigateTo('upgrade-view')" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center active:scale-90 transition-all">
+                                <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">chevron_left</span>
+                            </button>
+                            <h2 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100">Choose Plan</h2>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Gold Plan -->
+                            <div class="bg-white dark:bg-slate-900 rounded-[32px] p-8 border-2 border-slate-50 dark:border-slate-800 shadow-xl relative overflow-hidden group hover:border-amber-400 transition-all cursor-pointer" onclick="alert('Gold Plan Selected (Simulation)')">
+                                <div class="flex justify-between items-start mb-6">
+                                    <div>
+                                        <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100">Gold Plan</h3>
+                                        <p class="text-slate-500 dark:text-slate-400 text-sm">1 Month Access</p>
+                                    </div>
+                                    <div class="bg-amber-100 text-amber-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Basic</div>
+                                </div>
+                                <div class="flex items-baseline gap-1 mb-8">
+                                    <span class="text-4xl font-black text-slate-800 dark:text-slate-100">$69</span>
+                                    <span class="text-slate-400 text-sm">/month</span>
+                                </div>
+                                <button class="w-full py-4 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 font-bold rounded-2xl group-hover:bg-amber-400 group-hover:text-white transition-all uppercase tracking-widest text-sm border border-amber-100 dark:border-amber-900/50">
+                                    Get Started
+                                </button>
+                            </div>
+
+                            <!-- Platinum Plan -->
+                            <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-[32px] p-8 border-2 border-accent-yellow shadow-2xl relative overflow-hidden group transform hover:scale-[1.02] transition-all cursor-pointer" onclick="alert('Platinum Plan Selected (Simulation)')">
+                                <div class="absolute top-0 right-0 bg-accent-yellow text-white px-6 py-2 rounded-bl-3xl font-black text-[10px] uppercase tracking-widest shadow-lg">Most Popular</div>
+                                
+                                <div class="flex justify-between items-start mb-6">
+                                    <div>
+                                        <h3 class="text-2xl font-black text-white">Platinum Plan</h3>
+                                        <p class="text-slate-400 text-sm">3 Months Access</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-baseline gap-1 mb-8">
+                                    <span class="text-4xl font-black text-white">$99</span>
+                                    <span class="text-slate-400 text-sm">/quarterly</span>
+                                </div>
+                                <button class="w-full py-4 bg-amber-400 text-white font-bold rounded-2xl shadow-lg shadow-amber-900/20 active:scale-95 transition-all uppercase tracking-widest text-sm">
+                                    Go Platinum
+                                </button>
+                                
+                                <div class="mt-6 flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-accent-yellow text-sm">stars</span>
+                                    <span class="text-slate-400 text-[10px] font-bold uppercase tracking-tighter">Best Value for Exam Prep</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-center text-slate-400 text-[10px] mt-10 font-medium uppercase tracking-widest">Secure Payment via Stripe</p>
+                    </div>
+                </section>
         </div>
     </main>
     
     <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_rgba(255,179,0,0.05)] rounded-t-2xl">
         <ul class="nav-links flex justify-around w-full m-0 p-0" style="list-style: none;">
-            <li data-page="dashboard" id="nav-dashboard" class="flex flex-col items-center justify-center px-3 py-1.5 active:scale-90 transition-transform duration-150 cursor-pointer active">
-                <span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
-                <span class="font-space-grotesk text-[11px] font-semibold uppercase tracking-wider">Dashboard</span>
+            <li data-page="dashboard" id="nav-dashboard">
+                <a href="javascript:void(0)" onclick="navigateTo('dashboard')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="dashboard">
+                    <span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+                    <span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Dash</span>
+                </a>
             </li>
-            <li data-page="study" id="nav-study" class="flex flex-col items-center justify-center px-3 py-1.5 active:scale-90 transition-transform duration-150 cursor-pointer">
-                <span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
-                <span class="font-space-grotesk text-[11px] font-semibold uppercase tracking-wider">Topics</span>
+            <li data-page="study" id="nav-study">
+                <a href="javascript:void(0)" onclick="navigateTo('study')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="study">
+                    <span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+                    <span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Topics</span>
+                </a>
             </li>
-            <li data-page="exam" id="nav-exam" class="flex flex-col items-center justify-center px-3 py-1.5 active:scale-90 transition-transform duration-150 cursor-pointer">
-                <span class="material-symbols-outlined mb-1" data-icon="quiz">quiz</span>
-                <span class="font-space-grotesk text-[11px] font-semibold uppercase tracking-wider">Exams</span>
+            <li data-page="exam" id="nav-exam">
+                <a href="javascript:void(0)" onclick="navigateTo('exam')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="exam">
+                    <span class="material-symbols-outlined mb-1" data-icon="quiz">quiz</span>
+                    <span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Exams</span>
+                </a>
             </li>
-            <li data-page="settings" id="nav-settings" class="flex flex-col items-center justify-center px-3 py-1.5 active:scale-90 transition-transform duration-150 cursor-pointer">
-                <span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
-                <span class="font-space-grotesk text-[11px] font-semibold uppercase tracking-wider">Settings</span>
+            <li data-page="settings" id="nav-settings">
+                <a href="javascript:void(0)" onclick="navigateTo('settings')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="settings">
+                    <span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+                    <span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Settings</span>
+                </a>
             </li>
         </ul>
     </nav>
