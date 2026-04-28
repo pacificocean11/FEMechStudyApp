@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Determine the logged-in user first to use for specific storage keys
+    const loggedInUser = (() => {
+        try {
+            const user = JSON.parse(localStorage.getItem('enggtv_user')) || { tier: 'free', username: 'guest' };
+            // Force Mechanical for demo user
+            if (user.username === 'demo') {
+                user.discipline = 'Mechanical';
+                localStorage.setItem('enggtv_user', JSON.stringify(user));
+                localStorage.setItem('enggtv_discipline', 'Mechanical');
+            }
+            return user;
+        } catch (e) {
+            return { tier: 'free', username: 'guest' };
+        }
+    })();
+
     // State Management
     const state = {
         currentPage: 'dashboard',
@@ -12,32 +28,24 @@ document.addEventListener('DOMContentLoaded', () => {
         timer: null,
         secondsElapsed: 0,
         secondsRemaining: 0,
+        user: loggedInUser,
         userProgress: (() => {
             try {
-                return JSON.parse(localStorage.getItem('enggtv_progress')) || {};
+                const key = `enggtv_progress_${loggedInUser.username}`;
+                return JSON.parse(localStorage.getItem(key)) || {};
             } catch (e) {
                 console.error("Failed to parse user progress", e);
                 return {};
             }
         })(),
+        userPoints: (() => {
+            const key = `enggtv_points_${loggedInUser.username}`;
+            return parseInt(localStorage.getItem(key)) || 0;
+        })(),
         isFinished: false,
         isMockExam: false,
-        user: (() => {
-            try {
-                const user = JSON.parse(localStorage.getItem('enggtv_user')) || { tier: 'free' };
-                // Force Mechanical for demo user
-                if (user.username === 'demo') {
-                    user.discipline = 'Mechanical';
-                    localStorage.setItem('enggtv_user', JSON.stringify(user));
-                    localStorage.setItem('enggtv_discipline', 'Mechanical');
-                }
-                return user;
-            } catch (e) {
-                return { tier: 'free' };
-            }
-        })(),
         subjects: (() => {
-            const discipline = localStorage.getItem('enggtv_discipline');
+            const discipline = localStorage.getItem('enggtv_discipline') || loggedInUser.discipline;
             if (discipline === 'Mechanical') return MECHANICAL_SUBJECTS;
             if (discipline === 'Civil' || discipline === 'Civil Engineering') return CIVIL_SUBJECTS;
             return OTHER_SUBJECTS;
@@ -99,8 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setupNavigation();
         setupMobileMenu();
         updateUIForTier();
-        startFreeTrialTimer();
+        // startFreeTrialTimer();
         updateDashboardStats();
+        updateGamificationUI();
     }
 
     function startFreeTrialTimer() {
@@ -167,6 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Update name display
+        const greeting = document.getElementById('user-greeting');
+        if (greeting) {
+            greeting.textContent = `Welcome back, ${state.user.username === 'demo' ? 'Alex' : state.user.username}`;
+        }
+
         const nameDisplays = document.querySelectorAll('h3.text-xl.font-bold, h2.font-display-lg');
         nameDisplays.forEach(d => {
             if ((d.textContent === 'Alex Riviera' || d.textContent === 'John Smith') && state.user.username !== 'demo') {
@@ -251,7 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', () => {
                 const pageId = item.getAttribute('data-page');
                 
-                // Tier Check
+                // Tier Check (Disabled for now)
+                /*
                 if (state.user.tier === 'free' && (pageId === 'study' || pageId === 'exam')) {
                     // Check if trial is still active
                     const TRIAL_DURATION = 30 * 1000;
@@ -263,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         return;
                     }
                 }
+                */
 
                 navigateTo(pageId);
                 
@@ -290,7 +306,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'account-info-view': 'Account Information',
             'support-view': 'Help & Support',
             'upgrade-view': 'Premium Upgrade',
-            'plans-view': 'Membership Plans'
+            'plans-view': 'Membership Plans',
+            'achievements-view': 'Achievements',
+            'leaderboard': 'Leaderboard'
         };
 
 
@@ -309,6 +327,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Specific Page Logic
         if (pageId === 'dashboard') {
             updateDashboardStats();
+            updateGamificationUI();
+        }
+        if (pageId === 'achievements-view') {
+            renderAchievements();
+        }
+        if (pageId === 'leaderboard') {
+            renderLeaderboard();
         }
         if (pageId === 'study') {
             renderSubjects();
@@ -738,7 +763,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resetDataBtn) {
             resetDataBtn.addEventListener('click', () => {
                 if (confirm("Are you sure you want to erase all your progress? This cannot be undone.")) {
-                    localStorage.removeItem('enggtv_progress');
+                    const key = `enggtv_progress_${state.user.username}`;
+                    localStorage.removeItem(key);
                     state.userProgress = {};
                     renderSubjects();
                     updateDashboardStats();
@@ -809,9 +835,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const selectedIndex = state.answers[idx];
                 if (selectedIndex !== null && q.options[selectedIndex].is_correct) {
                     correct++;
+                    state.userPoints++;
                 }
             }
         });
+        
+        // Save points (User specific)
+        const pointsKey = `enggtv_points_${state.user.username}`;
+        localStorage.setItem(pointsKey, state.userPoints.toString());
+        updateGamificationUI();
+
         state.score = correct;
 
         const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
@@ -910,7 +943,8 @@ document.addEventListener('DOMContentLoaded', () => {
             state.userProgress[subjectId].completed = questionsInSubject;
         }
 
-        localStorage.setItem('enggtv_progress', JSON.stringify(state.userProgress));
+        const progressKey = `enggtv_progress_${state.user.username}`;
+        localStorage.setItem(progressKey, JSON.stringify(state.userProgress));
         renderSubjects();
     }
 
@@ -968,6 +1002,50 @@ document.addEventListener('DOMContentLoaded', () => {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function updateGamificationUI() {
+        const annSection = document.getElementById('announcement-section');
+        const annLocked = document.getElementById('announcement-locked');
+        const pointsProgress = document.getElementById('points-progress-bar');
+        const pointsNeededText = document.getElementById('points-needed-text');
+        const settingsPoints = document.getElementById('settings-points-display');
+        const pointsToNextLevel = document.getElementById('points-to-next-level');
+
+        const points = state.userPoints;
+        const required = 50;
+
+        if (annSection && annLocked) {
+            if (points >= required) {
+                annSection.classList.remove('hidden');
+                annLocked.classList.add('hidden');
+            } else {
+                annSection.classList.add('hidden');
+                annLocked.classList.remove('hidden');
+                
+                if (pointsProgress) {
+                    const percent = Math.min(100, (points / required) * 100);
+                    pointsProgress.style.width = `${percent}%`;
+                }
+                if (pointsNeededText) {
+                    pointsNeededText.textContent = `${points}/${required} Points`;
+                }
+            }
+        }
+
+        if (settingsPoints) {
+            settingsPoints.textContent = `${points} Points`;
+        }
+        
+        if (pointsToNextLevel) {
+            if (points >= required) {
+                pointsToNextLevel.textContent = "Announcements unlocked!";
+                pointsToNextLevel.className = "text-[10px] font-medium text-green-500";
+            } else {
+                pointsToNextLevel.textContent = `${required - points} pts to unlock announcements`;
+                pointsToNextLevel.className = "text-[10px] font-medium text-outline";
+            }
+        }
     }
 
     // Settings Functionality
@@ -1057,6 +1135,127 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.classList.remove('dark-theme');
             }
         });
+    }
+
+    const ACHIEVEMENTS = [
+        { id: 'first_point', name: 'First Step', points: 1, icon: 'bolt', description: 'Earn your first point.' },
+        { id: 'consistent', name: 'Consistent Learner', points: 10, icon: 'auto_stories', description: 'Reach 10 points.' },
+        { id: 'dedicated', name: 'Dedicated Engineer', points: 25, icon: 'engineering', description: 'Reach 25 points.' },
+        { id: 'announcement_unlocked', name: 'Insider Access', points: 50, icon: 'campaign', description: 'Unlock the Announcements section.' },
+        { id: 'scholar', name: 'FE Scholar', points: 100, icon: 'school', description: 'Reach 100 points.' },
+        { id: 'master', name: 'Master of Mechanics', points: 250, icon: 'workspace_premium', description: 'Reach 250 points.' }
+    ];
+
+    function renderAchievements() {
+        const list = document.getElementById('achievements-list');
+        const totalPointsDisplay = document.getElementById('achievements-total-points');
+        if (!list || !totalPointsDisplay) return;
+
+        totalPointsDisplay.textContent = `${state.userPoints} Points`;
+        list.innerHTML = '';
+
+        ACHIEVEMENTS.forEach(ach => {
+            const isUnlocked = state.userPoints >= ach.points;
+            const card = document.createElement('div');
+            card.className = `flex items-center gap-4 p-4 rounded-2xl border transition-all ${
+                isUnlocked 
+                ? 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 shadow-sm' 
+                : 'bg-slate-50/50 dark:bg-slate-900/50 border-slate-100 dark:border-slate-800 opacity-60'
+            }`;
+
+            card.innerHTML = `
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center ${
+                    isUnlocked ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'
+                }">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' ${isUnlocked ? 1 : 0};">${ach.icon}</span>
+                </div>
+                <div class="flex-1 text-left">
+                    <div class="flex justify-between items-center">
+                        <h5 class="font-bold text-sm ${isUnlocked ? 'text-slate-800 dark:text-slate-100' : 'text-slate-400'}">${ach.name}</h5>
+                        <span class="text-[10px] font-black uppercase tracking-widest ${isUnlocked ? 'text-amber-600' : 'text-slate-400'}">${ach.points} PTS</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">${ach.description}</p>
+                </div>
+                ${isUnlocked ? '<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>' : ''}
+            `;
+            list.appendChild(card);
+        });
+    }
+
+    const btnPointsInfo = document.getElementById('btn-points-info');
+    const backFromAchievements = document.getElementById('back-from-achievements');
+
+    if (btnPointsInfo) btnPointsInfo.addEventListener('click', () => navigateTo('achievements-view'));
+    if (backFromAchievements) backFromAchievements.addEventListener('click', () => navigateTo('settings'));
+
+    const MOCK_LEADERBOARD = [
+        { username: 'Sara', points: 482, discipline: 'Civil', country: 'United States', avatar: 'https://i.pravatar.cc/150?u=sara' },
+        { username: 'MikeEng', points: 395, discipline: 'Mechanical', country: 'Canada', avatar: 'https://i.pravatar.cc/150?u=mike' },
+        { username: 'Julia', points: 320, discipline: 'Civil', country: 'Egypt', avatar: 'https://i.pravatar.cc/150?u=julia' },
+        { username: 'Tom', points: 285, discipline: 'Mechanical', country: 'United Arab Emirates', avatar: 'https://i.pravatar.cc/150?u=tom' },
+        { username: 'Elena', points: 210, discipline: 'Mechanical', country: 'India', avatar: 'https://i.pravatar.cc/150?u=elena' },
+        { username: 'David', points: 195, discipline: 'Other', country: 'United Kingdom', avatar: 'https://i.pravatar.cc/150?u=david' },
+        { username: 'Chris', points: 150, discipline: 'Mechanical', country: 'Australia', avatar: 'https://i.pravatar.cc/150?u=chris' },
+        { username: 'Emma', points: 120, discipline: 'Other', country: 'Canada', avatar: 'https://i.pravatar.cc/150?u=emma' },
+        { username: 'Ryan', points: 95, discipline: 'Civil', country: 'United States', avatar: 'https://i.pravatar.cc/150?u=ryan' }
+    ];
+
+    function renderLeaderboard() {
+        const list = document.getElementById('leaderboard-list');
+        if (!list) return;
+
+        const userCountry = state.user.country || 'Other';
+
+        // Combine mock data with current user
+        const allUsers = [...MOCK_LEADERBOARD, {
+            username: state.user.username === 'demo' ? 'You (Alex)' : `You (${state.user.username})`,
+            points: state.userPoints,
+            discipline: localStorage.getItem('enggtv_discipline') || 'FE Candidate',
+            country: userCountry,
+            isCurrentUser: true,
+            avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCe2S82u2sZJ3xmW3cB9zBfpog-Qu3ypJ-ZTjq6ymCTfI96k-XIcFqQH3_f-tnsCfhMQ8xlR31x9mShYD9i8-wV6691uWOysJOwRmYJOT1Ri-FqPpcoLhpq1mI6oavBfjrHajem7t3UOUFVx768eyERSx9s7OsNOezurrmnjosEF6xlDNMD4mV6KEGawwDBhd8IsqV63tn97lLQ5B0aCocCRUAL3iKJJLR_byQT4Dg_BIwq5vtnwpwp3QJNAE0FMVnXpM1IfkQKccq4'
+        }];
+
+        // Sort by points descending
+        allUsers.sort((a, b) => b.points - a.points);
+
+        // Take top 10
+        const top10 = allUsers.slice(0, 10);
+
+        list.innerHTML = top10.map((user, index) => {
+            const rank = index + 1;
+            let rankBadge = '';
+            if (rank === 1) rankBadge = 'bg-amber-400 text-white';
+            else if (rank === 2) rankBadge = 'bg-slate-300 text-slate-700';
+            else if (rank === 3) rankBadge = 'bg-amber-600/60 text-white';
+            else rankBadge = 'bg-slate-100 dark:bg-slate-800 text-slate-400';
+
+            return `
+                <div class="flex items-center gap-4 p-5 ${user.isCurrentUser ? 'bg-primary/5 dark:bg-primary/10' : ''}">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${rankBadge} shrink-0">
+                        ${rank}
+                    </div>
+                    <div class="w-10 h-10 rounded-xl overflow-hidden shrink-0 border border-slate-100 dark:border-slate-800">
+                        <img src="${user.avatar}" class="w-full h-full object-cover" alt="${user.username}">
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm ${user.isCurrentUser ? 'text-primary' : 'text-slate-800 dark:text-slate-100'}">
+                            ${user.username} ${user.isCurrentUser ? '<span class="text-[10px] bg-primary text-white px-1.5 py-0.5 rounded ml-1 uppercase">Me</span>' : ''}
+                        </h4>
+                        <div class="flex items-center gap-1.5 mt-0.5">
+                            <span class="material-symbols-outlined text-[12px] text-slate-400">public</span>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium uppercase tracking-tighter">${user.country}</p>
+                            <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-tighter font-bold">${user.discipline}</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-black text-slate-800 dark:text-slate-100">${user.points}</p>
+                        <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Points</p>
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
 
     // Expose functions to global scope for inline handlers

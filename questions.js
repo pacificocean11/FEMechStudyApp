@@ -18528,5 +18528,1855 @@ const QUESTIONS = {
       "solution_image": ""
     }
   }
+    ],
+    'geotech':[
+      {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Soil Dry Unit Weight Calculation",
+    "question": "A soil sample has a void ratio of $0.65$ and a specific gravity of solids of $2.70$. What is the dry unit weight of the soil in $lb/ft^3$?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "98.5 pcf",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "102.1 pcf",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "105.4 pcf",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "110.2 pcf",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "Void ratio ($e$) = $0.65$, Specific gravity ($G_s$) = $2.70$, and Unit weight of water ($\\gamma_w$) = $62.4 \\text{ lb/ft}^3$."
+        },
+        {
+          "title": "State the Dry Unit Weight Formula",
+          "content": "The formula is $\\gamma_d = \\dfrac{G_s \\cdot \\gamma_w}{1 + e}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$\\gamma_d = \\dfrac{2.70 \\cdot 62.4}{1 + 0.65} = \\dfrac{168.48}{1.65} \\approx 102.109 \\text{ lb/ft}^3$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Degree of Saturation of Soil",
+    "question": "For a soil sample with a water content of $20\\%$, a specific gravity of $2.65$, and a void ratio of $0.70$, what is the degree of saturation ($S$)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "68.2%",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "75.7%",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "72.5%",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "81.3%",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "Water content ($w$) = $0.20$, Specific gravity ($G_s$) = $2.65$, and Void ratio ($e$) = $0.70$."
+        },
+        {
+          "title": "Apply the Phase Relationship Formula",
+          "content": "The relationship is $S \\cdot e = w \\cdot G_s$. Rearranging gives $S = \\dfrac{w \\cdot G_s}{e}$."
+        },
+        {
+          "title": "Solve for Degree of Saturation",
+          "content": "$S = \\dfrac{0.20 \\cdot 2.65}{0.70} = \\dfrac{0.53}{0.70} \\approx 0.7571$ or $75.7\\%$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "USCS Soil Classification",
+    "question": "A soil sample has $65\\%$ of its particles passing through the No. 200 sieve. The Liquid Limit (LL) is 45 and the Plastic Limit (PL) is 20. According to the Unified Soil Classification System (USCS), what is the soil classification?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "ML",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "CL",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "MH",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "CH",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Determine if the soil is fine-grained",
+          "content": "Since $65\\% > 50\\%$ passes the No. 200 sieve, the soil is fine-grained."
+        },
+        {
+          "title": "Determine the Plasticity Index (PI)",
+          "content": "$PI = LL - PL = 45 - 20 = 25$."
+        },
+        {
+          "title": "Evaluate on the Plasticity Chart",
+          "content": "With $LL = 45 < 50$, it has low plasticity ('L'). The A-line $PI$ is $0.73(45 - 20) = 18.25$. Since $25 > 18.25$, it is above the A-line, classifying it as clay ('C')."
+        },
+        {
+          "title": "Final Classification",
+          "content": "The soil is classified as CL (Lean Clay)."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Calculating Relative Density of Soil",
+    "question": "A granular soil has a maximum void ratio of $0.85$ and a minimum void ratio of $0.45$. If the in-situ void ratio is $0.60$, what is the relative density ($D_r$)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "37.5%",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "50.0%",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "62.5%",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "75.0%",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Parameters",
+          "content": "$e_{max} = 0.85$, $e_{min} = 0.45$, and natural void ratio $e = 0.60$."
+        },
+        {
+          "title": "State the Relative Density Formula",
+          "content": "$D_r = \\dfrac{e_{max} - e}{e_{max} - e_{min}} \\times 100\\%$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$D_r = \\dfrac{0.85 - 0.60}{0.85 - 0.45} \\times 100\\% = \\dfrac{0.25}{0.40} \\times 100\\% = 62.5\\%$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Uniformity Coefficient Calculation",
+    "question": "From a grain-size distribution curve, the following values were determined: $D_{60} = 0.45 \\text{ mm}$, $D_{30} = 0.25 \\text{ mm}$, and $D_{10} = 0.15 \\text{ mm}$. What is the uniformity coefficient ($C_u$)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.8",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3.0",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "4.5",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "6.0",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "State the Formula for Uniformity Coefficient",
+          "content": "$C_u = \\dfrac{D_{60}}{D_{10}}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$C_u = \\dfrac{0.45 \\text{ mm}}{0.15 \\text{ mm}} = 3.0$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Calculating Soil Group Index",
+    "question": "Determine the Group Index (GI) for a soil where $50\\%$ passes the No. 200 sieve, the Liquid Limit is 40, and the Plasticity Index is 15.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "3",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "5",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "8",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "12",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply the Group Index Formula",
+          "content": "$GI = (F - 35)[0.2 + 0.005(LL - 40)] + 0.01(F - 15)(PI - 10)$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$GI = (50 - 35)[0.2 + 0.005(40 - 40)] + 0.01(50 - 15)(15 - 10) = 15[0.2] + 0.01(35)(5) = 3 + 1.75 = 4.75$."
+        },
+        {
+          "title": "Final Result",
+          "content": "Rounding to the nearest whole number, $GI \\approx 5$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Void Ratio from Porosity",
+    "question": "If the porosity ($n$) of a soil sample is 0.40, what is its void ratio ($e$)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.400",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.500",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0.667",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "0.750",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "State the Relationship Formula",
+          "content": "$e = \\dfrac{n}{1 - n}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$e = \\dfrac{0.40}{1 - 0.40} = \\dfrac{0.40}{0.60} \\approx 0.667$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Soil Specific Gravity Calculation",
+    "question": "A dry soil sample has a mass of $150 \\text{ g}$ and the volume of its solids is measured as $55.5 \\text{ cm}^3$. If the density of water is $1.0 \\text{ g/cm}^3$, what is the specific gravity ($G_s$) of the soil solids?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "2.60",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2.65",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "2.70",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "2.75",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate the Density of Soil Solids",
+          "content": "$\\rho_s = M_s / V_s = 150 \\text{ g} / 55.5 \\text{ cm}^3 \\approx 2.7027 \\text{ g/cm}^3$."
+        },
+        {
+          "title": "Calculate Specific Gravity",
+          "content": "$G_s = \\rho_s / \\rho_w = 2.7027 / 1.0 \\approx 2.70$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Coefficient of Curvature Calculation",
+    "question": "A sieve analysis results in $D_{60} = 0.8 \\text{ mm}$, $D_{30} = 0.4 \\text{ mm}$, and $D_{10} = 0.1 \\text{ mm}$. What is the coefficient of curvature ($C_c$)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.0",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2.0",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "4.0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "8.0",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "State the formula for coefficient of curvature",
+          "content": "$C_c = \\dfrac{(D_{30})^2}{D_{60} \\times D_{10}}$."
+        },
+        {
+          "title": "Substitute values and solve",
+          "content": "$C_c = \\dfrac{(0.4)^2}{0.8 \\times 0.1} = \\dfrac{0.16}{0.08} = 2.0$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Index Properties and Soil Classifications",
+    "title": "Soil Saturated Unit Weight Calculation",
+    "question": "A soil sample has a void ratio of $0.50$ and a specific gravity of $2.65$. What is the saturated unit weight ($\\gamma_{sat}$) in $kN/m^3$? (Assume $\\gamma_w = 9.81 \\text{ kN/m}^3$)",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "18.52 kN/m³",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "19.85 kN/m³",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "20.60 kN/m³",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "21.43 kN/m³",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "State the Formula for Saturated Unit Weight",
+          "content": "$\\gamma_{sat} = \\dfrac{(G_s + e)\\gamma_w}{1 + e}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$\\gamma_{sat} = \\dfrac{(2.65 + 0.50) \\cdot 9.81}{1 + 0.50} = \\dfrac{30.9015}{1.50} \\approx 20.601 \\text{ kN/m}^3$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  }
+    ],
+    'water-res':[
+      {
+    "topic": "Basic Hydrology",
+    "title": "Peak Runoff Using Rational Method",
+    "question": "A 20-acre watershed has a runoff coefficient of 0.35. If the design rainfall intensity for a specific return period is $2.5 \\text{ in/hr}$, what is the peak runoff rate using the Rational Method?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "5.25 cfs",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "12.50 cfs",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "17.50 cfs",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "21.00 cfs",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Information",
+          "content": "Area ($A$) = 20 acres, Runoff coefficient ($C$) = 0.35, Rainfall intensity ($i$) = $2.5 \\text{ in/hr}$."
+        },
+        {
+          "title": "Apply the Rational Method Formula",
+          "content": "The formula for peak runoff rate ($Q$) is: $Q = C \\times i \\times A$."
+        },
+        {
+          "title": "Calculate the Peak Runoff Rate",
+          "content": "$Q = 0.35 \\times 2.5 \\times 20 = 17.5 \\text{ cfs}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Horton’s Infiltration Model Calculation",
+    "question": "Using Horton's infiltration model, the initial infiltration capacity is $f_0 = 5.0 \\text{ in/hr}$, the equilibrium infiltration capacity is $f_c = 1.0 \\text{ in/hr}$, and the decay constant is $k = 2.0 \\text{ hr}^{-1}$. What is the infiltration capacity at $t = 0.5 \\text{ hr}$?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.47 in/hr",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2.47 in/hr",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "3.00 in/hr",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "4.12 in/hr",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "State Horton's Infiltration Equation",
+          "content": "Horton's model is $f_t = f_c + (f_0 - f_c)e^{-kt}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$f_t = 1.0 + (5.0 - 1.0)e^{-(2.0 \\times 0.5)} = 1.0 + 4.0e^{-1.0}$."
+        },
+        {
+          "title": "Calculate Final Value",
+          "content": "$f_t = 1.0 + 4.0 \\times 0.367879 = 2.4715 \\text{ in/hr}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Weighted Runoff Coefficient Calculation",
+    "question": "A watershed consists of two distinct land uses: 5 acres of residential area with a runoff coefficient $C = 0.6$ and 15 acres of forested area with $C = 0.2$. What is the weighted runoff coefficient for the entire 20-acre watershed?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.30",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "0.40",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0.45",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.50",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Weighted Average Formula",
+          "content": "$C_w = \\dfrac{(C_1 \\times A_1) + (C_2 \\times A_2)}{A_{total}}$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$C_w = \\dfrac{(0.6 \\times 5) + (0.2 \\times 15)}{20} = \\dfrac{3.0 + 3.0}{20} = 0.30$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Direct Runoff Depth Calculation",
+    "question": "Using the NRCS (SCS) Curve Number method, calculate the direct runoff depth ($P_e$) in inches for a storm with a total precipitation of $P = 6.0$ inches and a Curve Number $CN = 75$. Assume the initial abstraction $I_a = 0.2S$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "2.88 inches",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3.33 inches",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "3.67 inches",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "4.12 inches",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Potential Maximum Retention (S)",
+          "content": "$S = \\dfrac{1000}{CN} - 10 = \\dfrac{1000}{75} - 10 = 3.33 \\text{ inches}$."
+        },
+        {
+          "title": "Apply Direct Runoff Formula",
+          "content": "$P_e = \\dfrac{(P - 0.2S)^2}{P + 0.8S}$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$P_e = \\dfrac{(6.0 - 0.2(3.33))^2}{6.0 + 0.8(3.33)} = \\dfrac{28.45}{8.664} \\approx 3.28 \\text{ inches}$. Closest option is 3.33."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Manning’s Equation Velocity Calculation",
+    "question": "A rectangular concrete channel has a width of $10 \\text{ ft}$, a flow depth of $4 \\text{ ft}$, and a longitudinal slope of $0.01 \\text{ ft/ft}$. If Manning's roughness coefficient $n = 0.013$, what is the flow velocity ($V$)?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "12.5 ft/s",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "15.2 ft/s",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "18.4 ft/s",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "21.6 ft/s",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Geometric Properties",
+          "content": "Area $A = 10 \\times 4 = 40 \\text{ ft}^2$; Wetted perimeter $P = 10 + 2(4) = 18 \\text{ ft}$; Hydraulic radius $R = 40/18 \\approx 2.22 \\text{ ft}$."
+        },
+        {
+          "title": "Apply Manning's Equation",
+          "content": "$V = \\dfrac{1.486}{n} R^{2/3} S^{1/2}$."
+        },
+        {
+          "title": "Calculate Velocity",
+          "content": "$V = \\dfrac{1.486}{0.013} \\times (2.22)^{2/3} \\times (0.01)^{1/2} \\approx 18.43 \\text{ ft/s}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Peak Discharge of Storm Hydrograph",
+    "question": "A 1-hour unit hydrograph has a peak discharge of $100 \\text{ cfs}$. If a storm event produces $2.5 \\text{ inches}$ of excess rainfall over 1 hour, what is the peak discharge of the resulting storm hydrograph?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "100 cfs",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "200 cfs",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "250 cfs",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "350 cfs",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply Principle of Linearity",
+          "content": "A storm hydrograph's ordinates are proportional to the depth of excess rainfall."
+        },
+        {
+          "title": "Calculate Peak Discharge",
+          "content": "$Q_p = U_p \\times P_e = 100 \\text{ cfs/inch} \\times 2.5 \\text{ inches} = 250 \\text{ cfs}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Reservoir Final Storage Calculation",
+    "question": "A reservoir has an initial storage of $100 \\text{ acre-ft}$. Over a $24\\text{-hour}$ period, the average inflow is $10 \\text{ cfs}$ and the average outflow is $5 \\text{ cfs}$. Neglecting evaporation and seepage, what is the final storage after $24 \\text{ hours}$? ($1 \\text{ acre} = 43,560 \\text{ ft}^2$)",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "105.5 acre-ft",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "109.9 acre-ft",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "115.2 acre-ft",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "120.0 acre-ft",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Determine Change in Storage Volume",
+          "content": "$\\Delta S = (I_{avg} - O_{avg}) \\times t = (10 - 5) \\times 86,400 = 432,000 \\text{ ft}^3$."
+        },
+        {
+          "title": "Convert Volume to Acre-Feet",
+          "content": "$\\Delta S \\text{ (acre-ft)} = 432,000 / 43,560 \\approx 9.917 \\text{ acre-ft}$."
+        },
+        {
+          "title": "Calculate Final Storage",
+          "content": "$S_{final} = 100 + 9.917 = 109.917 \\text{ acre-ft}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Soil Dry Unit Weight Calculation",
+    "question": "A soil sample has a void ratio of 0.65 and a specific gravity of solids of 2.70. What is the dry unit weight of the soil in $lb/ft^3$?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "98.5 pcf",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "102.1 pcf",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "105.4 pcf",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "110.2 pcf",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "State the Formula",
+          "content": "$\\gamma_d = \\dfrac{G_s \\gamma_w}{1 + e}$."
+        },
+        {
+          "title": "Perform Calculation",
+          "content": "$\\gamma_d = \\dfrac{2.70 \\times 62.4}{1 + 0.65} = \\dfrac{168.48}{1.65} \\approx 102.11 \\text{ pcf}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Thiessen Polygon Average Precipitation",
+    "question": "A watershed has three rain gauges. Gauge A (area $100$ ac) recorded $2.0$ in, Gauge B (area $200$ ac) recorded $3.0$ in, and Gauge C (area $200$ ac) recorded $4.0$ in. Using the Thiessen Polygon method, what is the average precipitation?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "3.0 in",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3.2 in",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "3.5 in",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "3.6 in",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Total Area",
+          "content": "$A_{total} = 100 + 200 + 200 = 500 \\text{ ac}$."
+        },
+        {
+          "title": "Apply Thiessen Polygon Formula",
+          "content": "$\\bar{P} = \\dfrac{(2.0 \\times 100) + (3.0 \\times 200) + (4.0 \\times 200)}{500} = \\dfrac{1600}{500} = 3.2 \\text{ in}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Basic Hydrology",
+    "title": "Infiltration Depth Using Horton’s Model",
+    "question": "Using Horton's infiltration model, find the total depth of infiltration ($F$) during the first $2$ hours of a storm. Given: $f_0 = 3.0 \\text{ in/hr}$, $f_c = 0.5 \\text{ in/hr}$, and $k = 0.4 \\text{ hr}^{-1}$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.44 inches",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2.56 inches",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "4.45 inches",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "5.21 inches",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "State the Cumulative Infiltration Formula",
+          "content": "$F = f_c t + \\dfrac{f_0 - f_c}{k}(1 - e^{-kt})$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$F = (0.5 \\times 2.0) + \\dfrac{3.0 - 0.5}{0.4}(1 - e^{-0.4 \\times 2.0}) = 1.0 + 6.25(1 - e^{-0.8}) \\approx 4.44 \\text{ inches}$."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  }
+    ],
+    'construction':[
+      {
+    "topic": "Project Administration",
+    "title": "DBB Contractual Relationships",
+    "question": "In the traditional Design-Bid-Build (DBB) project delivery method, which of the following best describes the relationship between the Architect/Engineer (A/E) and the Contractor?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "They have a direct contractual agreement.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "They have no direct contractual agreement; both contract separately with the Owner.",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "The Contractor works as a subcontractor to the A/E.",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The A/E is a subsidiary of the Contractor's firm.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understanding Design-Bid-Build (DBB)",
+          "content": "Design-Bid-Build is the most traditional project delivery method. It is characterized by a linear sequence where the project is fully designed before being put out to bid for construction."
+        },
+        {
+          "title": "Contractual Structure",
+          "content": "In this model, the Owner enters into two distinct, primary contracts:\n        \\begin{enumerate}\n            \\item A contract with the \\textbf{Architect/Engineer (A/E)} for design and construction administration services.\n            \\item A separate contract with the \\textbf{General Contractor} for the physical construction of the project.\n        \\end{enumerate}"
+        },
+        {
+          "title": "The Relationship between A/E and Contractor",
+          "content": "Because both parties are tied to the Owner rather than to each other, there is no \"privity of contract\" between the A/E and the Contractor. Their relationship is administrative; the A/E often acts as the Owner's representative to ensure the Contractor follows the design specifications, but they do not pay or employ one another."
+        },
+        {
+          "title": "Why Other Options are Incorrect",
+          "content": "\\begin{itemize}\n            \\item \\textbf{Option A:} This would describe a Design-Build or Integrated Project Delivery (IPD) model where parties might have a joint venture or direct agreement.\n            \\item \\textbf{Option C:} This does not occur in standard DBB; the Contractor is a prime entity.\n            \\item \\textbf{Option D:} This is highly irregular and does not define the DBB delivery method.\n        \\end{itemize}"
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "Modifying Documents During Bidding",
+    "question": "During the bidding process, if an owner wishes to modify the construction drawings or specifications before the bids are submitted, which document must be issued?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Change Order",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Addendum",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Request for Information (RFI)",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Notice to Proceed",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Definition of an Addendum",
+          "content": "An \\textbf{Addendum} is a written or graphic instrument issued by the Architect/Owner prior to the execution of the Contract. It modifies or interprets the bidding documents by additions, deletions, clarifications, or corrections. Since the question specifies the modification happens \\textit{before} bids are submitted, an Addendum is the correct legal mechanism."
+        },
+        {
+          "title": "Distinction from Change Orders",
+          "content": "A \\textbf{Change Order} is used to modify the contract sum or contract time \\textit{after} the contract has been signed. It is a post-award document. During the bidding phase, there is no contract yet to \"change,\" hence a Change Order cannot be used."
+        },
+        {
+          "title": "Other Documents",
+          "content": "\\begin{itemize}\n            \\item \\textbf{Request for Information (RFI):} This is typically a document used by the contractor to ask the architect for clarification on the construction documents. It is a question, not a formal modification to the bid set initiated by the owner.\n            \\item \\textbf{Notice to Proceed:} This is a formal letter sent by the owner to the contractor after the contract is signed, authorizing them to begin the work and establishing the official start date of the project.\n        \\end{itemize}"
+        },
+        {
+          "title": "Summary",
+          "content": "To ensure all bidders are pricing the same scope of work, any changes made to the design or requirements during the advertisement period must be distributed to all plan holders via a formal Addendum."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "Precedence of Construction Contract Documents",
+    "question": "According to the standard hierarchy of contract documents, if there is a direct conflict between the technical specifications and the construction drawings, which generally takes precedence?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "The drawings",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The technical specifications",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "The verbal instructions of the architect",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The contractor's preference",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understanding Hierarchy of Documents",
+          "content": "In construction law and standard contract forms (such as AIA or EJCDC), a hierarchy is often established to resolve discrepancies between different parts of the contract. While the documents are intended to be complementary, conflicts can arise during complex projects."
+        },
+        {
+          "title": "Specifications vs. Drawings",
+          "content": "The industry standard rule of thumb is that \\textbf{Technical Specifications} take precedence over \\textbf{Construction Drawings}. The reasoning is that specifications are typically more specific, detailed, and deliberate regarding quality, materials, and workmanship standards, whereas drawings are more general representations of quantity and location."
+        },
+        {
+          "title": "General Order of Precedence",
+          "content": "While specific contracts may vary the order, a typical hierarchy (from highest to lowest) includes:\n        \\begin{enumerate}\n            \\item Change Orders and Modifications (the most recent instructions).\n            \\item Addenda (issued during the bidding phase).\n            \\item Agreement/Contract.\n            \\item Supplementary Conditions.\n            \\item General Conditions.\n            \\item \\textbf{Technical Specifications.}\n            \\item \\textbf{Construction Drawings.}\n        \\end{enumerate}"
+        },
+        {
+          "title": "Resolution of Ambiguities",
+          "content": "It is important to note that most modern contracts also require the Contractor to bring any discovered conflicts to the Architect's attention via a Request for Information (RFI) before proceeding. However, in a strict legal interpretation of the documents provided, the written word in the specs usually outweighs the graphic representation in the drawings."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "Calculating Schedule Performance Index (SPI)",
+    "question": "A project has a Budgeted Cost of Work Scheduled ($BCWS$) of 120,000 and a Budgeted Cost of Work Performed ($BCWP$) of 100,000. What is the Schedule Performance Index ($SPI$) and is the project ahead of or behind schedule?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$SPI = 0.83$; Ahead of schedule",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "$SPI = 1.20$; Ahead of schedule",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$SPI = 0.83$; Behind schedule",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "$SPI = 1.20$; Behind schedule",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Values",
+          "content": "Based on the Earned Value Management (EVM) data provided:\n        \\begin{itemize}\n            \\item Budgeted Cost of Work Scheduled ($BCWS$), also known as Planned Value ($PV$) = 120,000\n            \\item Budgeted Cost of Work Performed ($BCWP$), also known as Earned Value ($EV$) = 100,000\n        \\end{itemize}"
+        },
+        {
+          "title": "Formula for Schedule Performance Index (SPI)",
+          "content": "The $SPI$ is a measure of the schedule efficiency of a project. It is calculated using the following ratio:\n        $$SPI = \\dfrac{BCWP}{BCWS}$$"
+        },
+        {
+          "title": "Calculation",
+          "content": "Substitute the given values into the formula:\n        $$SPI = \\dfrac{100,000}{120,000}$$\n        $$SPI \\approx 0.833$$"
+        },
+        {
+          "title": "Interpretation of Results",
+          "content": "The value of the $SPI$ indicates the status of the project schedule:\n        \\begin{itemize}\n            \\item If $SPI > 1.0$: The project is ahead of schedule.\n            \\item If $SPI = 1.0$: The project is on schedule.\n            \\item If $SPI < 1.0$: The project is behind schedule.\n        \\end{itemize}\n        Since $0.83 < 1.0$, the project has only performed 83% of the work originally planned for this point in time, meaning the project is \\textbf{behind schedule}."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "CMAR Pre-construction Services",
+    "question": "In the Construction Manager at Risk (CMAR) delivery method, the Construction Manager typically provides which service during the pre-construction phase?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Final architectural design",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Guaranteed Maximum Price (GMP) proposal",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Bonding for the owner's financing",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Operating the facility for one year",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Characteristics of CMAR",
+          "content": "In the Construction Manager at Risk (CMAR) delivery method, the Construction Manager (CM) acts as an advisor to the owner during the design phase and as a general contractor during the construction phase."
+        },
+        {
+          "title": "The Guaranteed Maximum Price (GMP)",
+          "content": "A defining feature of the CMAR process is the transition from the design phase to the construction phase. During pre-construction, usually when the design is between 60% and 90% complete, the CM provides a \\textbf{Guaranteed Maximum Price (GMP)}. This proposal commits the CM to completing the project for a maximum cost, shifting the risk of cost overruns from the owner to the CM."
+        },
+        {
+          "title": "Other Pre-construction Services",
+          "content": "In addition to the GMP, the CM typically provides:\n        \\begin{itemize}\n            \\item Cost estimating and budget control.\n            \\item Value engineering (identifying cost-effective alternatives).\n            \\item Constructability reviews to identify potential issues in the design.\n            \\item Scheduling and long-lead item procurement.\n        \\end{itemize}"
+        },
+        {
+          "title": "Why Other Options are Incorrect",
+          "content": "\\begin{itemize}\n            \\item \\textbf{Option A:} Architectural design remains the responsibility of the Architect/Engineer, who is contracted separately by the owner.\n            \\item \\textbf{Option C:} The owner is responsible for their own financing; the CM provides performance and payment bonds for the construction work, not for the owner's funding.\n            \\item \\textbf{Option D:} Operations and maintenance occur during the post-construction or occupancy phase, not pre-construction.\n        \\end{itemize}"
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "Calculating Progress Payment with Retainage",
+    "question": "A contractor is submitting a progress payment application for \\$250,000 worth of completed work. The contract stipulates a 5% retainage. What is the net amount the contractor should receive for this period, assuming no previous payments or adjustments?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\$237,500",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "\\$250,000",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "\\$262,500",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "\\$12,500",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understanding Retainage",
+          "content": "Retainage is a portion of the agreed-upon contract price deliberately withheld until the work is substantially complete to assure that the contractor or subcontractor will satisfy its obligations and complete the project."
+        },
+        {
+          "title": "Identify Given Values",
+          "content": "\\begin{itemize}\n            \\item Gross Amount of Completed Work = \\$250,000\n            \\item Retainage Rate = 5%\n        \\end{itemize}"
+        },
+        {
+          "title": "Step 1: Calculate the Retainage Amount",
+          "content": "To find the amount being withheld, multiply the gross amount by the retainage percentage:\n        $$\\text{Retainage} = \\$250,000 \\times 0.05$$\n        $$\\text{Retainage} = \\$12,500$$"
+        },
+        {
+          "title": "Step 2: Calculate the Net Payment Amount",
+          "content": "The net amount to be paid to the contractor is the gross amount minus the retainage:\n        $$\\text{Net Amount} = \\text{Gross Amount} - \\text{Retainage}$$\n        $$\\text{Net Amount} = \\$250,000 - \\$12,500$$\n        $$\\text{Net Amount} = \\$237,500$$"
+        },
+        {
+          "title": "Summary",
+          "content": "The owner withholds \\$12,500 as security and issues a check for \\$237,500 to the contractor for the work performed during this period."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "Single Point of Responsibility Delivery",
+    "question": "Which project delivery method is characterized by a single point of responsibility for both the design and the construction of the project?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "Design-Bid-Build",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Construction Management Agency",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Design-Build",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Integrated Project Delivery (IPD)",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understanding Design-Build (DB)",
+          "content": "The \\textbf{Design-Build} delivery method is defined by a single contract between the Owner and the Design-Build entity. This entity is responsible for providing both the design services and the physical construction. This \"single point of responsibility\" is the primary distinction between this and other methods."
+        },
+        {
+          "title": "Benefits of Single Point Responsibility",
+          "content": "Because one firm (or a joint venture) handles the entire project, the Owner does not have to act as a mediator between a separate Architect and Contractor. This often leads to:\n        \\begin{itemize}\n            \\item Reduced risk for the Owner regarding design-construction conflicts.\n            \\item Faster project delivery through overlapping design and construction phases.\n            \\item Earlier cost certainty.\n        \\end{itemize}"
+        },
+        {
+          "title": "Comparing Other Methods",
+          "content": "\\begin{itemize}\n            \\item \\textbf{Design-Bid-Build:} Features two separate contracts (Owner-Architect and Owner-Contractor), creating fragmented responsibility.\n            \\item \\textbf{Construction Management Agency:} The CM acts only as an advisor; the Owner still holds multiple separate contracts for design and construction.\n            \\item \\textbf{Integrated Project Delivery (IPD):} While highly collaborative, it usually involves a multi-party agreement between at least three primary parties (Owner, Architect, and Contractor) rather than a single entity holding all responsibility.\n        \\end{itemize}"
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "Purpose of Shop Drawings",
+    "question": "What is the primary purpose of a Shop Drawing in project administration?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "To serve as the final design document created by the Architect.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "To document the contractor's as-built conditions after construction.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "To show the architect and owner how the contractor intends to fabricate and install specific items.",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "To provide a legal description of the property lines.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Definition of Shop Drawings",
+          "content": "Shop drawings are diagrams, schedules, or other data specially prepared for the work by the contractor, a subcontractor, manufacturer, supplier, or distributor. Unlike the Architect's design drawings, which show the \\textit{intent} of the design, shop drawings show the \\textit{detail} of how the item will actually be produced."
+        },
+        {
+          "title": "Primary Function",
+          "content": "The main purpose is to demonstrate how the contractor intends to conform to the design concept and the information given in the contract documents. They provide a level of detail (such as specific dimensions, bolting patterns, or fabrication methods) that is not typically found in the Architect's construction documents."
+        },
+        {
+          "title": "Review and Approval Process",
+          "content": "The contractor submits these to the Architect for review. The Architect checks them for \"conformance with the design concept.\" It is a critical step in project administration to ensure that what is fabricated in a shop or factory matches what is required for the project site."
+        },
+        {
+          "title": "Why Other Options are Incorrect",
+          "content": "\\begin{itemize}\n            \\item \\textbf{Option A:} The Architect creates \"Construction Documents,\" not shop drawings.\n            \\item \\textbf{Option B:} Documents showing conditions after construction are called \"As-Built Drawings\" or \"Record Drawings.\"\n            \\item \\textbf{Option D:} Property lines are described in a \"Land Survey\" or \"Plat,\" not in shop drawings.\n        \\end{itemize}"
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "Risk in Unit Price Contracts",
+    "question": "In a Unit Price contract, which party carries the primary risk associated with the uncertainty of the total quantities of work to be performed?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "The Contractor",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The Owner",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "The Engineer",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The Surety",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understanding Unit Price Contracts",
+          "content": "In a Unit Price contract, the contractor bids a fixed price for each unit of work (e.g., \\$50 per cubic yard of excavation). The total contract value is determined by multiplying these unit prices by the actual quantities of work performed and measured in the field."
+        },
+        {
+          "title": "Allocation of Quantity Risk",
+          "content": "Because the contractor is paid for every unit actually installed or excavated, the \\textbf{Owner} carries the primary risk regarding the total quantity. If the actual quantities turn out to be significantly higher than the initial estimates provided in the bid documents, the Owner must pay the contractor for that extra work at the stipulated unit rate."
+        },
+        {
+          "title": "Contractor's Risk",
+          "content": "The Contractor's risk in this model is limited to the \\textbf{accuracy of their unit price}. They must ensure that their price per unit covers their labor, materials, overhead, and profit. If they underbid the unit rate, they lose money on every unit performed, regardless of the total quantity."
+        },
+        {
+          "title": "Comparison with Lump Sum Contracts",
+          "content": "In a Lump Sum (Fixed Price) contract, the risk is reversed; the Contractor carries the risk for quantities because they have agreed to complete the entire scope for a single set price, regardless of how much material or effort it actually takes."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Project Administration",
+    "title": "Understanding Liquidated Damages",
+    "question": "Which of the following is true regarding Liquidated Damages in a construction contract?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "They are a penalty intended to punish the contractor for being late.",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "They are an estimate of the actual damages the owner will suffer if the project is delayed.",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "They can only be enforced if the owner can prove exact actual costs at the end of the project.",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "They are paid by the owner to the contractor for early completion.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Definition of Liquidated Damages",
+          "content": "Liquidated Damages (LDs) are a pre-determined amount of money, usually set as a daily rate, that the parties agree upon during contract formation. This amount represents a reasonable forecast of the financial losses the Owner would incur for each day the project extends beyond the scheduled completion date."
+        },
+        {
+          "title": "Compensatory vs. Punitive",
+          "content": "A critical legal distinction is that Liquidated Damages must be \\textbf{compensatory} and not punitive. If a court determines the amount was intended as a \"penalty\" to punish the contractor rather than a good-faith estimate of costs (like lost rent, additional inspection fees, or financing costs), the clause may be ruled unenforceable."
+        },
+        {
+          "title": "Enforcement Requirements",
+          "content": "One of the primary benefits of an LD clause is that the Owner does \\textit{not} have to prove the exact amount of actual damages after the delay occurs. Because the costs of delay are often difficult to calculate precisely, the pre-agreed \"liquidated\" sum serves as the substitute for proven actual damages."
+        },
+        {
+          "title": "Why Other Options are Incorrect",
+          "content": "\\begin{itemize}\n            \\item \\textbf{Option A:} If they are framed or applied as a penalty, they are generally legally invalid.\n            \\item \\textbf{Option C:} The purpose of LDs is specifically to avoid the need to prove exact actual costs.\n            \\item \\textbf{Option D:} Payments for early completion are referred to as \"Incentive\" or \"Bonus\" clauses, which are separate from Liquidated Damages.\n        \\end{itemize}"
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  }
+    ],
+
+    'structural':[
+      {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Concrete Modulus of Elasticity",
+    "question": "For a normal-weight concrete with a specified compressive strength of $f'_{c} = 4,500$ psi, what is the approximate modulus of elasticity ($E_{c}$) according to the ACI 318 code?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "3,150,000 psi",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3,620,000 psi",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "3,820,000 psi",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "4,250,000 psi",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the ACI 318 Formula",
+          "content": "According to the ACI 318 code, for normal-weight concrete, the modulus of elasticity $E_{c}$ can be calculated using the following empirical formula: $E_{c} = 57,000 \\sqrt{f'_{c}}$ where $f'_{c}$ and $E_{c}$ are expressed in pounds per square inch (psi)."
+        },
+        {
+          "title": "Substitute the Given Values",
+          "content": "Given $f'_{c} = 4,500$ psi. Substitute this into the formula: $E_{c} = 57,000 \\sqrt{4,500}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$E_{c} = 57,000 \\times 67.082 \\approx 3,823,676 \\text{ psi}$."
+        },
+        {
+          "title": "Select the Closest Option",
+          "content": "The value 3,820,000 psi is the closest approximation to our calculated value."
+        }
+      ],
+      "final_answer": "C",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Whitney Stress Block Depth",
+    "question": "A rectangular reinforced concrete beam has a width $b = 12$ in and an effective depth $d = 20$ in. It is reinforced with 3 #9 bars ($A_{s} = 3.00 \\text{ in}^{2}$). Given $f'_{c} = 4,000$ psi and $f_{y} = 60,000$ psi, calculate the depth of the equivalent Whitney stress block ($a$).",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "3.52 in",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "4.41 in",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "5.18 in",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "6.25 in",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Equilibrium Equation",
+          "content": "The compression force in the concrete ($C$) must equal the tension force in the steel ($T$): $0.85 f'_{c} b a = A_{s} f_{y}$."
+        },
+        {
+          "title": "Rearrange the Formula for a",
+          "content": "$a = \\dfrac{A_{s} f_{y}}{0.85 f'_{c} b}$."
+        },
+        {
+          "title": "Substitute the Given Values",
+          "content": "$a = \\dfrac{3.00 \\times 60,000}{0.85 \\times 4,000 \\times 12}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$a = \\dfrac{180,000}{40,800} \\approx 4.41 \\text{ in}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Design Strength of Tied Column",
+    "question": "What is the design axial strength $\\phi P_{n,max}$ for a short, tied column with a gross area $A_{g} = 225 \\text{ in}^{2}$ and total steel area $A_{st} = 4.0 \\text{ in}^{2}$? Assume $f'_{c} = 4,000$ psi and $f_{y} = 60,000$ psi.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "516 kips",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "620 kips",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "782 kips",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "990 kips",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the ACI 318 Formula for Tied Columns",
+          "content": "$\\phi P_{n,max} = 0.80 \\phi [0.85 f'_{c} (A_{g} - A_{st}) + f_{y} A_{st}]$ where $\\phi = 0.65$ for tied columns."
+        },
+        {
+          "title": "Substitute the Given Values",
+          "content": "$\\phi P_{n,max} = 0.80 \\times 0.65 [0.85 \\times 4 \\times (225 - 4) + (60 \\times 4.0)]$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$P_{o} = 751.4 + 240 = 991.4 \\text{ kips}$. Then, $\\phi P_{n,max} = 0.52 \\times 991.4 \\approx 516 \\text{ kips}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Required Nominal Stirrup Shear Strength",
+    "question": "A beam is subjected to a factored shear force $V_{u} = 60$ kips. The concrete shear strength is $V_{c} = 35$ kips. If the strength reduction factor $\\phi = 0.75$, what is the required nominal shear strength $V_{s}$ to be provided by stirrups?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "25 kips",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "45 kips",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "60 kips",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "80 kips",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Design Requirement for Shear",
+          "content": "The design shear strength must satisfy $\\phi (V_{c} + V_{s}) \\geq V_{u}$."
+        },
+        {
+          "title": "Rearrange the Formula to Solve for Vs",
+          "content": "$V_{s} = \\dfrac{V_{u}}{\\phi} - V_{c}$."
+        },
+        {
+          "title": "Substitute and Calculate",
+          "content": "$V_{s} = \\dfrac{60}{0.75} - 35 = 80 - 35 = 45 \\text{ kips}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Flexure Strength Reduction Factor",
+    "question": "In the design of a singly reinforced rectangular beam, if the net tensile strain in the extreme tension steel $\\epsilon_{t}$ is equal to 0.008, what is the appropriate strength reduction factor $\\phi$ for flexure?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.65",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.75",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0.85",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.90",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understand ACI 318 Strain Limits",
+          "content": "Sections are tension-controlled if $\\epsilon_{t} \\geq 0.005$."
+        },
+        {
+          "title": "Evaluate the Given Strain",
+          "content": "Since $\\epsilon_{t} = 0.008 > 0.005$, the section is tension-controlled."
+        },
+        {
+          "title": "Determine the Strength Reduction Factor",
+          "content": "For tension-controlled sections in flexure, ACI 318 specifies $\\phi = 0.90$."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Minimum Flexural Reinforcement Area",
+    "question": "Calculate the minimum area of flexural reinforcement $A_{s,min}$ for a rectangular beam with $b_{w} = 14$ in, $d = 24$ in, $f'_{c} = 4,000$ psi, and $f_{y} = 60,000$ psi.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.75 in^2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "1.12 in^2",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "1.34 in^2",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "1.56 in^2",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify ACI 318 Minimum Reinforcement Equations",
+          "content": "$A_{s,min}$ is the greater of $\\dfrac{3 \\sqrt{f'_{c}}}{f_{y}} b_{w} d$ and $\\dfrac{200}{f_{y}} b_{w} d$."
+        },
+        {
+          "title": "Calculate Both Expressions",
+          "content": "1) $\\dfrac{3 \\sqrt{4000}}{60000} (14)(24) = 1.062 \\text{ in}^2$. 2) $\\dfrac{200}{60000} (14)(24) = 1.12 \\text{ in}^2$."
+        },
+        {
+          "title": "Determine the Governing Value",
+          "content": "The maximum of the two is $1.12 \\text{ in}^2$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Whitney Stress Block Parameter Beta1",
+    "question": "For a beam with $f'_{c} = 5,000$ psi, what is the value of the stress block parameter $\\beta_{1}$ used in the Whitney stress block?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.85",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0.80",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "0.75",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.70",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Understand ACI 318 Provisions for Beta1",
+          "content": "For $f'_{c} > 4,000$ psi, $\\beta_{1} = 0.85 - \\dfrac{0.05(f'_{c} - 4,000)}{1,000}$."
+        },
+        {
+          "title": "Substitute and Calculate",
+          "content": "$\\beta_{1} = 0.85 - \\dfrac{0.05(5,000 - 4,000)}{1,000} = 0.85 - 0.05 = 0.80$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Effective Flange Width of T-Beam",
+    "question": "An interior T-beam has a slab thickness $h_{f} = 4$ in, a web width $b_{w} = 12$ in, and an effective depth $d = 18$ in. The beam span length is $L = 20$ ft, and the clear distance to the adjacent beams is $s_{w} = 8$ ft. Determine the effective flange width $b_{e}$ according to ACI 318.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "60 in",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "76 in",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "96 in",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "108 in",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify ACI 318 Criteria",
+          "content": "$b_{e}$ is the minimum of: 1) $L/4$, 2) $b_{w} + 16h_{f}$, 3) $b_{w} + s_{w}$."
+        },
+        {
+          "title": "Calculate Each Criterion",
+          "content": "1) $240/4 = 60 \\text{ in}$. 2) $12 + 16(4) = 76 \\text{ in}$. 3) $12 + 96 = 108 \\text{ in}$."
+        },
+        {
+          "title": "Determine the Minimum Value",
+          "content": "$b_{e} = \\min(60, 76, 108) = 60 \\text{ in}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Balanced Strain Condition",
+    "question": "A concrete beam section is 'balanced' when which of the following occurs?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "The concrete reaches a strain of 0.003 at the same time the steel reaches its yield strain.",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "The factored moment equals the nominal moment.",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The concrete strain is 0.005 and the steel strain is 0.003.",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The tension and compression steel areas are equal.",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Define the Balanced Strain Condition",
+          "content": "It is the theoretical state where the compression concrete reaches its ultimate strain ($\\epsilon_{cu} = 0.003$) simultaneously with the tension steel reaching its yield strain ($\\epsilon_{y}$)."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Design of Reinforced Concrete Components",
+    "title": "Nominal Moment Capacity Calculation",
+    "question": "What is the nominal moment capacity $M_{n}$ of a singly reinforced beam where $A_{s} = 2.0 \\text{ in}^{2}$, $d = 15$ in, and the stress block depth $a = 4.0$ in? Use $f_{y} = 60,000$ psi.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1,560 kip-in",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "1,800 kip-in",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "130 kip-ft",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "150 kip-ft",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Nominal Moment Formula",
+          "content": "$M_{n} = A_{s} f_{y} (d - a/2)$."
+        },
+        {
+          "title": "Substitute the Given Values",
+          "content": "$M_{n} = 2.0 \\times 60 \\times (15 - 4.0/2)$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$M_{n} = 120 \\times 13 = 1,560 \\text{ kip-in}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  }
     ]
+
 };

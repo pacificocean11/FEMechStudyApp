@@ -159,7 +159,7 @@
             
 <!-- Hero Greeting -->
 <section class="mt-4">
-<p class="font-label-caps text-label-caps text-secondary mb-stack-sm uppercase">Welcome back, Alex</p>
+<p id="user-greeting" class="font-label-caps text-label-caps text-secondary mb-stack-sm uppercase">Welcome back, Alex</p>
 <h1 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100 leading-tight">Pass FE Exam with Confidence</h1>
 </section>
 <!-- Bento Grid Dashboard -->
@@ -183,7 +183,7 @@
 </div>
 </div>
 <!-- Announcements Card -->
-<div class="col-span-2 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
+<div id="announcement-section" class="col-span-2 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
   <div class="flex justify-between items-start">
     <span class="font-label-caps text-label-caps text-outline uppercase">Announcements</span>
     <span class="material-symbols-outlined text-secondary" data-icon="campaign">campaign</span>
@@ -203,6 +203,36 @@
     </div>
     <button class="bg-[#FF006E] text-white font-bold px-6 py-2.5 rounded-xl text-sm active:scale-95 transition-all w-fit shadow-lg shadow-[#FF006E]/20" onclick="alert('Join link will be active 15 mins before lecture.')">
       Join Session
+    </button>
+  </div>
+  <div class="border-t border-slate-100 dark:border-slate-800 pt-3 mt-1">
+    <button onclick="navigateTo('achievements-view')" class="flex items-center gap-2 text-secondary hover:text-secondary-container transition-colors group">
+      <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform" data-icon="auto_awesome">auto_awesome</span>
+      <span class="font-label-caps text-[11px] uppercase tracking-wider">New: Explore our Point System & Rewards</span>
+      <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+    </button>
+  </div>
+</div>
+
+<!-- Locked Announcements Card -->
+<div id="announcement-locked" class="col-span-2 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md hidden">
+  <div class="flex justify-between items-start">
+    <span class="font-label-caps text-label-caps text-outline uppercase">Announcements</span>
+    <span class="material-symbols-outlined text-slate-300" data-icon="lock">lock</span>
+  </div>
+  <div class="flex flex-col items-center justify-center py-4 text-center">
+    <div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-4">
+      <span class="material-symbols-outlined text-slate-400 text-3xl" data-icon="workspace_premium">workspace_premium</span>
+    </div>
+    <p class="font-title-sm text-on-surface dark:text-slate-100">Announcements Locked</p>
+    <p class="font-body-sm text-outline dark:text-slate-400 max-w-[280px]">Earn 50 points to unlock the announcements section. Keep practicing!</p>
+    <div class="mt-4 w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden max-w-[200px]">
+      <div id="points-progress-bar" class="bg-secondary h-full rounded-full" style="width: 0%"></div>
+    </div>
+    <p id="points-needed-text" class="text-[10px] font-bold text-secondary uppercase tracking-widest mt-2">0/50 Points</p>
+    <button onclick="navigateTo('achievements-view')" class="mt-4 flex items-center gap-2 text-slate-400 hover:text-secondary transition-colors group">
+      <span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span>
+      <span class="font-label-caps text-[10px] uppercase tracking-widest">How to earn points?</span>
     </button>
   </div>
 </div>
@@ -291,6 +321,20 @@
 <span class="material-symbols-outlined text-tertiary" data-icon="school">school</span>
 <span class="font-headline-md text-headline-md dark:text-slate-100">4 Total</span>
 </div>
+</div>
+<!-- Points Card -->
+<div id="btn-points-info" class="col-span-2 bg-white dark:bg-slate-900 rounded-xl p-card-padding card-shadow border border-slate-50 dark:border-slate-800 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+    <div class="flex flex-col">
+        <span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">TOTAL POINTS</span>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-amber-500" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+            <span id="settings-points-display" class="font-headline-md text-headline-md dark:text-slate-100">0 Points</span>
+        </div>
+    </div>
+    <div class="text-right">
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Level 1</p>
+        <p id="points-to-next-level" class="text-[10px] font-medium text-outline">50 pts to unlock announcements</p>
+    </div>
 </div>
 </div>
 <!-- Settings List -->
@@ -728,6 +772,60 @@
                         <p class="text-center text-slate-400 text-[10px] mt-10 font-medium uppercase tracking-widest">Secure Payment via Stripe</p>
                     </div>
                 </section>
+            
+            <section id="achievements-view" class="page">
+                <div class="max-w-md mx-auto">
+                    <div class="flex items-center gap-4 mb-8">
+                        <button id="back-from-achievements" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center active:scale-90 transition-all">
+                            <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">chevron_left</span>
+                        </button>
+                        <h2 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100">Points & Achievements</h2>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-[32px] p-8 shadow-xl border border-slate-50 dark:border-slate-800 mb-8">
+                        <div class="flex flex-col items-center text-center mb-8">
+                            <div class="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 text-amber-500 rounded-[28px] flex items-center justify-center mb-4 shadow-inner">
+                                <span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+                            </div>
+                            <h3 id="achievements-total-points" class="text-3xl font-black text-slate-800 dark:text-slate-100 mb-2">0 Points</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Earn 1 point for every correct answer across the platform.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="font-label-caps text-label-caps text-slate-400 uppercase tracking-widest px-1">Milestones</h4>
+                            <div id="achievements-list" class="space-y-3">
+                                <!-- Loaded by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 dark:bg-amber-900/10 rounded-2xl p-6 border border-amber-100 dark:border-amber-900/30 mb-8">
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-amber-600" data-icon="info">info</span>
+                            <div>
+                                <h5 class="font-bold text-amber-800 dark:text-amber-400 mb-1 text-sm">How it works</h5>
+                                <p class="text-[11px] text-amber-700/80 dark:text-amber-400/70 leading-relaxed">
+                                    Points are cumulative and never expire. They represent your dedication to mastering the FE exam. Certain sections, like Announcements, unlock as you reach specific point thresholds.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="leaderboard" class="page">
+                <div class="mb-stack-lg mt-4">
+                    <span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-stack-sm block">Global Standings</span>
+                    <h1 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100 leading-tight">Leaderboard</h1>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400 mt-2">See how you rank against other FE candidates worldwide.</p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 rounded-[32px] overflow-hidden shadow-xl border border-slate-50 dark:border-slate-800 mb-8">
+                    <div id="leaderboard-list" class="divide-y divide-slate-50 dark:divide-slate-800">
+                        <!-- Loaded by JS -->
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
     
@@ -749,6 +847,12 @@
                 <a href="javascript:void(0)" onclick="navigateTo('exam')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="exam">
                     <span class="material-symbols-outlined mb-1" data-icon="quiz">quiz</span>
                     <span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Exams</span>
+                </a>
+            </li>
+            <li data-page="leaderboard" id="nav-leaderboard">
+                <a href="javascript:void(0)" onclick="navigateTo('leaderboard')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="leaderboard">
+                    <span class="material-symbols-outlined mb-1" data-icon="leaderboard">leaderboard</span>
+                    <span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Rank</span>
                 </a>
             </li>
             <li data-page="settings" id="nav-settings">
