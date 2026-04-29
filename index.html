@@ -183,34 +183,17 @@
 </div>
 </div>
 <!-- Announcements Card -->
-<div id="announcement-section" class="col-span-2 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md">
-  <div class="flex justify-between items-start">
-    <span class="font-label-caps text-label-caps text-outline uppercase">Announcements</span>
-    <span class="material-symbols-outlined text-secondary" data-icon="campaign">campaign</span>
-  </div>
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-    <div class="flex flex-col gap-1">
-      <p class="font-title-sm text-title-sm text-on-surface dark:text-slate-100">Next Lecture: Thermodynamics</p>
-      <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">May 2, 2026 • 10:00 AM EDT</p>
-      <div class="flex flex-wrap gap-x-2 gap-y-0.5 mt-0.5">
-          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">SF: 7:00 AM</span>
-          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Chicago: 9:00 AM</span>
-          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Egypt: 5:00 PM</span>
-          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Dubai: 6:00 PM</span>
-          <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-tighter">Mumbai: 7:30 PM</span>
-      </div>
-      <p class="font-body-sm text-body-sm text-outline dark:text-slate-400 mt-1">Lecturer: Dr. Sarah Chen</p>
+<div id="announcement-section" onclick="navigateTo('announcements-view')" class="col-span-2 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-card-padding shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col gap-stack-md cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+  <div class="flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-secondary" data-icon="campaign">campaign</span>
+      <span class="font-label-caps text-label-caps text-outline uppercase">Announcements</span>
     </div>
-    <button class="bg-[#FF006E] text-white font-bold px-6 py-2.5 rounded-xl text-sm active:scale-95 transition-all w-fit shadow-lg shadow-[#FF006E]/20" onclick="alert('Join link will be active 15 mins before lecture.')">
-      Join Session
-    </button>
+    <span class="material-symbols-outlined text-slate-400" data-icon="chevron_right">chevron_right</span>
   </div>
-  <div class="border-t border-slate-100 dark:border-slate-800 pt-3 mt-1">
-    <button onclick="navigateTo('achievements-view')" class="flex items-center gap-2 text-secondary hover:text-secondary-container transition-colors group">
-      <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform" data-icon="auto_awesome">auto_awesome</span>
-      <span class="font-label-caps text-[11px] uppercase tracking-wider">New: Explore our Point System & Rewards</span>
-      <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-    </button>
+  <div class="flex flex-col gap-1">
+    <p class="font-title-sm text-title-sm text-on-surface dark:text-slate-100">1 New Announcement</p>
+    <p class="font-body-sm text-body-sm text-outline dark:text-slate-400">Next Lecture: Thermodynamics</p>
   </div>
 </div>
 
@@ -772,6 +755,72 @@
                         <p class="text-center text-slate-400 text-[10px] mt-10 font-medium uppercase tracking-widest">Secure Payment via Stripe</p>
                     </div>
                 </section>
+            <section id="announcements-view" class="page">
+                <div class="max-w-[1000px] mx-auto px-4">
+                    <div class="flex items-center gap-4 mb-8 mt-4">
+                        <button onclick="navigateTo('dashboard')" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center active:scale-90 transition-all">
+                            <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">chevron_left</span>
+                        </button>
+                        <h2 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100">Announcements</h2>
+                    </div>
+
+                    <div class="mock-exam-landing">
+                        <div class="exam-hero-card" style="background: #FDA60A;">
+                            <div class="hero-content">
+                                <div class="hero-badge" style="background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3);">Live Event</div>
+                                <h2 id="announcement-headline" style="color: white; font-size: 2.5rem; font-family: 'Outfit'; margin-bottom: 1.5rem; line-height: 1.1;">Next Lecture: Thermodynamics</h2>
+                                <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2.5rem; line-height: 1.6;">Join Dr. Sarah Chen for an in-depth review of key Thermodynamics concepts essential for your FE Exam preparation. Learn to solve complex problems faster.</p>
+                                
+                                <div class="exam-specs">
+                                    <div class="spec-item">
+                                        <span class="spec-icon">📅</span>
+                                        <div class="spec-info">
+                                            <strong>May 2, 2026</strong>
+                                            <span>Date</span>
+                                        </div>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="spec-icon">⏰</span>
+                                        <div class="spec-info">
+                                            <strong>11:00 AM EDT</strong>
+                                            <span>Time</span>
+                                        </div>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="spec-icon">👨‍🏫</span>
+                                        <div class="spec-info">
+                                            <strong>Dr. Sarah Chen</strong>
+                                            <span>Instructor</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="exam-instructions" style="border-left-color: #FFFFFF; background: rgba(0,0,0,0.2);">
+                                    <h3 style="color: #FFFFFF;">Global Timings:</h3>
+                                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                        <li>San Francisco: 8:00 AM</li>
+                                        <li>Chicago: 10:00 AM</li>
+                                        <li>New York: 11:00 AM</li>
+                                        <li>Egypt: 6:00 PM</li>
+                                        <li>Dubai: 7:00 PM</li>
+                                        <li>Mumbai: 8:30 PM</li>
+                                    </ul>
+                                </div>
+
+                                <button class="btn-primary btn-large" style="background: #FF006E; border-color: #FF006E; color: white;" onclick="alert('Join link will be active 15 mins before lecture.')">
+                                    <span class="icon">🔗</span> Join Session
+                                </button>
+                            </div>
+                            <div class="hero-visual">
+                                <div class="exam-illustration">
+                                    <span class="clock-icon" style="font-size: 7rem;">🔥</span>
+                                    <div class="pulse-ring" style="background: #FFFFFF;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
             <section id="achievements-view" class="page">
                 <div class="max-w-md mx-auto">
@@ -810,26 +859,37 @@
                             </div>
                         </div>
                     </div>
+
+                    <button onclick="navigateTo('leaderboard')" class="w-full mt-4 py-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold rounded-2xl active:scale-[0.98] transition-all uppercase tracking-widest text-sm">
+                        View Global Standings
+                    </button>
                 </div>
             </section>
-
+            
             <section id="leaderboard" class="page">
-                <div class="mb-stack-lg mt-4">
-                    <span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-stack-sm block">Global Standings</span>
-                    <h1 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100 leading-tight">Leaderboard</h1>
-                    <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400 mt-2">See how you rank against other FE candidates worldwide.</p>
-                </div>
+                <div class="max-w-md mx-auto">
+                    <div class="flex items-center gap-4 mb-8 mt-4">
+                        <button onclick="navigateTo('achievements-view')" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center active:scale-90 transition-all">
+                            <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">chevron_left</span>
+                        </button>
+                        <h2 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100">Global Standings</h2>
+                    </div>
 
-                <div class="bg-white dark:bg-slate-900 rounded-[32px] overflow-hidden shadow-xl border border-slate-50 dark:border-slate-800 mb-8">
-                    <div id="leaderboard-list" class="divide-y divide-slate-50 dark:divide-slate-800">
-                        <!-- Loaded by JS -->
+                    <div class="mb-stack-lg">
+                        <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-slate-400 mt-2">See how you rank against other FE candidates worldwide.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-[32px] overflow-hidden shadow-xl border border-slate-50 dark:border-slate-800 mb-8">
+                        <div id="leaderboard-list" class="divide-y divide-slate-50 dark:divide-slate-800">
+                            <!-- Loaded by JS -->
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </main>
     
-    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_rgba(255,179,0,0.05)] rounded-t-2xl">
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-2 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_rgba(255,179,0,0.05)] rounded-t-2xl">
         <ul class="nav-links flex justify-around w-full m-0 p-0" style="list-style: none;">
             <li data-page="dashboard" id="nav-dashboard">
                 <a href="javascript:void(0)" onclick="navigateTo('dashboard')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="dashboard">
@@ -849,12 +909,7 @@
                     <span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Exams</span>
                 </a>
             </li>
-            <li data-page="leaderboard" id="nav-leaderboard">
-                <a href="javascript:void(0)" onclick="navigateTo('leaderboard')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="leaderboard">
-                    <span class="material-symbols-outlined mb-1" data-icon="leaderboard">leaderboard</span>
-                    <span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Rank</span>
-                </a>
-            </li>
+
             <li data-page="settings" id="nav-settings">
                 <a href="javascript:void(0)" onclick="navigateTo('settings')" class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1.5 active:scale-90 transition-transform duration-150 bottom-nav-link" data-page="settings">
                     <span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>

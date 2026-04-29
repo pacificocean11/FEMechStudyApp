@@ -1015,8 +1015,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const points = state.userPoints;
         const required = 50;
 
+        const isUnlocked = points >= required || state.user.tier === 'premium' || state.user.username === 'admin' || state.user.role === 'admin';
+
         if (annSection && annLocked) {
-            if (points >= required) {
+            if (isUnlocked) {
                 annSection.classList.remove('hidden');
                 annLocked.classList.add('hidden');
             } else {
@@ -1038,7 +1040,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (pointsToNextLevel) {
-            if (points >= required) {
+            if (isUnlocked) {
                 pointsToNextLevel.textContent = "Announcements unlocked!";
                 pointsToNextLevel.className = "text-[10px] font-medium text-green-500";
             } else {

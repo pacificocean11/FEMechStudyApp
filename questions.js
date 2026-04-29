@@ -495,6 +495,378 @@ const QUESTIONS = {
     }
   }, 
   {
+    "topic": "Calculus",
+    "title": "Evaluating an Improper Gaussian Integral",
+    "question": "Evaluate the improper integral: $\\int_{0}^{\\infty} xe^{-x^2} dx$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "1/2",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$\\infty$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Set up the Substitution",
+          "content": "Let $u = x^2$, then $du = 2x \\, dx$, or $\\frac{1}{2} du = x \\, dx$."
+        },
+        {
+          "title": "Change the Limits of Integration",
+          "content": "When $x = 0$, $u = 0$. As $x \\to \\infty$, $u \\to \\infty$."
+        },
+        {
+          "title": "Substitute and Integrate",
+          "content": "$\\int_{0}^{\\infty} xe^{-x^2} dx = \\frac{1}{2} \\int_{0}^{\\infty} e^{-u} du = \\frac{1}{2} [-e^{-u}]_{0}^{\\infty}$."
+        },
+        {
+          "title": "Final Calculation",
+          "content": "$\\frac{1}{2} (\\lim_{u \\to \\infty} (-e^{-u}) - (-e^{0})) = \\frac{1}{2}(0 + 1) = \\frac{1}{2}$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Calculus",
+    "title": "Implicit Second Order Derivative",
+    "question": "Find the second derivative $\\dfrac{d^2y}{dx^2}$ for $x^2 + y^2 = 25$ at the point $(3, 4)$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "-25/64",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "-25/27",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "25/64",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Find the First Derivative",
+          "content": "$2x + 2y \\frac{dy}{dx} = 0 \\implies \\frac{dy}{dx} = -\\frac{x}{y}$."
+        },
+        {
+          "title": "Find the Second Derivative",
+          "content": "Using the quotient rule: $\\frac{d^2y}{dx^2} = -\\frac{y - x(dy/dx)}{y^2} = -\\frac{y + x^2/y}{y^2} = -\\frac{x^2 + y^2}{y^3}$."
+        },
+        {
+          "title": "Substitute Known Values",
+          "content": "Since $x^2 + y^2 = 25$ and $y = 4$, $\\frac{d^2y}{dx^2} = -\\frac{25}{4^3} = -\\frac{25}{64}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Calculus",
+    "title": "Related Rates Spherical Balloon",
+    "question": "A spherical balloon is being inflated at a rate of 100 cm$^3$/sec. How fast is the radius of the balloon increasing at the instant when the radius is 5 cm?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$1/\\pi$ cm/s",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$1/25\\pi$ cm/s",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$1/5\\pi$ cm/s",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$1/100\\pi$ cm/s",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify Given Information",
+          "content": "$V = \\frac{4}{3}\\pi r^3$ and $\\frac{dV}{dt} = 100$ cm$^3$/sec."
+        },
+        {
+          "title": "Differentiate with Respect to Time",
+          "content": "$\\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt}$."
+        },
+        {
+          "title": "Solve for the Unknown Rate",
+          "content": "$\\frac{dr}{dt} = \\frac{dV/dt}{4\\pi r^2} = \\frac{100}{4\\pi (5)^2} = \\frac{100}{100\\pi} = \\frac{1}{\\pi} \\text{ cm/s}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Calculus",
+    "title": "Integral Involving Inverse Tangent",
+    "question": "Evaluate $\\int \\dfrac{dx}{x^2 + 4x + 13}$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$\\dfrac{1}{3} \\tan^{-1} \\left( \\dfrac{x + 2}{3} \\right) + C$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$\\tan^{-1} \\left( \\dfrac{x + 2}{3} \\right) + C$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$\\dfrac{1}{3} \\ln(x^2 + 4x + 13) + C$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$\\dfrac{1}{9} \\tan^{-1} \\left( \\dfrac{x + 2}{3} \\right) + C$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Complete the Square",
+          "content": "$x^2 + 4x + 13 = (x + 2)^2 + 9$."
+        },
+        {
+          "title": "Rewrite the Integral",
+          "content": "$\\int \\frac{dx}{(x + 2)^2 + 3^2}$."
+        },
+        {
+          "title": "Apply the Integration Formula",
+          "content": "Using $\\int \\frac{du}{u^2 + a^2} = \\frac{1}{a} \\tan^{-1}(\\frac{u}{a}) + C$ with $u=x+2$ and $a=3$, we get $\\frac{1}{3} \\tan^{-1}(\\frac{x + 2}{3}) + C$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Calculus",
+    "title": "Integration by Parts Twice",
+    "question": "Using integration by parts twice, find $\\int x^2 e^x dx$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "$e^x(x^2 - 2x + 2) + C$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$e^x(x^2 + 2x + 1) + C$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$e^x(x^2 - x + 1) + C$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$e^x(x^2 - 2x) + C$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "First Integration by Parts",
+          "content": "Let $u=x^2, dv=e^x dx \\implies \\int x^2 e^x dx = x^2 e^x - \\int 2x e^x dx$."
+        },
+        {
+          "title": "Second Integration by Parts",
+          "content": "Let $u=x, dv=e^x dx \\implies \\int x e^x dx = x e^x - e^x$."
+        },
+        {
+          "title": "Combine and Simplify",
+          "content": "$x^2 e^x - 2(x e^x - e^x) + C = e^x(x^2 - 2x + 2) + C$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Calculus",
+    "title": "Laplacian of a Logarithmic Function",
+    "question": "Find $\\dfrac{\\partial^2 z}{\\partial x^2} + \\dfrac{\\partial^2 z}{\\partial y^2}$ for $z = \\ln(x^2 + y^2)$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "0",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "$\\dfrac{2}{x^2 + y^2}$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$-\\dfrac{2}{(x^2 + y^2)^2}$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "$\\ln(2)$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Find First Partial Derivatives",
+          "content": "$\\frac{\\partial z}{\\partial x} = \\frac{2x}{x^2+y^2}$, $\\frac{\\partial z}{\\partial y} = \\frac{2y}{x^2+y^2}$."
+        },
+        {
+          "title": "Find Second Partial Derivatives",
+          "content": "$\\frac{\\partial^2 z}{\\partial x^2} = \\frac{2y^2-2x^2}{(x^2+y^2)^2}$, $\\frac{\\partial^2 z}{\\partial y^2} = \\frac{2x^2-2y^2}{(x^2+y^2)^2}$."
+        },
+        {
+          "title": "Sum the Derivatives",
+          "content": "Adding them yields $0$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Calculus",
+    "title": "Evaluating a Type II Improper Integral",
+    "question": "Evaluate the improper integral: $\\int_{0}^{1} \\dfrac{1}{\\sqrt{x}} dx$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "2",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "$\\infty$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.5",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Rewrite using Limits",
+          "content": "$\\lim_{t \\to 0^+} \\int_{t}^{1} x^{-1/2} dx$."
+        },
+        {
+          "title": "Find the Antiderivative",
+          "content": "$\\int x^{-1/2} dx = 2\\sqrt{x}$."
+        },
+        {
+          "title": "Evaluate the Limit",
+          "content": "$\\lim_{t \\to 0^+} [2\\sqrt{1} - 2\\sqrt{t}] = 2 - 0 = 2$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Calculus",
+    "title": "Curvature of a Parabola",
+    "question": "Find the curvature $\\kappa$ of the curve $y = x^2$ at the origin $(0, 0)$.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "2",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0.5",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Recall the Curvature Formula",
+          "content": "$\\kappa = \\frac{|y''|}{[1 + (y')^2]^{3/2}}$."
+        },
+        {
+          "title": "Find the Derivatives",
+          "content": "For $y=x^2$, $y'=2x$ and $y''=2$."
+        },
+        {
+          "title": "Substitute into the Formula at (0,0)",
+          "content": "At $x=0$, $y'=0$ and $y''=2$. So $\\kappa = \\frac{|2|}{[1 + 0^2]^{3/2}} = 2$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
     "topic": "Differential Equations",
     "title": "First-Order Separable Diff. Equation",
     "question": "Solve the following first-order separable differential equation given the initial condition $y(0) = 2$:\n\\[ \\dfrac{dy}{dx} = 3x^2 y \\]",
@@ -20371,6 +20743,360 @@ const QUESTIONS = {
         {
           "title": "Perform the Calculation",
           "content": "$M_{n} = 120 \\times 13 = 1,560 \\text{ kip-in}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  }
+    ],
+    'surveying':[
+      {
+    "topic": "Earthwork and Volume Computations",
+    "title": "Average End Area Excavation Volume",
+    "question": "Calculate the volume (in cubic yards) of excavation between two parallel cross-sections 100 ft apart. The area of the first cross-section is $250 \\text{ ft}^{2}$ and the area of the second cross-section is $400 \\text{ ft}^{2}$ using the average end area method.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "1,203.7 yd$^3$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "2,407.4 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "32,500 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "9,750 yd$^3$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Apply the Average End Area Formula",
+          "content": "The volume ($V$) in cubic feet is calculated as: $V = \\left( \\dfrac{A_{1} + A_{2}}{2} \\right) \\times L$, where $A_{1} = 250 \\text{ ft}^{2}$, $A_{2} = 400 \\text{ ft}^{2}$, and $L = 100 \\text{ ft}$."
+        },
+        {
+          "title": "Calculate Volume in Cubic Feet",
+          "content": "$V = \\left( \\dfrac{250 + 400}{2} \\right) \\times 100 = 325 \\times 100 = 32,500 \\text{ ft}^{3}$."
+        },
+        {
+          "title": "Convert Cubic Feet to Cubic Yards",
+          "content": "$V_{\\text{cubic yards}} = \\dfrac{32,500 \\text{ ft}^{3}}{27} \\approx 1,203.7 \\text{ yd}^{3}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Earthwork and Volume Computations",
+    "title": "Prismoidal Volume Calculation",
+    "question": "A prismoid has a length of 100 ft. The areas of the two end sections are $150 \\text{ ft}^2$ and $300 \\text{ ft}^2$. The area of the mid-section is $210 \\text{ ft}^2$. Calculate the volume in cubic yards using the prismoidal formula.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "796.3 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "833.3 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "21,500 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "740.7 yd$^3$",
+        "is_correct": true
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Prismoidal Formula",
+          "content": "The formula for volume is $V = \\dfrac{L}{6} (A_{1} + 4A_{m} + A_{2})$, where $L=100$, $A_1=150$, $A_2=300$, and $A_m=210$."
+        },
+        {
+          "title": "Calculate Volume in Cubic Feet",
+          "content": "$V = \\dfrac{100}{6} [150 + 4(210) + 300] = \\dfrac{100}{6} [1290] = 21,500 \\text{ ft}^3$."
+        },
+        {
+          "title": "Convert Cubic Feet to Cubic Yards",
+          "content": "$V_{\\text{yards}} = \\dfrac{21,500}{27} \\approx 740.7 \\text{ yd}^3$."
+        }
+      ],
+      "final_answer": "D",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Earthwork and Volume Computations",
+    "title": "Soil Swell Volume Calculation",
+    "question": "If an excavation project requires removing 2,500 bank cubic yards (BCY) of soil with a swell factor of 15%, what is the volume of the loose soil (LCY) to be hauled?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "2,875 LCY",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "2,125 LCY",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "2,825 LCY",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "3,125 LCY",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Swell Formula",
+          "content": "$LCY = BCY \\times (1 + \\text{Swell Factor})$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$LCY = 2,500 \\times (1 + 0.15) = 2,500 \\times 1.15 = 2,875 \\text{ LCY}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Earthwork and Volume Computations",
+    "title": "Cross-Sectional Area Calculation",
+    "question": "Calculate the total area of a rectangular cross-section with a width $b = 14$ in and an effective depth $d = 24$ in.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "432 ft$^2$",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "336 in$^2$",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "240 ft$^2$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "528 ft$^2$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Area Formula",
+          "content": "The area ($A$) of a rectangular cross-section is $A = b \\times d$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$A = 14 \\text{ in} \\times 24 \\text{ in} = 336 \\text{ in}^2$."
+        }
+      ],
+      "final_answer": "B",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Earthwork and Volume Computations",
+    "title": "Borrow Pit Grid Square Volume",
+    "question": "A borrow pit is divided into a $40\\text{ ft} \\times 40\\text{ ft}$ grid. The depths of cut at the four corners of one grid square are $2.1\\text{ ft}$, $3.4\\text{ ft}$, $4.5\\text{ ft}$, and $2.0\\text{ ft}$. Calculate the volume of earth in this grid square in cubic yards.",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "177.8 yd$^3$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "4,800 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "533.3 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "155.6 yd$^3$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate Area and Average Depth",
+          "content": "Area $A = 40 \\times 40 = 1,600 \\text{ ft}^2$. Average depth $h_{\\text{avg}} = \\dfrac{2.1 + 3.4 + 4.5 + 2.0}{4} = 3.0 \\text{ ft}$."
+        },
+        {
+          "title": "Calculate Volume in Cubic Feet",
+          "content": "$V = 1,600 \\times 3.0 = 4,800 \\text{ ft}^3$."
+        },
+        {
+          "title": "Convert to Cubic Yards",
+          "content": "$V_{\\text{yards}} = \\dfrac{4,800}{27} \\approx 177.8 \\text{ yd}^3$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Earthwork and Volume Computations",
+    "title": "Soil Shrinkage and Bank Volume",
+    "question": "A project requires $4,000$ compacted cubic yards (CCY) of embankment. The soil has a shrinkage factor of $12\\%$. How many bank cubic yards (BCY) of material are required?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "4,545.5 BCY",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "3,520.0 BCY",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "4,480.0 BCY",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "4,800.0 BCY",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Shrinkage Formula",
+          "content": "$BCY = \\dfrac{CCY}{1 - \\text{Shrinkage Factor}}$."
+        },
+        {
+          "title": "Perform the Calculation",
+          "content": "$BCY = \\dfrac{4,000}{1 - 0.12} = \\dfrac{4,000}{0.88} \\approx 4,545.5 \\text{ BCY}$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Earthwork and Volume Computations",
+    "title": "Three-Level Section Area Calculation",
+    "question": "For a three-level section, the following data is provided: base width $b = 24$ ft, center cut $c = 10$ ft. The left side slope intercept is at $w_l = 22$ ft from center with a height $h_l = 6$ ft. The right side slope intercept is at $w_r = 38$ ft with a height $h_r = 14$ ft. What is the area of the section?",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "420 ft$^2$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "380 ft$^2$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "600 ft$^2$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "440 ft$^2$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Identify the Three-Level Section Area Formula",
+          "content": "$A = \\dfrac{1}{2} \\left[ \\dfrac{b}{2}(h_l + h_r) + c(w_l + w_r) \\right]$."
+        },
+        {
+          "title": "Substitute and Calculate",
+          "content": "$A = \\dfrac{1}{2} \\left[ \\dfrac{24}{2}(6 + 14) + 10(22 + 38) \\right] = \\dfrac{1}{2} [12(20) + 10(60)] = \\dfrac{1}{2} [240 + 600] = 420 \\text{ ft}^2$."
+        }
+      ],
+      "final_answer": "A",
+      "solution_image": ""
+    }
+  },
+  {
+    "topic": "Earthwork and Volume Computations",
+    "title": "Cut Volume with Linear Transition",
+    "question": "Between station $10+00$ and station $11+00$, the earthwork transitions from cut to fill. At $10+00$, the cut area is $400 \\text{ ft}^2$. At $11+00$, the fill area is $600 \\text{ ft}^2$. Assuming a linear transition, calculate the volume of cut between station $10+00$ and the zero-point (in cubic yards).",
+    "question_image": "",
+    "options": [
+      {
+        "label": "A",
+        "text": "296.3 yd$^3$",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "444.4 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "740.7 yd$^3$",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "148.1 yd$^3$",
+        "is_correct": false
+      }
+    ],
+    "solution": {
+      "steps": [
+        {
+          "title": "Calculate distance to zero-point (Lc)",
+          "content": "$L_c = L \\times \\left( \\dfrac{A_{cut}}{A_{cut} + A_{fill}} \\right) = 100 \\times \\left( \\dfrac{400}{400 + 600} \\right) = 40 \\text{ ft}$."
+        },
+        {
+          "title": "Calculate Cut Volume in Cubic Feet",
+          "content": "Using the pyramid volume formula: $V_c = \\dfrac{1}{2} \\times A_{cut} \\times L_c = \\dfrac{1}{2} \\times 400 \\times 40 = 8,000 \\text{ ft}^3$."
+        },
+        {
+          "title": "Convert to Cubic Yards",
+          "content": "$V_{c(yd)} = \\dfrac{8,000}{27} \\approx 296.3 \\text{ yd}^3$."
         }
       ],
       "final_answer": "A",
