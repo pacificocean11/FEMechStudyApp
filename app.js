@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // DOM Elements
-    const navItems = document.querySelectorAll('.nav-links li');
     const pages = document.querySelectorAll('.page');
     const pageTitle = document.getElementById('page-title');
     const subjectList = document.getElementById('subject-list');
@@ -261,33 +260,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navigation Logic
     function setupNavigation() {
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
+        const allNavItems = document.querySelectorAll('.nav-links li');
+        allNavItems.forEach(item => {
+            item.addEventListener('click', (e) => {
                 const pageId = item.getAttribute('data-page');
-                
-                // Tier Check (Disabled for now)
-                /*
-                if (state.user.tier === 'free' && (pageId === 'study' || pageId === 'exam')) {
-                    // Check if trial is still active
-                    const TRIAL_DURATION = 30 * 1000;
-                    const startTime = sessionStorage.getItem('enggtv_trial_start');
-                    const isTrialActive = startTime && (Date.now() - parseInt(startTime) < TRIAL_DURATION);
-
-                    if (!isTrialActive) {
-                        navigateTo('upgrade-view');
-                        return;
-                    }
+                if (pageId) {
+                    navigateTo(pageId);
                 }
-                */
-
-                navigateTo(pageId);
-                
-                navItems.forEach(nav => nav.classList.remove('active'));
-                item.classList.add('active');
-
-                // Close sidebar on mobile after navigation
-                if (sidebar) sidebar.classList.remove('active');
-                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
             });
         });
     }
@@ -355,16 +334,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Update nav active state (Sidebar and Bottom Nav)
-        const allNavLinks = document.querySelectorAll('.nav-links li, .bottom-nav-link');
+        const allNavLinks = document.querySelectorAll('.nav-links li');
         allNavLinks.forEach(link => {
-            link.classList.remove('active');
-            const targetPage = link.getAttribute('data-page') || 
-                             (link.getAttribute('onclick') && link.getAttribute('onclick').match(/'([^']+)'/)?.[1]);
-            
+            const targetPage = link.getAttribute('data-page');
             if (targetPage === pageId) {
                 link.classList.add('active');
+            } else {
+                link.classList.remove('active');
             }
         });
+
+        // Close sidebar on mobile if it exists
+        if (typeof sidebar !== 'undefined' && sidebar) sidebar.classList.remove('active');
+        if (typeof sidebarOverlay !== 'undefined' && sidebarOverlay) sidebarOverlay.classList.remove('active');
 
         window.scrollTo(0, 0);
     };
